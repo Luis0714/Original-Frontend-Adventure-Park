@@ -1,0 +1,23 @@
+<nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">
+        <img src="../../../../assets/logo2.jpg" alt="freecodecamp-logo" class="logo">
+      </a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a  routerLink="">Inicio</a></li>
+        <li><a *ngIf="!isLogged" routerLink="security/login">Login</a></li>
+        <li><a *ngIf="isLogged"  routerLink="parameters/Plans">Planes</a></li>
+        <li><a *ngIf="isLogged"  routerLink="parameters/Plans">Comidas</a></li>
+        <li><a *ngIf="isLogged"  routerLink="/contactenos">Contactenos</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a  routerLink="">Inicio</a></li>
+    <li><a *ngIf="!isLogged" routerLink="security/login">Login</a></li>
+    <li><a *ngIf="isLogged" routerLink="parameters/Plans">Planes</a></li>
+    <li><a *ngIf="isLogged" routerLink="parameters/Plans">Comidas</a></li>
+    <li><a *ngIf="isLogged" routerLink="/contactenos">Contactenos</a></li>
+  </ul>

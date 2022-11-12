@@ -1,0 +1,17 @@
+body {
+    min-height: 100vh;
+    font-family: Verdana, sans-serif;
+    display: flex; /* ver nota al final de este taller */
+    flex-direction: column;
+  }
+.container{
+    flex-grow: 1;
+    background: var(--main-bg-color);
+    overflow: auto;
+    padding: 0 20px;
+}
+
+.footer{
+    margin-top: 100px;
+}
+

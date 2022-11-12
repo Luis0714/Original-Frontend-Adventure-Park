@@ -1,0 +1,19 @@
+<form action="" [formGroup]="fGroup" >
+    <div id="wrapper">
+        <div id="dialog">
+            <h4>verification code</h4>
+            <div id="form">
+                <input formControlName="code" type="text" maxLength="6" size="6" min="0" max="9" pattern="[0-9]{1}" />
+            </div>
+            <div class="input-error" *ngIf="fg['code'].errors && (fg['code'].dirty || fg['code'].touched)">
+                <ul>
+                    <li><strong *ngIf="fg['code'].errors['required']">Este campo es requerido.</strong><br /></li>
+                    <li><strong *ngIf="fg['code'].errors['minlength']">El valor de este campo debe de 6
+                        caracteres.</strong><br /></li>
+                </ul>
+            </div>
+            <button (click)="VerifyCodeAction()" class="btn btn-primary btn-embossed">Verify</button>
+        </div>
+        <script src="../../../../assets/js/verify-code.componet.js"></script>
+    </div>
+</form>

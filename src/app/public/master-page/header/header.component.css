@@ -1,0 +1,15 @@
+.logo {
+    margin-left: .5em;
+    margin-right: auto;
+    width: 5em;
+    height: 2em;
+    opacity: 1;
+    /* usa todo lo disponible y empuja la ul a la derecha */
+    border-radius: 50%;
+  }
+
+  .brand-logo{
+      margin: 14px 0 0 20px;  
+      font-size: 22px;
+      display: inline-block;
+  }
