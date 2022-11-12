@@ -18,6 +18,10 @@ const routes: Routes = [
     loadChildren: ()=> import("./modules/security/security.module").then(m => m.SecurityModule)
   },
   {
+      path:"parameters",
+      loadChildren: ()=> import("./modules/parameters/parameters.module").then(m => m.ParametersModule)
+  },
+  {
     path:"**",
     component:NotFoundComponent
   }

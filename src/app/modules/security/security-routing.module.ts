@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AutenticatedGuard } from 'src/app/guards/autenticated.guard';
+import { UnauthenticatedGuard } from 'src/app/guards/unauthenticated.guard';
 import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { VerifyCodeComponent } from './verify-code/verify-code.component';
 
 const routes: Routes = [
   {
     path:"login",
-    component:LoginComponent
+    component:LoginComponent,
+    canActivate: [UnauthenticatedGuard]
   },
   {
     path:"forgot-password",
@@ -16,6 +20,11 @@ const routes: Routes = [
   {
     path:"verify-code",
     component: VerifyCodeComponent
+  },
+  {
+    path:'logout',
+    component: LogoutComponent,
+    canActivate: [AutenticatedGuard]
   }
 ];
 

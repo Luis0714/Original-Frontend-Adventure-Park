@@ -7,6 +7,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VerifyCodeComponent } from './verify-code/verify-code.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { VerifyCodeComponent } from './verify-code/verify-code.component';
     LoginComponent,
     ResetPasswordComponent,
     ChangePasswordComponent,
-    VerifyCodeComponent
+    VerifyCodeComponent,
+    LogoutComponent
   ],
   imports: [
     CommonModule,

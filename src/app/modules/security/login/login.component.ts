@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
           +"Por favor revice la badeja de entrada de su correo");
           this.router.navigate(["/security/verify-code"])
         }else{
-          alert("No se ha enviado el codigo de verificacion");
+          alert("No se ha enviado el codigo de verificacion, intetelo de nuevo");
         }
       },
       error:(err) =>{
@@ -56,6 +56,23 @@ export class LoginComponent implements OnInit {
     }
     );
   }
+
+  ForgotPasswordAction(){
+    let userName = this.fGroup.controls["user-name"].value;
+    this.secService.ForgotPasswordRequest(userName).subscribe({
+      next:(data) =>{
+        if(data){
+          this.router.navigate(["/security/reset-password"])
+        }else{
+          alert("Datos invalidos");
+        }
+      },
+      error:(err) =>{
+        console.log(err)
+        alert("Se ha presentado un fallo en el proceso de cambio de contraseña")
+      }
+  })
+}
 
 
   get fg(){

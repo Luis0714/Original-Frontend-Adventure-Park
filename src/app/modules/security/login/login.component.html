@@ -40,11 +40,21 @@
         <input type="checkbox" id="checkbox">
         <label for="checkbox">autor: Luis Estremor</label>
     </div>
-    <br><br>
 
-    <div class="center">
-        <input type="button" (click)="LoginAction()" value="Login" name="login"
-            class="btn waves-effect waves-light " style="width:100%; background-color: #ff4081;">
-    </div>
-    <br>
+    <br><br>
+    <div class="row">
+        <div class="input-field col s6 m6 l6">
+          <p class="margin medium-small"><a routerLink="/security/register">Register Now!</a></p>
+        </div>
+        <div class="input-field col s6 m6 l6">
+            <p class="margin right-align medium-small"><a routerLink="/security/forgot-password">Forgot password?</a></p>
+        </div>          
+      </div>
+
+        <div class="center">
+            <input type="button" (click)="LoginAction()" value="Login" name="login"
+                class="btn waves-effect waves-light " style="width:100%; background-color: #ff4081;">
+        </div>
+ 
+        <br>
 </form>

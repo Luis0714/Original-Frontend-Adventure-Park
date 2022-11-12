@@ -9,7 +9,11 @@ import { SecurityService } from './security.service';
 export class LocalStorageService {
 
   constructor(private SecurityService: SecurityService) { }
-
+  RemoveUserData(){
+    localStorage.removeItem("user-data");
+    let userData = new UserModel();
+    this.SecurityService.UpdateUserBehavior(userData);
+  }
   SaveUserData(data: LoggedUser):boolean {
     let JsonAsStrin = JSON.stringify(data);
     if (!localStorage.getItem("user-data")) {
@@ -21,11 +25,11 @@ export class LocalStorageService {
     }
   }
 
-  GetUSerData():UserModel | null{
+  GetSesionData():LoggedUser | null{
     let userAsString = localStorage.getItem("user-data");
     if(userAsString){
       let userData: LoggedUser = JSON.parse(userAsString);
-      return userData.User;
+      return userData;
     }
     return null;
   }

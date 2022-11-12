@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder,Validators} from '@angular/forms';
+import { Router } from '@angular/router';
 import { DefaultValues } from 'src/app/config/default-values';
 import { SecurityService } from 'src/app/services/security.service';
 
@@ -12,7 +13,8 @@ export class ResetPasswordComponent implements OnInit {
   fGroup: FormGroup = new FormGroup({});
   constructor(
     private fb: FormBuilder,
-    private secService: SecurityService
+    private secService: SecurityService,
+    private router : Router
   ) { }
 
   ngOnInit(): void {
@@ -35,8 +37,9 @@ export class ResetPasswordComponent implements OnInit {
       next:(data) =>{
         if(data){
           alert("Por favor revice la badeja de entrada de su correo");
+          this.router.navigate(["/security/login"])
         }else{
-          alert("No se ha enviado la contraseña");
+          alert("No se ha enviado la contraseña,  vuelva a intentar");
         }
       },
       error:(err) =>{

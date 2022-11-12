@@ -64,4 +64,13 @@ export class SecurityService {
     let actionName = "validar-codigo";
     return this.http.get<LoggedUser>(`${this.urlMsSeG}/${actionName}/${code}`);
   }
+  /**
+   * Valida si el token es correcto
+   * @param jwt jwt
+   * @returns string
+   */
+  CheckSesionToken(jwt:string):Observable<boolean>{
+    let actionName = "check-sesion-token";
+    return this.http.get<boolean>(`${this.urlMsSeG}/${actionName}/${jwt}`);
+  }
 }
