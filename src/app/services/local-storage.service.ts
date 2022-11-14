@@ -33,4 +33,15 @@ export class LocalStorageService {
     }
     return null;
   }
+
+  GetRolId():string{
+    let userAsString = localStorage.getItem("user-data");
+    if(userAsString){
+      let userData: string = JSON.parse(userAsString).User.rol;
+      return userData;
+    }
+    return '';
+  }
 }
+
+

@@ -73,4 +73,20 @@ export class SecurityService {
     let actionName = "check-sesion-token";
     return this.http.get<boolean>(`${this.urlMsSeG}/${actionName}/${jwt}`);
   }
+  /**
+   * hace la solicitud de cambio de contraseña
+   * @param newPassword nueva contraseña
+   * @param confirPassword confirmacion de la nueva contraseña
+   * @param oldPassword contraseña vieja
+   */
+  ChangePasswordRequest(user:string,newPassword:string,confirPassword:string,oldPassword:string):Observable<boolean>{
+    let actionName = "cambiar-clave";
+    return this.http.post<boolean>(`${this.urlMsSeG}/${actionName}`,{
+      Usuario:user,
+      NuevaClave:newPassword,
+      ConfirmacionNuevaClave:confirPassword,
+      ClaveAntigua:oldPassword
+      
+    });
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserModel } from 'src/app/models/user.model';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { SecurityService } from 'src/app/services/security.service';
 
 @Component({
@@ -9,12 +10,18 @@ import { SecurityService } from 'src/app/services/security.service';
 })
 export class HeaderComponent implements OnInit {
   isLogged: boolean = false;
-  constructor(private SecuritySevice: SecurityService) { }
+  rolId:string = '';
+  name:string = '';
+
+  constructor(private SecuritySevice: SecurityService,
+    private LocalStorage:LocalStorageService) { }
 
   ngOnInit(): void {
     this.SecuritySevice.GetUserData().subscribe({
       next:(data:UserModel)=>{
+        this.name = data.nombre;
         this.isLogged = data.isLogged;
+        this.rolId = this.LocalStorage.GetRolId();
       },
       error: (err) =>{
 
