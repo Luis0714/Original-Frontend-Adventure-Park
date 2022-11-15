@@ -7,13 +7,16 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { SecurityService } from 'src/app/services/security.service';
 var MD5 = require("crypto-js/md5");
 
+declare const iniciarMenuDesplegable:any;
 @Component({
   selector: 'app-verify-code',
   templateUrl: './verify-code.component.html',
   styleUrls: ['./verify-code.component.css']
 })
+
 export class VerifyCodeComponent implements OnInit {
   fGroup: FormGroup = new FormGroup({});
+
 
   constructor(
     private fb: FormBuilder,
@@ -54,6 +57,8 @@ export class VerifyCodeComponent implements OnInit {
 
           //Mandar al home
           this.router.navigate(["/home"])
+          document.location.reload();
+          iniciarMenuDesplegable();
         }else{
           alert("Datos invalidos!");
           this.router.navigate(["/security/login"])

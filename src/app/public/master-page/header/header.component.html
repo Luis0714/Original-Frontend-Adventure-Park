@@ -1,6 +1,23 @@
+
+
 <nav>
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a *ngIf="isLogged" routerLink="parameters/list-plan">Planes</a></li>
+    <li><a *ngIf="isLogged" routerLink="parameters/list-attraction">Atracciones</a></li>
+    <li><a *ngIf="isLogged" routerLink="parameters/list-park">Parques</a></li>
+    <li class="divider"></li>
+    <li ><a *ngIf="isLogged" routerLink="security/logout">Logout</a></li>
+  </ul>
+
+  <ul id="dropdown2" class="dropdown-content">
+    <li><a *ngIf="isLogged" routerLink="parameters/list-attraction">Atracciones</a></li>
+    <li><a href="">two</a></li>
+    <li class="divider"></li>
+    <li ><a *ngIf="isLogged" routerLink="security/logout">Logout</a></li>
+  </ul>
+
   <div class="nav-wrapper">
-    <a href="#!" class="brand-logo">
+    <a class="lo" href="#!" class="brand-logo">
       <img src="../../../../assets/logo2.jpg" alt="freecodecamp-logo" class="logo">
     </a>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -11,20 +28,15 @@
     <ul class="right hide-on-med-and-down" *ngIf="rolId=='63647e5133a28b2ad402efaa'">
       <li><a routerLink="">Inicio</a></li>
       <li><a *ngIf="!isLogged" routerLink="security/login">Login</a></li>
-      <li><a *ngIf="isLogged" routerLink="parameters/list-plan">Planes</a></li>
-      <li><a *ngIf="isLogged" routerLink="parameters/list-attraction">Atracciones</a></li>
-      <li><a *ngIf="isLogged" routerLink="parameters/list-park">Parques</a></li>
       <li><a *ngIf="isLogged" routerLink="/contactenos">Contactenos</a></li>
-      <li *ngIf="name!='' && isLogged"><a routerLink=""><b>{{name}}</b></a></li>
-      <li><a *ngIf="isLogged" routerLink="security/logout"> |   Logout</a></li>
+      <li *ngIf="name!='' && isLogged" class="li-user"> <a routerLink=""  class="dropdown-trigger"  data-target='dropdown1'><b>{{name}}</b><i class="material-icons right">arrow_drop_down</i></a></li>
     </ul>
+
     <ul class="right hide-on-med-and-down" *ngIf="rolId=='63717e529ef3d87cab66baa6'">
       <li><a routerLink="">Inicio</a></li>
       <li><a *ngIf="!isLogged" routerLink="security/login">Login</a></li>
-      <li><a *ngIf="isLogged" routerLink="parameters/list-attraction">Atracciones</a></li>
       <li><a *ngIf="isLogged" routerLink="/contactenos">Contactenos</a></li>
-      <li *ngIf="name!='' && isLogged"><a ><b>{{name}}</b></a></li>
-      <li><a *ngIf="isLogged" routerLink="security/logout">|  Logout</a></li>
+      <li *ngIf="name!='' && isLogged" class="li-user"> <a routerLink=""  class="dropdown-trigger"  data-target='dropdown2'><b>{{name}}</b><i class="material-icons right">arrow_drop_down</i></a></li>
     </ul>
   </div>
 </nav>
