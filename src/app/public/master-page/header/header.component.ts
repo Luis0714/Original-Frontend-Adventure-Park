@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.SecuritySevice.GetUserData().subscribe({
       next:(data:UserModel)=>{
-        this.name = data.nombre;
+        this.name = data.nombre.substring(0,(data.nombre.length-8));
         this.isLogged = data.isLogged;
         this.rolId = this.LocalStorage.GetRolId();
       },

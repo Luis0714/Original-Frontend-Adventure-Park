@@ -36,7 +36,7 @@ export class ResetPasswordComponent implements OnInit {
     this.secService.ForgotPasswordRequest(userName).subscribe({
       next:(data) =>{
         if(data){
-          alert("Por favor revice la badeja de entrada de su correo");
+          alert("Por favor revice la bandeja de entrada de su correo");
           this.router.navigate(["/security/login"])
         }else{
           alert("No se ha enviado la contraseña,  vuelva a intentar");

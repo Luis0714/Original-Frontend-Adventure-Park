@@ -58,7 +58,6 @@ export class VerifyCodeComponent implements OnInit {
           //Mandar al home
           this.router.navigate(["/home"])
           document.location.reload();
-          iniciarMenuDesplegable();
         }else{
           alert("Datos invalidos!");
           this.router.navigate(["/security/login"])
