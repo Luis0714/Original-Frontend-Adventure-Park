@@ -42,8 +42,8 @@ export class LoginComponent implements OnInit {
     this.secService.LoginRequest(userName,cryptoPassword).subscribe({
       next:(data) =>{
         if(data){
-          alert("Se ha enviado el codigo de verificacion!"
-          +"Por favor revice la badeja de entrada de su correo");
+          alert("Se ha enviado el codigo de verificacion! "
+          +"Por favor revice la bandeja de entrada de su correo");
           this.router.navigate(["/security/verify-code"])
         }else{
           alert("No se ha enviado el codigo de verificacion, intetelo de nuevo");
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
       },
       error:(err) =>{
         console.log(err)
-        alert("Se ha presentado un fallo en el proceso de login")
+        alert("Contraseña y/o Usuario invalido")
       }
     }
     );

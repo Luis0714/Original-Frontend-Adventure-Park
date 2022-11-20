@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApisInfo } from 'src/app/config/apisInfo';
+import { DefaultValues } from 'src/app/config/default-values';
 import { UserModel } from 'src/app/models/user.model';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { SecurityService } from 'src/app/services/security.service';
@@ -12,6 +14,8 @@ export class HeaderComponent implements OnInit {
   isLogged: boolean = false;
   rolId:string = '';
   name:string = '';
+  rolIdAdmin:string = DefaultValues.RolIdSuperAdmin;
+  rolIdAuxiliar:string = DefaultValues.RolIdauxiliar;
 
   constructor(private SecuritySevice: SecurityService,
     private LocalStorage:LocalStorageService) { }

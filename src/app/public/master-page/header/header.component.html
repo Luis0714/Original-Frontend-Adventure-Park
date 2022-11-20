@@ -5,6 +5,7 @@
     <li><a *ngIf="isLogged" routerLink="parameters/list-plan">Planes</a></li>
     <li><a *ngIf="isLogged" routerLink="parameters/list-attraction">Atracciones</a></li>
     <li><a *ngIf="isLogged" routerLink="parameters/list-park">Parques</a></li>
+    <li><a *ngIf="isLogged" routerLink="parameters/list-rol">Roles</a></li>
     <li class="divider"></li>
     <li ><a *ngIf="isLogged" routerLink="security/logout">Logout</a></li>
   </ul>
@@ -25,14 +26,14 @@
       <li><a routerLink="">Inicio</a></li>
       <li><a *ngIf="!isLogged" routerLink="security/login">Login</a></li>
     </ul>
-    <ul class="right hide-on-med-and-down" *ngIf="rolId=='63647e5133a28b2ad402efaa'">
+    <ul class="right hide-on-med-and-down" *ngIf="rolId==rolIdAdmin">
       <li><a routerLink="">Inicio</a></li>
       <li><a *ngIf="!isLogged" routerLink="security/login">Login</a></li>
       <li><a *ngIf="isLogged" routerLink="/contactenos">Contactenos</a></li>
       <li *ngIf="name!='' && isLogged" class="li-user"><a class="dropdown-trigger"  data-target='dropdown1'><b>{{name}}</b><i class="material-icons right">arrow_drop_down</i></a></li>
     </ul>
 
-    <ul class="right hide-on-med-and-down" *ngIf="rolId=='63717e529ef3d87cab66baa6'">
+    <ul class="right hide-on-med-and-down" *ngIf="rolId==rolIdAuxiliar">
       <li><a routerLink="">Inicio</a></li>
       <li><a *ngIf="!isLogged" routerLink="security/login">Login</a></li>
       <li><a *ngIf="isLogged" routerLink="/contactenos">Contactenos</a></li>
@@ -47,14 +48,15 @@
   <li><a *ngIf="!isLogged" routerLink="security/login">Login</a></li>
   <li *ngIf="name!='' && isLogged" ><a routerLink=""><b>{{name}}</b></a></li>
   <li class="divider"></li>
-  <li><a *ngIf="isLogged && rolId=='63647e5133a28b2ad402efaa'" routerLink="parameters/list-plan">Planes</a></li>
-  <li><a *ngIf="isLogged && rolId=='63647e5133a28b2ad402efaa'
-          || rolId=='63717e529ef3d87cab66baa6'" routerLink="parameters/list-attraction">Atracciones</a></li>
-  <li><a *ngIf="isLogged && rolId=='63647e5133a28b2ad402efaa'" routerLink="parameters/list-park">Parques</a></li>
-  <li><a *ngIf="isLogged && rolId=='63647e5133a28b2ad402efaa'
-          || rolId=='63717e529ef3d87cab66baa6'" routerLink="/contactenos">Contactenos</a></li>
+  <li><a *ngIf="isLogged && rolId==rolIdAdmin" routerLink="parameters/list-plan">Planes</a></li>
+  <li><a *ngIf="isLogged && rolId==rolIdAdmin" routerLink="parameters/list-rol">Roles</a></li>
+  <li><a *ngIf="isLogged && rolId==rolIdAdmin
+          || rolId==rolIdAuxiliar" routerLink="parameters/list-attraction">Atracciones</a></li>
+  <li><a *ngIf="isLogged && rolId==rolIdAdmin" routerLink="parameters/list-park">Parques</a></li>
+  <li><a *ngIf="isLogged && rolId==rolIdAdmin
+          || rolId==rolIdAuxiliar" routerLink="/contactenos">Contactenos</a></li>
   <li class="divider"></li>
-  <li><a *ngIf="isLogged && rolId=='63647e5133a28b2ad402efaa' 
-          && rolId=='63647e5133a28b2ad402efaa'|| rolId=='63717e529ef3d87cab66baa6'"
+  <li><a *ngIf="isLogged && rolId==rolIdAdmin 
+          && rolId==rolIdAdmin|| rolId==rolIdAuxiliar"
       routerLink="security/logout">Logout</a></li>
 </ul>

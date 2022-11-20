@@ -13,6 +13,10 @@ import { CreatePlanComponent } from './plans/create-plan/create-plan.component';
 import { EditPlanComponent } from './plans/edit-plan/edit-plan.component';
 import { ListPlanComponent } from './plans/list-plan/list-plan.component';
 import { RemovePlanComponent } from './plans/remove-plan/remove-plan.component';
+import { CreateRolComponent } from './rols/create-rol/create-rol.component';
+import { EditRolComponent } from './rols/edit-rol/edit-rol.component';
+import { ListRolComponent } from './rols/list-rol/list-rol.component';
+import { RemoveRolComponent } from './rols/remove-rol/remove-rol.component';
 
 const routes: Routes = [
   {
@@ -67,6 +71,24 @@ const routes: Routes = [
   }, {
     path: 'remove-park',
     component:RemoveParkComponent,
+    canActivate: [AutenticatedGuard]
+  },
+  {
+    path: 'create-rol',
+    component:CreateRolComponent,
+    canActivate: [AutenticatedGuard]
+  },
+  {
+    path: 'edit-rol',
+    component:EditRolComponent,
+    canActivate: [AutenticatedGuard]
+  }, {
+    path: 'list-rol',
+    component:ListRolComponent,
+    canActivate: [AutenticatedGuard]
+  }, {
+    path: 'remove-rol',
+    component:RemoveRolComponent,
     canActivate: [AutenticatedGuard]
   }
 ];

@@ -1,0 +1,22 @@
+<a id="btn-crear" class="waves-effect waves-light btn-large green" routerLink="/parameters/create-rol"><i class="material-icons left">add</i>Agregar</a>
+<div class="tabla">
+    <table class="responsive-table"  >
+        <thead>
+          <tr>
+              <th>Nombre</th>
+              <th>Descirpción</th>
+          </tr>
+        </thead>
+    
+        <tbody>
+          <tr *ngFor="let r of recordList">
+                <td>{{r.nombre}}</td>
+                <td>{{r.detalles}}</td>
+                <td>
+                    <a class="waves-effect waves-light btn-large orange"><i class="material-icons left">edit</i>Editar</a>
+                    &nbsp;<a class="waves-effect waves-light btn-large red "><i class="material-icons left">delete</i>Eliminar</a>
+                </td>
+          </tr>
+        </tbody>
+      </table>
+</div>

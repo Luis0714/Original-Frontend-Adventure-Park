@@ -42,6 +42,16 @@ export class LocalStorageService {
     }
     return '';
   }
+
+  
+  GetSesionToken():string{
+    let userAsString = localStorage.getItem("user-data");
+    if(userAsString){
+      let userToken: string = JSON.parse(userAsString).User.Token;
+      return userToken;
+    }
+    return '';
+  }
 }
 
 

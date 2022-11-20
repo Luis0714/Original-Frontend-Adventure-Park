@@ -14,6 +14,10 @@ import { CreateParkComponent } from './parks/create-park/create-park.component';
 import { EditParkComponent } from './parks/edit-park/edit-park.component';
 import { ListParkComponent } from './parks/list-park/list-park.component';
 import { RemoveParkComponent } from './parks/remove-park/remove-park.component';
+import { CreateRolComponent } from './rols/create-rol/create-rol.component';
+import { ListRolComponent } from './rols/list-rol/list-rol.component';
+import { EditRolComponent } from './rols/edit-rol/edit-rol.component';
+import { RemoveRolComponent } from './rols/remove-rol/remove-rol.component';
 
 
 @NgModule({
@@ -29,7 +33,11 @@ import { RemoveParkComponent } from './parks/remove-park/remove-park.component';
     CreateParkComponent,
     EditParkComponent,
     ListParkComponent,
-    RemoveParkComponent
+    RemoveParkComponent,
+    CreateRolComponent,
+    ListRolComponent,
+    EditRolComponent,
+    RemoveRolComponent
   ],
   imports: [
     CommonModule,
