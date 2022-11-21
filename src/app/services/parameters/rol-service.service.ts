@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApisInfo } from 'src/app/config/apisInfo';
 import { RolModel } from 'src/app/models/rol.model';
+import { RolModel2 } from 'src/app/models/rol.model2';
 import { LocalStorageService } from '../local-storage.service';
 
 @Injectable({
@@ -31,7 +32,7 @@ export class RolServiceService {
    * @param record info del registro a crear
    * @returns registro creado
    */
-  saveRecord(record:RolModel):Observable<RolModel>{
+  saveRecord(record:RolModel2):Observable<RolModel>{
     return this.http.post<RolModel>(this.url,record,{
       headers:new HttpHeaders({
         "Authorization": `Bearer ${this.jwt}`

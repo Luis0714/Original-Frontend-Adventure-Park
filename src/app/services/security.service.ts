@@ -5,6 +5,7 @@ import { ApisInfo } from '../config/apisInfo';
 import { LoggedUser } from '../models/logged-user.model';
 import { UserModel } from '../models/user.model';
 import { LocalStorageService } from './local-storage.service';
+import { RolModel } from '../models/rol.model';
 
 @Injectable({
   providedIn: 'root'
@@ -89,4 +90,6 @@ export class SecurityService {
       
     });
   }
+
+
 }

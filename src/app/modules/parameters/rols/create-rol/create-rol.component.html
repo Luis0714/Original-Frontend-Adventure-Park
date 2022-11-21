@@ -1,1 +1,45 @@
-<p>create-rol works!</p>
+<form [formGroup]="fGroup">
+    <div id="container" class="card-panel z-depth-5">
+
+        <div class="row margin">
+            <div class="col s12 m12 l12 center">
+                <img src="../../../../../assets/rol.png" alt="" class="responsive-img " style="width:100px;">
+                <p>CREATE ROL</p>
+            </div>
+        </div>
+
+        <div class="col s12 m12 l12">
+            <div class="input-field">
+                <i class="material-icons prefix">person</i>
+                <input formControlName="name" type="text" name="name" id="name">
+                <label class="active" for="name">Nombre</label>
+            </div>
+            <div class="input-error" *ngIf="fg['name'].errors && (fg['name'].dirty || fg['name'].touched)">
+                <ul>
+                    <li><strong *ngIf="fg['name'].errors['required']">Este campo es requerido.</strong><br /></li>
+                    <li><strong *ngIf="fg['name'].errors['minlength']">El valor de este campo debe ser mínimo de 5
+                            caracteres.</strong><br /></li>
+                </ul>
+            </div>
+        </div>
+        <div class="input-field">
+            <i class="material-icons prefix">create</i>
+            <input formControlName="details" type="text" name="details" id="details">
+            <label class="active" for="details">Descripcion</label>
+        </div>
+        <div class="input-error" *ngIf="fg['details'].errors && (fg['details'].dirty || fg['details'].touched)">
+            <ul>
+                <li><strong *ngIf="fg['details'].errors['required']">Este campo es requerido.</strong><br /></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Form Chekbox (Remember Me) Input Section -->
+
+    <div class="center">
+        <input type="button" (click)="CreateRolAction()" value="CREATE" name="login" class="btn waves-effect waves-light "
+            style="width:100%; background-color: #ff4081;">
+    </div>
+
+    <br>
+</form>

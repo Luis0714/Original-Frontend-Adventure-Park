@@ -18,6 +18,7 @@ import { CreateRolComponent } from './rols/create-rol/create-rol.component';
 import { ListRolComponent } from './rols/list-rol/list-rol.component';
 import { EditRolComponent } from './rols/edit-rol/edit-rol.component';
 import { RemoveRolComponent } from './rols/remove-rol/remove-rol.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -41,7 +42,9 @@ import { RemoveRolComponent } from './rols/remove-rol/remove-rol.component';
   ],
   imports: [
     CommonModule,
-    ParametersRoutingModule
+    ParametersRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ParametersModule { }

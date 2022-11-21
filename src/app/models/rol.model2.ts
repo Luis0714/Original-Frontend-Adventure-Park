@@ -1,5 +1,4 @@
-export class RolModel{
-    _id:string= '';
+export class RolModel2{
     nombre:string = '';
     detalles:string = '';
 }
