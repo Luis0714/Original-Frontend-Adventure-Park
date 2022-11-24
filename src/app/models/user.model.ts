@@ -5,4 +5,5 @@ export class UserModel{
     nombre: string = '';
     rol: string = '';
     
+    
 }

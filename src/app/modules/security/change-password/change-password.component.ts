@@ -48,10 +48,10 @@ ChangePasswordAction(){
   this.secService.ChangePasswordRequest(user,newPassword,confirPassword,cryptoOldPassword).subscribe({
     next:(data) =>{
       if(data){
-        alert("Por favor revice la badeja de entrada de su correo");
+        alert("Por favor revice la bandeja de entrada de su correo");
         this.router.navigate(["/security/login"])
       }else{
-        alert("No se ha cambiado la contraseña, intetelo de nuevo");
+        alert("No se ha cambiado la contraseña, intentelo de nuevo");
       }
     },
     error:(err) =>{

@@ -9,6 +9,7 @@ import { ErrorsComponent } from './public/errors/errors.component';
 import { HomeComponent } from './public/master-page/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     ErrorsComponent,
     HomeComponent,
+
   ],
   imports: [
     BrowserModule,

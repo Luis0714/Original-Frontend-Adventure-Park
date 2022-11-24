@@ -4,8 +4,11 @@ import { Injectable } from '@angular/core';
 import { ApisInfo } from '../config/apisInfo';
 import { LoggedUser } from '../models/logged-user.model';
 import { UserModel } from '../models/user.model';
+import { UserModelRegister} from '../models/register-user.models';
 import { LocalStorageService } from './local-storage.service';
 import { RolModel } from '../models/rol.model';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +16,8 @@ import { RolModel } from '../models/rol.model';
 export class SecurityService {
   userData = new BehaviorSubject<UserModel>(new UserModel);
   urlMsSeG: string = ApisInfo.MS_SEG_URL;
+  rol_id: string = ApisInfo.ROL_ID;
+  registerData = new BehaviorSubject<UserModelRegister>(new UserModelRegister)
  
   constructor(
     private http:HttpClient,
@@ -89,6 +94,28 @@ export class SecurityService {
       ClaveAntigua:oldPassword
       
     });
+  }
+
+  /**
+   * Hace la solicitud para registar un nuevo usuario
+   * @param name Nombre del usuario
+   * @param lastName apellido
+   * @param user correo electrónico
+   * @param celular celular
+   * @param password contraseña
+   * @param rol_id visitante (por defecto)
+   * @returns 
+   */
+  RegisternewUser(name:string, lastName:string, user:string, celular:string, rol_id:string):Observable<UserModelRegister>{
+    let actionName = "usuarios";
+    return this.http.post<UserModelRegister>(`${this.urlMsSeG}/${actionName}`,{
+      Nombres:name,
+      Apellidos:lastName,
+      email:user,
+      Celular:celular,
+      rolId: rol_id
+    });
+
   }
 
 
