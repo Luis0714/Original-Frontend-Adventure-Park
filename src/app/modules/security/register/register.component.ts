@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
 
   fGroup: FormGroup = new FormGroup ({});
   rol_id: string = ApisInfo.ROL_ID;
+  load: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -40,13 +41,13 @@ export class RegisterComponent implements OnInit {
    * Ejecucion de la funcionalidad del boton
    */
  RegisterAction(){
-    let nombre = this.fGroup.controls["name"].value;
-    let apellido = this.fGroup.controls["last_name"].value;
-    let email = this.fGroup.controls["email"].value;
-    let celular = this.fGroup.controls["cel"].value;
+    let nombres = this.fGroup.controls["nombre"].value;
+    let apellidos = this.fGroup.controls["apellido"].value;
+    let email = this.fGroup.controls["username"].value;
+    let celular = this.fGroup.controls["celular"].value;
     let rol = this.rol_id;
-    alert('tomé los datos')
-    this.secService.RegisternewUser(nombre, apellido, email, celular, rol).subscribe({
+    
+    this.secService.RegisternewUser(nombres, apellidos, email, celular, rol).subscribe({
       next:(data) =>{
         if(data){
           alert("La contraseña ha sido enviada al correo electrónico, "

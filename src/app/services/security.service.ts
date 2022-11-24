@@ -110,7 +110,7 @@ export class SecurityService {
     let actionName = "usuarios";
     return this.http.post<UserModelRegister>(`${this.urlMsSeG}/${actionName}`,{
       Nombres:name,
-      Apellidos:lastName,
+      Apellidos:lastName,  
       email:user,
       Celular:celular,
       rolId: rol_id
