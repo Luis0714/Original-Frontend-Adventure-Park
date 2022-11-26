@@ -1,3 +1,4 @@
+
 <a id="btn-crear" class="waves-effect waves-light btn-large green" routerLink="/parameters/create-rol"><i class="material-icons left">add</i>Agregar</a>
 <div class="tabla">
     <table class="responsive-table"  >
@@ -13,10 +14,20 @@
                 <td>{{r.nombre}}</td>
                 <td>{{r.detalles}}</td>
                 <td>
-                    <a class="waves-effect waves-light btn-large orange"><i class="material-icons left">edit</i>Editar</a>
-                    &nbsp;<a class="waves-effect waves-light btn-large red "><i class="material-icons left">delete</i>Eliminar</a>
+                    <a routerLink="/parameters/edit-rol/{{r._id}}" class="waves-effect waves-light btn-large orange"><i class="material-icons left">edit</i>Editar</a>
+                    &nbsp;<button data-target="modal1" class="btn modal-trigger"(click)="ShowRemoveWindow(r._id)" type="button" class="waves-effect waves-light btn-large red "><i class="material-icons left">delete</i>Eliminar</button>
                 </td>
           </tr>
         </tbody>
       </table>
+</div>
+<div id="modalConfirmation" class="modal">
+  <div class="modal-content">
+    <h4>Confirmación de evento</h4>
+    <p id="pConfirmationMessage"></p>
+  </div>
+  <div class="modal-footer row">
+    <button id="eliminar" class="modal-close waves-effect waves-green btn btn-success col green" (click)="RemoveRecord()">Eliminar</button>
+    <button id="cancelar" class="modal-close waves-effect waves-green btn-flat btn btn-success col orange">Cancelar</button>
+  </div>
 </div>

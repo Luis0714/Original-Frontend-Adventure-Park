@@ -27,6 +27,19 @@ export class RolServiceService {
   getRecorList():Observable<RolModel[]>{
    return this.http.get<RolModel[]>(this.url);
   }
+
+   /**
+   * obtine el rol por el id
+   * @returns id
+   */
+    getRecorByID(id:string):Observable<RolModel>{
+      console.log("Ruta ",this.url+"/"+id)
+      return this.http.get<RolModel>(this.url+"/"+id,{
+      headers:new HttpHeaders({
+        "Authorization":"Bearer "+this.jwt
+      })
+    });
+     }
   /**
    * crea un nuevo registro
    * @param record info del registro a crear
@@ -57,7 +70,7 @@ export class RolServiceService {
     * @returns NA
     */
    removeRecord(id:string){
-    return this.http.put(this.url+"/"+id,{
+    return this.http.delete(this.url+"/"+id,{
       headers:new HttpHeaders({
         "Authorization": `Bearer ${this.jwt}`
       })

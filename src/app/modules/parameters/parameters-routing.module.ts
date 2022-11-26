@@ -79,7 +79,7 @@ const routes: Routes = [
     canActivate: [AutenticatedGuard]
   },
   {
-    path: 'edit-rol',
+    path: 'edit-rol/:_id',
     component:EditRolComponent,
     canActivate: [AutenticatedGuard]
   }, {
@@ -87,7 +87,7 @@ const routes: Routes = [
     component:ListRolComponent,
     canActivate: [AutenticatedGuard]
   }, {
-    path: 'remove-rol',
+    path: 'remove-rol/:_id',
     component:RemoveRolComponent,
     canActivate: [AutenticatedGuard]
   }

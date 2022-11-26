@@ -12,11 +12,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var elem = document.querySelectorAll('.carousel');
   var instance = M.Carousel.init(elem, {});
+
 })
 
 
-function iniciarMenuDesplegable(){
-  let lis = document.querySelectorAll('.dropdown-trigger');
-  console.log(lis);
-  var instanc = M.Dropdown.init(lis, {});
+function OpenConfirmModal(message) {
+  document.querySelector("#pConfirmationMessage").innerHTML = message;
+  var elems = document.querySelectorAll(".modal");
+  M.Modal.init(elems, {});
+  let elem = document.querySelector("#modalConfirmation");
+  var instance = M.Modal.getInstance(elem);
+  instance.open();
 }

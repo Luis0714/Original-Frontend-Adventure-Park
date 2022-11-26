@@ -4,4 +4,5 @@ export namespace DefaultValues{
     export const RolIdSuperAdmin: string = "63647e5133a28b2ad402efaa"
     export const RolIdauxiliar: string = "63717e529ef3d87cab66baa6"
     
+    
 }
