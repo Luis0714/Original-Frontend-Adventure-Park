@@ -42,11 +42,11 @@ export class LoginComponent implements OnInit {
     this.secService.LoginRequest(userName,cryptoPassword).subscribe({
       next:(data) =>{
         if(data){
-          alert("Se ha enviado el codigo de verificacion! "
+          alert("Se ha enviado el código de verificación! "
           +"Por favor revice la bandeja de entrada de su correo");
           this.router.navigate(["/security/verify-code"])
         }else{
-          alert("No se ha enviado el codigo de verificacion, intetelo de nuevo");
+          alert("No se ha enviado el codigo de verificación, intetelo de nuevo");
         }
       },
       error:(err) =>{

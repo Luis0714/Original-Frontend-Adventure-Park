@@ -5,6 +5,7 @@ import { UnauthenticatedGuard } from 'src/app/guards/unauthenticated.guard';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import { RegisterComponent } from './register/register.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { VerifyCodeComponent } from './verify-code/verify-code.component';
 
@@ -33,6 +34,11 @@ const routes: Routes = [
     path:'logout',
     component: LogoutComponent,
     canActivate: [AutenticatedGuard]
+  },
+  {
+    path:'register',
+    component:RegisterComponent,
+    canActivate: [UnauthenticatedGuard]
   }
 ];
 
