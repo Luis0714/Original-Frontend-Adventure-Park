@@ -19,6 +19,10 @@ import { ListRolComponent } from './rols/list-rol/list-rol.component';
 import { EditRolComponent } from './rols/edit-rol/edit-rol.component';
 import { RemoveRolComponent } from './rols/remove-rol/remove-rol.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateCityComponent } from './city/create-city/create-city.component';
+import { EditCityComponent } from './city/edit-city/edit-city.component';
+import { ListCityComponent } from './city/list-city/list-city.component';
+import { RemoveCityComponent } from './city/remove-city/remove-city.component';
 
 
 @NgModule({
@@ -38,7 +42,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CreateRolComponent,
     ListRolComponent,
     EditRolComponent,
-    RemoveRolComponent
+    RemoveRolComponent,
+    CreateCityComponent,
+    EditCityComponent,
+    ListCityComponent,
+    RemoveCityComponent,
   ],
   imports: [
     CommonModule,
