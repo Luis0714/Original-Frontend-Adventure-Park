@@ -5,6 +5,10 @@ import { CreateAttractionComponent } from './attractions/create-attraction/creat
 import { EditAttractionComponent } from './attractions/edit-attraction/edit-attraction.component';
 import { ListAttractionComponent } from './attractions/list-attraction/list-attraction.component';
 import { RemoveAttractionComponent } from './attractions/remove-attraction/remove-attraction.component';
+import { CreateDepartmentComponent } from './department/create-department/create-department.component';
+import { EditDepartmentComponent } from './department/edit-department/edit-department.component';
+import { ListDepartmentComponent } from './department/list-department/list-department.component';
+import { RemoveDepartmentComponent } from './department/remove-department/remove-department.component';
 import { CreateParkComponent } from './parks/create-park/create-park.component';
 import { EditParkComponent } from './parks/edit-park/edit-park.component';
 import { ListParkComponent } from './parks/list-park/list-park.component';
@@ -95,24 +99,26 @@ const routes: Routes = [
     component:RemoveRolComponent,
     canActivate: [AutenticatedGuard]
   },
+    /////
   {
-    path: 'create-user',
-    component:CreateUserComponent,
+    path: 'create-department',
+    component:CreateDepartmentComponent,
     canActivate: [AutenticatedGuard]
   },
   {
-    path: 'edit-user/:_id',
-    component:EditUserComponent,
+    path: 'edit-department/:id',
+    component:EditDepartmentComponent,
     canActivate: [AutenticatedGuard]
   }, {
-    path: 'list-user',
-    component:ListUserComponent,
+    path: 'list-department',
+    component:ListDepartmentComponent,
     canActivate: [AutenticatedGuard]
   }, {
-    path: 'remove-user/:_id',
-    component:RemoveUserComponent,
+    path: 'remove-department/:id',
+    component:RemoveDepartmentComponent,
     canActivate: [AutenticatedGuard]
-  }
+  },
+  
 ];
 
 @NgModule({

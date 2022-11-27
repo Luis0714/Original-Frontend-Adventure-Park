@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
 
   fGroup: FormGroup = new FormGroup ({});
   rol_id: string = DefaultValues.RolIdauxiliar;
-  load: boolean = false;
+  
 
   constructor(
     private fb: FormBuilder,
