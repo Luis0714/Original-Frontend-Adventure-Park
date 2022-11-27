@@ -17,6 +17,10 @@ import { CreateRolComponent } from './rols/create-rol/create-rol.component';
 import { EditRolComponent } from './rols/edit-rol/edit-rol.component';
 import { ListRolComponent } from './rols/list-rol/list-rol.component';
 import { RemoveRolComponent } from './rols/remove-rol/remove-rol.component';
+import { CreateUserComponent } from './users/create-user/create-user.component';
+import { EditUserComponent } from './users/edit-user/edit-user.component';
+import { ListUserComponent } from './users/list-user/list-user.component';
+import { RemoveUserComponent } from './users/remove-user/remove-user.component';
 
 const routes: Routes = [
   {
@@ -89,6 +93,24 @@ const routes: Routes = [
   }, {
     path: 'remove-rol/:_id',
     component:RemoveRolComponent,
+    canActivate: [AutenticatedGuard]
+  },
+  {
+    path: 'create-user',
+    component:CreateUserComponent,
+    canActivate: [AutenticatedGuard]
+  },
+  {
+    path: 'edit-user/:_id',
+    component:EditUserComponent,
+    canActivate: [AutenticatedGuard]
+  }, {
+    path: 'list-user',
+    component:ListUserComponent,
+    canActivate: [AutenticatedGuard]
+  }, {
+    path: 'remove-user/:_id',
+    component:RemoveUserComponent,
     canActivate: [AutenticatedGuard]
   }
 ];
