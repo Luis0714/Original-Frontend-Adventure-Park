@@ -16,7 +16,7 @@ import { RolModel } from '../models/rol.model';
 export class SecurityService {
   userData = new BehaviorSubject<UserModel>(new UserModel);
   urlMsSeG: string = ApisInfo.MS_SEG_URL;
-
+  rol_id: string = ApisInfo.ROL_ID;
   registerData = new BehaviorSubject<UserModelRegister>(new UserModelRegister)
  
   constructor(
@@ -102,7 +102,6 @@ export class SecurityService {
    * @param lastName apellido
    * @param user correo electrónico
    * @param celular celular
-   * @param password contraseña
    * @param rol_id visitante (por defecto)
    * @returns 
    */

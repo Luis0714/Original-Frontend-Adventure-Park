@@ -1,0 +1,19 @@
+.tabla{
+    margin-top: 20px;
+    background: transparent;
+    background-color: #f4f9ff;
+    border-radius: 7px;
+    padding: 10 5 0 5;
+    color: black;
+}
+#btn-crear{
+    margin-top: 20px;
+}
+
+#eliminar{
+    margin-left: 20px;
+}
+
+#cancelar{
+    margin-left:20px;
+}

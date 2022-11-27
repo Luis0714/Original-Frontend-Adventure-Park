@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { RolModel } from 'src/app/models/rol.model';
 import { RolModel2 } from 'src/app/models/rol.model2';
 import { RolServiceService } from 'src/app/services/parameters/rol-service.service';
 import { SecurityService } from 'src/app/services/security.service';
@@ -53,23 +54,24 @@ export class EditRolComponent implements OnInit {
   }
   EditRolAction(){
     console.log("Entreee");
+    let id = this.fGroup.controls["id"].value;
     let name = this.fGroup.controls["name"].value;
     let details = this.fGroup.controls["details"].value;
-    let datos:RolModel2={
+    let datos:RolModel={
+      _id:id,
       nombre:name,
       detalles:details
     }
-    this.RolService.saveRecord(datos).subscribe({
+    this.RolService.editRecord(datos).subscribe({
       next:(data) =>{
-        if(data){
+        if(!data){
+          console.log(data)
           alert('Registro editado con exito')
           this.router.navigate(["/parameters/list-rol"])
-        }else{
-          alert("Error al editar el registro");
         }
       },
       error:(err) =>{
-        console.log(err)
+
         alert("Se ha presentado un fallo creacion del registro")
       }
   })

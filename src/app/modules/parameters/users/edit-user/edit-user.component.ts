@@ -1,20 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SecurityService } from 'src/app/services/security.service';
 import { DefaultValues } from 'src/app/config/default-values';
-import { ApisInfo } from '../../../config/apisInfo';
-var MD5 = require("crypto-js/md5");
-@Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
-})
-export class RegisterComponent implements OnInit {
+import { SecurityService } from 'src/app/services/security.service';
 
+@Component({
+  selector: 'app-edit-user',
+  templateUrl: './edit-user.component.html',
+  styleUrls: ['./edit-user.component.css']
+})
+export class EditUserComponent implements OnInit {
   fGroup: FormGroup = new FormGroup ({});
   rol_id: string = DefaultValues.RolIdauxiliar;
-  
+  load: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -70,3 +68,4 @@ export class RegisterComponent implements OnInit {
   }
 
 }
+
