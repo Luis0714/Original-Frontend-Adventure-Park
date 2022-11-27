@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ApisInfo } from 'src/app/config/apisInfo';
-import { UserModel2 } from 'src/app/models/user.model2';
+import { ApisInfo } from '../../../app/config/apisInfo';
+import { UserModel2 } from '../../../app/models/user.model2';
 import { LocalStorageService } from '../local-storage.service';
 
 @Injectable({
