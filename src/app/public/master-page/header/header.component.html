@@ -48,6 +48,7 @@
   <li><a *ngIf="!isLogged" routerLink="security/login">Login</a></li>
   <li *ngIf="name!='' && isLogged" ><a routerLink=""><b>{{name}}</b></a></li>
   <li class="divider"></li>
+  <li><a *ngIf="isLogged && rolId==rolIdAdmin" routerLink="parameters/list-department">Departamentos</a></li>
   <li><a *ngIf="isLogged && rolId==rolIdAdmin" routerLink="parameters/list-plan">Planes</a></li>
   <li><a *ngIf="isLogged && rolId==rolIdAdmin" routerLink="parameters/list-rol">Roles</a></li>
   <li><a *ngIf="isLogged && rolId==rolIdAdmin

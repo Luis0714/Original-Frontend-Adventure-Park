@@ -1,0 +1,31 @@
+<form [formGroup]="fGroup">
+    <div id="container" class="card-panel z-depth-5">
+
+        <div class="row margin">
+            <div class="col s12 m12 l12 center">
+                <img src="../../../../../assets/rol.png" alt="" class="responsive-img " style="width:100px;">
+                <p>CREATE DEPARTMENT</p>
+            </div>
+        </div>
+
+        <div class="input-field">
+            <i class="material-icons prefix">create</i>
+            <input formControlName="nombre" type="text" name="nombre" id="nombre">
+            <label class="active" for="nombre">Nombre</label>
+        </div>
+        <div class="input-error" *ngIf="fg['nombre'].errors && (fg['nombre'].dirty || fg['nombre'].touched)">
+            <ul>
+                <li><strong *ngIf="fg['nombre'].errors['nombre']">Este campo es requerido.</strong><br /></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Form Chekbox (Remember Me) Input Section -->
+
+    <div class="center">
+        <input type="button" (click)="CreateDepartmentAction()" value="CREATE" name="login" class="btn waves-effect waves-light "
+            style="width:100%; background-color: #ff4081;">
+    </div>
+
+    <br>
+</form>

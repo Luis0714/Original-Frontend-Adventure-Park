@@ -18,7 +18,16 @@ import { CreateRolComponent } from './rols/create-rol/create-rol.component';
 import { ListRolComponent } from './rols/list-rol/list-rol.component';
 import { EditRolComponent } from './rols/edit-rol/edit-rol.component';
 import { RemoveRolComponent } from './rols/remove-rol/remove-rol.component';
+//
+
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateDepartmentComponent } from './department/create-department/create-department.component';
+import { EditDepartmentComponent } from './department/edit-department/edit-department.component';
+import { ListDepartmentComponent } from './department/list-department/list-department.component';
+import { RemoveDepartmentComponent } from './department/remove-department/remove-department.component';
+
+
 
 
 @NgModule({
@@ -38,7 +47,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CreateRolComponent,
     ListRolComponent,
     EditRolComponent,
-    RemoveRolComponent
+    RemoveRolComponent,
+    EditDepartmentComponent,
+    ListDepartmentComponent,
+    RemoveDepartmentComponent,
+    CreateDepartmentComponent
+    
+    
   ],
   imports: [
     CommonModule,
