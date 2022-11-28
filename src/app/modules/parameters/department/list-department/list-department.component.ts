@@ -23,11 +23,10 @@ export class ListDepartmentComponent implements OnInit {
     this.ListRecords();
   }
   ListRecords() {
-
     this.DepartmentService.getRecorList().subscribe({
       next: (data) => {
         this.recordList = data;
-        console.log(this.recordList)
+        console.log("departamentos ",this.recordList)
         
       },
       error: (err) => {

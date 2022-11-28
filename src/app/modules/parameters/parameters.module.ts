@@ -28,6 +28,7 @@ import { CreateDepartmentComponent } from './department/create-department/create
 import { EditDepartmentComponent } from './department/edit-department/edit-department.component';
 import { ListDepartmentComponent } from './department/list-department/list-department.component';
 import { RemoveDepartmentComponent } from './department/remove-department/remove-department.component';
+import { ContactenosComponent } from './contactenos/contactenos/contactenos.component';
 
 
 
@@ -57,9 +58,8 @@ import { RemoveDepartmentComponent } from './department/remove-department/remove
     EditDepartmentComponent,
     ListDepartmentComponent,
     RemoveDepartmentComponent,
-    CreateDepartmentComponent
-    
-    
+    CreateDepartmentComponent,
+    ContactenosComponent
   ],
   imports: [
     CommonModule,

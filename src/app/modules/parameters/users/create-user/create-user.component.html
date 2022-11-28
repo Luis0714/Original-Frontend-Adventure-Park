@@ -1,1 +1,62 @@
-<p>create-user works!</p>
+<br>
+<br>
+<br>
+<form  [formGroup]="fGroup">
+    <div class="row">
+        
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input formControlName="nombre" id="name" type="text" class="validate" name="name">
+                    <label for="name">Nombre</label>
+                </div>
+                
+                <div class="input-field col s6">
+                    <input formControlName="apellido" id="last_name" type="text" class="validate" name="last_name">
+                    <label for="last_name">Apellido</label>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">email</i>
+                    <input formControlName="username" id="email" type="email" class="validate" name="email">
+                    <label for="email">Correo electrónico</label>
+                </div>
+               
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">phone</i>
+                    <input formControlName="celular" id="cel" type="text" class="validate" name="cel">
+                    <label for="cel">Celular</label>
+                </div>
+                <div class="input-error" *ngIf="fg['celular'].errors && (fg['celular'].dirty || fg['celular'].touched)">
+                    <ul>
+                        <li><strong *ngIf="fg['celular'].errors['required']">Este campo es requerido.</strong><br /></li>
+
+                    </ul>
+                </div>
+            
+                    <select id="event" required>
+                        <option value="">Elija un tipo de evento</option>
+                        <option value="E1">Conciertos</option>
+                        <option value="E2">Eventos deportivos</option>
+                        <option value="E3">Festivales de teatro</option>
+                        <option value="E4">Ferias y fiestas</option>
+                    </select>
+              
+
+            </div>
+            <div class="center">
+                <input type="button" (click)="RegisterAction()" value="Register" name="register" class="btn waves-effect waves-light "
+                    style="width:100%; background-color: #0756af;">
+            </div>
+
+        
+    </div>
+
+    
+
+    <br>
+</form>

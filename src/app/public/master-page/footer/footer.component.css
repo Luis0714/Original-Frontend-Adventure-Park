@@ -1,6 +1,9 @@
 footer {
-    padding: 10px 0px;
-    text-align: center;
-    margin-top: 1.5rem;
-    flex-shrink: 0;
-  }
+  background: #083a5c;
+  padding: 10px 0px;
+  text-align: center;
+  margin: 10;
+  font-size: 18px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);
+}

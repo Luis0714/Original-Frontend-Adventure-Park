@@ -1,5 +1,5 @@
 
-<a id="btn-crear" class="waves-effect waves-light btn-large green" routerLink="/parameters/create-rol"><i class="material-icons left">add</i>Agregar</a>
+<a id="btn-crear" class="waves-effect waves-light btn-large green" routerLink="/parameters/create-user"><i class="material-icons left">add</i>Agregar</a>
 <div class="tabla">
     <table class="responsive-table"  >
         <thead>
@@ -18,11 +18,14 @@
                 <td>{{r.Apellidos}}</td>
                 <td>{{r.email}}</td>
                 <td>{{r.Celular}}</td>
-                <td>{{r._id}}</td>
+                <td>{{r.rolId}}</td>
                 <td>
-                    <a routerLink="/parameters/edit-user/{{r._id}}" class="waves-effect waves-light btn-large orange"><i class="material-icons left">edit</i>Editar</a>
-                    &nbsp;<button data-target="modal1" class="btn modal-trigger"(click)="ShowRemoveWindow(r._id)" type="button" class="waves-effect waves-light btn-large red "><i class="material-icons left">delete</i>Eliminar</button>
+                  <div id="btns" class="botones row">
+                    <button id="edit"  routerLink="/parameters/edit-user/{{r._id}}" type="button" class="waves-effect waves-light btn-large col orange"><i class="material-icons left">edit</i>Editar</button>
+                    &nbsp;<button id="remove" data-target="modal1" class="btn modal-trigger col"(click)="ShowRemoveWindow(r._id)" type="button" class="waves-effect waves-light btn-large red "><i class="material-icons left">delete</i>Eliminar</button>
+                  </div>
                 </td>
+                   
           </tr>
         </tbody>
       </table>

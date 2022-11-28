@@ -37,7 +37,16 @@ rolname:string='';
   ListRecords() {
     this.UserService.getRecorList().subscribe({
       next: (data) => {
-        this.recordList = data;
+       data.forEach(U => this.RolService.getRecorByID2(U.rolId).subscribe({
+        next:(rol)=>{
+         U.rolId = rol.nombre;
+         console.log("UUU ", U)
+         this.recordList.push(U)
+        },
+        error:(err)=>{
+          console.log("Erro obteniendo el nombre del rol")
+        }
+      }))
       },
       error: (err) => {
        alert("Error obteniendo la información")
@@ -45,6 +54,20 @@ rolname:string='';
     });
   }
   
+   GetNameRol(id:string):string{
+    let nombre = 'auuu'
+     this.RolService.getRecorByID2(id).subscribe({
+      next:(rol)=>{
+        nombre = rol.nombre
+        console.log("nombre ",nombre)
+        return nombre
+      },
+      error:(err)=>{
+        console.log("Erro obteniendo el nombre del rol")
+      }
+    })
+    return nombre;
+  }
 
   ShowRemoveWindow(id: string) {
     OpenConfirmModal("¿Está seguro que desea elimminar?")

@@ -40,6 +40,19 @@ export class RolServiceService {
       })
     });
      }
+
+      /**
+   * obtine el rol por el id
+   * @returns id
+   */
+    getRecorByID2(id:string):Observable<RolModel2>{
+      console.log("Ruta ",this.url+"/"+id)
+      return this.http.get<RolModel2>(this.url+"/"+id,{
+      headers:new HttpHeaders({
+        "Authorization":"Bearer "+this.jwt
+      })
+    });
+     }
   /**
    * crea un nuevo registro
    * @param record info del registro a crear
