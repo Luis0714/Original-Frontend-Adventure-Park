@@ -1,6 +1,24 @@
 
-  .carousel-item {
-   width: 50%;
+  #slider{
+   min-height: 100vh;
+   min-width: 100vh;
+   font-family: Verdana, sans-serif;
+   display: flex; /* ver nota al final de este taller */
+   flex-direction: column;
   }
+  .slides > li{
+    min-height: 100vh;
+  }
+
+  h1{
+    color: wheat;
+  }
+  h4{
+    color: rgb(218, 146, 13);
+  }
+  h5{
+    color: rgb(221, 128, 6)
+  }
+
 
  

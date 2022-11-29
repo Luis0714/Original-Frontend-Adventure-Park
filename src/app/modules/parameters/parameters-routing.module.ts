@@ -5,6 +5,7 @@ import { CreateAttractionComponent } from './attractions/create-attraction/creat
 import { EditAttractionComponent } from './attractions/edit-attraction/edit-attraction.component';
 import { ListAttractionComponent } from './attractions/list-attraction/list-attraction.component';
 import { RemoveAttractionComponent } from './attractions/remove-attraction/remove-attraction.component';
+import { ContactenosComponent } from './contactenos/contactenos/contactenos.component';
 import { CreateDepartmentComponent } from './department/create-department/create-department.component';
 import { EditDepartmentComponent } from './department/edit-department/edit-department.component';
 import { ListDepartmentComponent } from './department/list-department/list-department.component';
@@ -27,6 +28,10 @@ import { ListUserComponent } from './users/list-user/list-user.component';
 import { RemoveUserComponent } from './users/remove-user/remove-user.component';
 
 const routes: Routes = [
+  {
+    path: 'contactenos',
+    component:ContactenosComponent
+  },
   {
     path: 'create-plan',
     component:CreatePlanComponent,
@@ -116,6 +121,24 @@ const routes: Routes = [
   }, {
     path: 'remove-department/:id',
     component:RemoveDepartmentComponent,
+    canActivate: [AutenticatedGuard]
+  },
+  {
+    path: 'create-user',
+    component:CreateUserComponent,
+    canActivate: [AutenticatedGuard]
+  },
+  {
+    path: 'edit-user/:id',
+    component:EditUserComponent,
+    canActivate: [AutenticatedGuard]
+  }, {
+    path: 'list-user',
+    component:ListUserComponent,
+    canActivate: [AutenticatedGuard]
+  }, {
+    path: 'remove-user/:id',
+    component:RemoveUserComponent,
     canActivate: [AutenticatedGuard]
   },
   

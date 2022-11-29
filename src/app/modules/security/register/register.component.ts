@@ -13,7 +13,7 @@ var MD5 = require("crypto-js/md5");
 export class RegisterComponent implements OnInit {
 
   fGroup: FormGroup = new FormGroup ({});
-  rol_id: string = DefaultValues.RolIdauxiliar;
+  rol_id: string = DefaultValues.RolIdVisitante;
   
 
   constructor(
