@@ -1,8 +1,9 @@
 
 
-<nav style="background-color: #092685;">
+<nav>
   <ul id="dropdown1" class="dropdown-content">
     <li><a *ngIf="isLogged" routerLink="parameters/list-plan">Planes</a></li>
+    <li><a *ngIf="isLogged && rolId==rolIdAdmin" routerLink="parameters/list-department">Departamentos</a></li>
     <li><a *ngIf="isLogged" routerLink="parameters/list-user">Usuarios</a></li>
     <li><a *ngIf="isLogged" routerLink="parameters/list-attraction">Atracciones</a></li>
     <li><a *ngIf="isLogged" routerLink="parameters/list-park">Parques</a></li>
@@ -25,27 +26,34 @@
     </a>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down" *ngIf="!isLogged">
-      <li><a routerLink="">Inicio</a></li>
+      <li><a href="">Inicio</a></li>
       <li><a *ngIf="!isLogged" routerLink="security/login">Login</a></li>
     </ul>
     <ul class="right hide-on-med-and-down" *ngIf="rolId==rolIdAdmin">
-      <li><a routerLink="">Inicio</a></li>
+      <li><a href="">Inicio</a></li>
       <li><a *ngIf="!isLogged" routerLink="security/login">Login</a></li>
-      <li><a *ngIf="isLogged" routerLink="/contactenos">Contactenos</a></li>
+      <li><a  routerLink="parameters/contactenos">Contactenos</a></li>
       <li *ngIf="name!='' && isLogged" class="li-user"><a class="dropdown-trigger"  data-target='dropdown1'><b>{{name}}</b><i class="material-icons right">arrow_drop_down</i></a></li>
     </ul>
 
     <ul class="right hide-on-med-and-down" *ngIf="rolId==rolIdAuxiliar">
-      <li><a routerLink="">Inicio</a></li>
+      <li><a href="">Inicio</a></li>
       <li><a *ngIf="!isLogged" routerLink="security/login">Login</a></li>
-      <li><a *ngIf="isLogged" routerLink="/contactenos">Contactenos</a></li>
+      <li><a routerLink="parameters/contactenos">Contactenos</a></li>
+      <li *ngIf="name!='' && isLogged" class="li-user"> <a class="dropdown-trigger"  data-target='dropdown2'><b>{{name}}</b><i class="material-icons right">arrow_drop_down</i></a></li>
+    </ul>
+
+    <ul class="right hide-on-med-and-down" *ngIf="rolId==rolIdVisitante">
+      <li><a href="">Inicio</a></li>
+      <li><a *ngIf="!isLogged" routerLink="security/login">Login</a></li>
+      <li><a  routerLink="parameters/contactenos">Contactenos</a></li>
       <li *ngIf="name!='' && isLogged" class="li-user"> <a class="dropdown-trigger"  data-target='dropdown2'><b>{{name}}</b><i class="material-icons right">arrow_drop_down</i></a></li>
     </ul>
   </div>
 </nav>
 
 <ul class="sidenav" id="mobile-demo">
-  <li><a routerLink="">Inicio</a></li>
+  <li><a href="">Inicio</a></li>
   <li class="divider"></li>
   <li><a *ngIf="!isLogged" routerLink="security/login">Login</a></li>
   <li *ngIf="name!='' && isLogged" ><a routerLink=""><b>{{name}}</b></a></li>

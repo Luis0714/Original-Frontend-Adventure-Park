@@ -9,6 +9,7 @@ import { CreateCityComponent } from './city/create-city/create-city.component';
 import { EditCityComponent } from './city/edit-city/edit-city.component';
 import { ListCityComponent } from './city/list-city/list-city.component';
 import { RemoveCityComponent } from './city/remove-city/remove-city.component';
+import { ContactenosComponent } from './contactenos/contactenos/contactenos.component';
 import { CreateDepartmentComponent } from './department/create-department/create-department.component';
 import { EditDepartmentComponent } from './department/edit-department/edit-department.component';
 import { ListDepartmentComponent } from './department/list-department/list-department.component';
@@ -31,6 +32,10 @@ import { ListUserComponent } from './users/list-user/list-user.component';
 import { RemoveUserComponent } from './users/remove-user/remove-user.component';
 
 const routes: Routes = [
+  {
+    path: 'contactenos',
+    component:ContactenosComponent
+  },
   {
     path: 'create-plan',
     component:CreatePlanComponent,
@@ -138,6 +143,24 @@ const routes: Routes = [
   }, {
     path: 'remove-department/:id',
     component:RemoveDepartmentComponent,
+    canActivate: [AutenticatedGuard]
+  },
+  {
+    path: 'create-user',
+    component:CreateUserComponent,
+    canActivate: [AutenticatedGuard]
+  },
+  {
+    path: 'edit-user/:id',
+    component:EditUserComponent,
+    canActivate: [AutenticatedGuard]
+  }, {
+    path: 'list-user',
+    component:ListUserComponent,
+    canActivate: [AutenticatedGuard]
+  }, {
+    path: 'remove-user/:id',
+    component:RemoveUserComponent,
     canActivate: [AutenticatedGuard]
   },
   

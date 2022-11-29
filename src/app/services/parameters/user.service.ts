@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { RolModel2 } from 'src/app/models/rol.model2';
 import { ApisInfo } from '../../../app/config/apisInfo';
 import { UserModel2 } from '../../../app/models/user.model2';
 import { LocalStorageService } from '../local-storage.service';
@@ -13,6 +14,7 @@ export class UserService {
   actionName = 'usuarios';
   jwt:string = '';
   url = `${this.Baseurl}/${this.actionName}`;
+
   constructor(
     private http: HttpClient,
     private LocalStorage: LocalStorageService
@@ -69,6 +71,7 @@ export class UserService {
     * @returns NA
     */
    removeRecord(id:string){
+    console.log("Ruta ",this.url+"/"+id)
     return this.http.delete(this.url+"/"+id,{
       headers:new HttpHeaders({
         "Authorization": `Bearer ${this.jwt}`

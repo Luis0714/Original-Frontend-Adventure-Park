@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   name:string = '';
   rolIdAdmin:string = DefaultValues.RolIdSuperAdmin;
   rolIdAuxiliar:string = DefaultValues.RolIdauxiliar;
+  rolIdVisitante:string = DefaultValues.RolIdVisitante;
 
   constructor(private SecuritySevice: SecurityService,
     private LocalStorage:LocalStorageService) { }
