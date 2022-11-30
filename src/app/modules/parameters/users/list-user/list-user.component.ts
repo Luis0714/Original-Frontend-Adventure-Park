@@ -43,9 +43,7 @@ rolname:string='';
          console.log("UUU ", U)
          this.recordList.push(U)
         },
-        error:(err)=>{
-          console.log("Erro obteniendo el nombre del rol")
-        }
+      
       }))
       },
       error: (err) => {

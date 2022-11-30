@@ -54,7 +54,7 @@ function OpenConfirmModal(message) {
    * @param {*} text 
    * @returns 
    */
-  /*
+  
   function populateSelectList(selector, items = [], value = '', text = '',firstOption = '') {
       let list = document.querySelector(selector)
       list.options.length = 0
@@ -67,7 +67,7 @@ function OpenConfirmModal(message) {
   }
 
 
-
+/*
     const departments = await Helpers.fetchData('data/colombia.json')
         const arraydepartments = [
                 ...new Map(
@@ -76,9 +76,9 @@ function OpenConfirmModal(message) {
             ]
 
             
+*/
 
 
 
 
-
-              const lista = NewPopulateSelectList("#departamentos", arraydepartments, "departamento de origen")*/
+              //const lista = NewPopulateSelectList("#departamentos", arraydepartments, "departamento de origen")*/

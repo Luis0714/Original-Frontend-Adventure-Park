@@ -16,6 +16,7 @@ declare const iniciarMenuDesplegable:any;
 
 export class VerifyCodeComponent implements OnInit {
   fGroup: FormGroup = new FormGroup({});
+  entra:boolean=false;
 
 
   constructor(
@@ -56,6 +57,7 @@ export class VerifyCodeComponent implements OnInit {
           //Item de inicio de sesion
 
           //Mandar al home
+          this.entra = true;
           this.router.navigate(["/home"])
           document.location.reload();
         }else{
