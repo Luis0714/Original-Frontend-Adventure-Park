@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApisInfo } from 'src/app/config/apisInfo';
 import { cityModel } from 'src/app/models/city.model';
 import { cityModel2 } from 'src/app/models/city.model2';
+import { cityModel3 } from 'src/app/models/city.model3';
 import { departmentModel } from 'src/app/models/department.model';
 import { departmentModel2 } from 'src/app/models/department.model2';
 import { CityService } from 'src/app/services/parameters/city.service';
@@ -19,7 +20,7 @@ export class ListCityComponent implements OnInit {
     private DepartmentService: DepartmentService
   ) { }
   idToRemove: string = "";
-  recordList: cityModel[]= [];
+  recordList: cityModel3[]= [];
   urlServer = ApisInfo.MS_LOG_URL;
   fk_code_department_list:cityModel[] = [];
 
@@ -27,6 +28,14 @@ export class ListCityComponent implements OnInit {
     id:'',
     nombre:''
   };
+
+  ciudad:cityModel3={
+    id: '',
+    nombre: '',
+    postal: '',
+    departamentoId: ''
+
+  }
   
 
   ngOnInit(): void {
@@ -37,11 +46,16 @@ export class ListCityComponent implements OnInit {
     this.CityService.getRecorList().subscribe({
       next: (data) => {
         console.log("AQUIIIII",data)
-        data.forEach(D => this.DepartmentService.getRecorByID2(D.id).subscribe({
-          next: (department) => {
+        data.forEach(C => this.DepartmentService.getRecorByID2(C.departamentoId).subscribe({
+          next: (departamento) => {
             console.log("hola")
-            D.fk_code_department = department.nombre;
-            this.recordList.push(D)
+            this.ciudad={
+              id: C.id + '',
+              nombre: C.nombre,
+              postal: C.postal,
+              departamentoId: departamento.nombre
+            }
+            this.recordList.push(this.ciudad)
           },
           error:(err)=>{
             console.log("Error obteniendo el nombre del departamento")
@@ -54,20 +68,7 @@ export class ListCityComponent implements OnInit {
       });
     }
 
-    GetNameRol(id:string):string{
-      let nombre = ''
-       this.DepartmentService.getRecorByID2(id).subscribe({
-        next:(departamento)=>{
-          nombre = departamento.nombre
-          console.log("nombre ",nombre)
-          return nombre
-        },
-        error:(err)=>{
-          console.log("Erro obteniendo el nombre del rol")
-        }
-      })
-      return nombre;
-    }
+    
 
   ShowRemoveWindow(id: string) {
     OpenConfirmModal("¿Está seguro que dea elimminar el departamento?")

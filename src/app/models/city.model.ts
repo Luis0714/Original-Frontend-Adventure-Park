@@ -1,8 +1,8 @@
 
 
 export class cityModel{
-    id: string = ''
+    id: number = 0
     nombre: string = ''
     postal: string = ''
-    fk_code_department: string = ''
+    departamentoId: number = 0
 }

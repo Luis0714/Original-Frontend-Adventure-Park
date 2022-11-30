@@ -48,7 +48,7 @@ export class DepartmentService {
 * obtine el departamento por el id
 * @returns id
 */
-getRecorByID2(id: string): Observable<departmentModel>{
+getRecorByID2(id: number): Observable<departmentModel>{
   console.log(id)
   console.log("Ruta ", this.url + "/" + id)
   return this.http.get<departmentModel>(this.url + "/" + id, {

@@ -29,7 +29,7 @@ export class CreateDepartmentComponent implements OnInit {
    */
   BuildingForm(){
     this.fGroup = this.fb.group({
-      id:['',[Validators.required,Validators.minLength(5)]],
+      id:['',[Validators.required],Validators.minLength(5)],
       nombre:['',[Validators.required],Validators.maxLength(50)]
     })
   }

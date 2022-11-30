@@ -29,30 +29,28 @@ export class CreateCityComponent implements OnInit {
    */
    BuildingForm(){
     this.fGroup = this.fb.group({
-      id:['',[Validators.required,Validators.minLength(5)]],
-      nombre:['',[Validators.required],Validators.maxLength(50)],
-      postal:['',[Validators.required],Validators.maxLength(5)],
-      fk_code_department:['',[Validators.required],Validators.minLength(4)]
+      nombre:['',[Validators.required,Validators.maxLength(50)]],
+      postal:['',[Validators.required,Validators.maxLength(5)]],
+      departamentoId:['',[Validators.required]]
     })
   }
 
-  CreateDepartmentAction(){
+  CreateCityAction(){
     let nombre = this.fGroup.controls["nombre"].value;
     let postal = this.fGroup.controls["postal"].value;
-    let fk_code_department = this.fGroup.controls["departamentoId"].value;
+    let departamentoId = this.fGroup.controls["departamentoId"].value;
     let datos:cityModel2={
       nombre:nombre,
       postal:postal,
-      fk_code_department: fk_code_department
-      
+      departamentoId: departamentoId
     }
+    console.log(datos, "ENVIAAAAAAAAAAA")
     this.CityService.saveRecord(datos).subscribe({
       next:(data) =>{
+        console.log(data, "RECIBEEEEEE")
         if(data){
           alert('Registro creado con exito')
-          this.router.navigate(["/parameters/list-department"])
-        }else{
-          alert("Error al crear el registro");
+          this.router.navigate(["/parameters/list-city"])
         }
       },
       error:(err) =>{
