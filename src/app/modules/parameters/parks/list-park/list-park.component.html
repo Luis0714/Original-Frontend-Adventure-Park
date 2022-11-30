@@ -1,38 +1,41 @@
-<a id="btn-crear" class="waves-effect waves-light btn-large green" routerLink="/parameters/create-department"><i class="material-icons left">add</i>Agregar</a>
+<a *ngIf="isLogged && rolId==rolIdAdmin" id="btn-crear" class="waves-effect waves-light btn-large green"
+  routerLink="/parameters/create-department"><i class="material-icons left">add</i>Agregar</a>
 <div class="tabla">
-    <table class="responsive-table"  >
-        <thead>
-          <tr>
-            <th>Nombre Parque</th>
-            <th>Dirección</th>
-            <th>Ciudad</th>
-            <th>Visitantes Permitidos</th>
-            <th>Logo</th>
-            <th>Mapa</th>
-            <th>Eslogan</th>
-            <th>Descripción</th>
-          </tr>
-        </thead>
-    
-        <tbody>
-          <tr *ngFor="let r of recordList">
-                
-                <td>{{r.nombre}}</td>
-                <td>{{r.direccion}}</td>
-                <td>{{r.cantidadVisitas}}</td>
-                <td>{{r.logo}}</td>
-                <td>{{r.mapa}}</td>
-                <td>{{r.slogan}}</td>
-                <td>{{r.descripcion}}</td>
-                <td>{{r.ciudadId}}</td>
+  <table class="responsive-table">
+    <thead>
+      <tr>
+        <th>Nombre Parque</th>
+        <th>Dirección</th>
+        <th>Ciudad</th>
+        <th>Visitantes Permitidos</th>
+        <th>Logo</th>
+        <th>Mapa</th>
+        <th>Eslogan</th>
+        <th>Descripción</th>
+      </tr>
+    </thead>
 
-                <td>
-                    <a routerLink="/parameters/edit-department/{{r.id}}" class="waves-effect waves-light btn-large orange"><i class="material-icons left">edit</i>Editar</a>
-                    &nbsp;<button data-target="modal1" class="btn modal-trigger"(click)="ShowRemoveWindow(r.id)" type="button" class="waves-effect waves-light btn-large red "><i class="material-icons left">delete</i>Eliminar</button>
-                </td>
-          </tr>
-        </tbody>
-      </table>
+    <tbody>
+      <tr *ngFor="let r of recordList">
+
+        <td>{{r.nombre}}</td>
+        <td>{{r.direccion}}</td>
+        <td>{{r.cantidadVisitas}}</td>
+        <td>{{r.logo}}</td>
+        <td>{{r.mapa}}</td>
+        <td>{{r.slogan}}</td>
+        <td>{{r.descripcion}}</td>
+        <td>{{r.ciudadId}}</td>
+
+        <td>
+          <div id="btns" class="botones row">
+            <button *ngIf="isLogged && rolId==rolIdAdmin" id="edit"  routerLink="/parameters/edit-park/{{r.id}}" type="button" class="waves-effect waves-light btn-large col orange"><i class="material-icons left">edit</i>Editar</button>
+            &nbsp;<button *ngIf="isLogged && rolId==rolIdAdmin" id="remove" data-target="modal1" class="btn modal-trigger col"(click)="ShowRemoveWindow(r.id)" type="button" class="waves-effect waves-light btn-large red "><i class="material-icons left">delete</i>Eliminar</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 <div id="modalConfirmation" class="modal">
   <div class="modal-content">
@@ -40,7 +43,9 @@
     <p id="pConfirmationMessage"></p>
   </div>
   <div class="modal-footer row">
-    <button id="eliminar" class="modal-close waves-effect waves-green btn btn-success col green" (click)="RemoveRecord()">Eliminar</button>
-    <button id="cancelar" class="modal-close waves-effect waves-green btn-flat btn btn-success col orange">Cancelar</button>
+    <button id="eliminar" class="modal-close waves-effect waves-green btn btn-success col green"
+      (click)="RemoveRecord()">Eliminar</button>
+    <button id="cancelar"
+      class="modal-close waves-effect waves-green btn-flat btn btn-success col orange">Cancelar</button>
   </div>
 </div>

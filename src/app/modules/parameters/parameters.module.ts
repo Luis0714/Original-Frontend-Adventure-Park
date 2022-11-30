@@ -66,10 +66,7 @@ import { ContactenosComponent } from './contactenos/contactenos/contactenos.comp
     RemoveDepartmentComponent,
     CreateDepartmentComponent,
     ContactenosComponent,
-    CreateCityComponent,
-    EditCityComponent,
-    ListCityComponent,
-    RemoveCityComponent
+   
   ],
   imports: [
     CommonModule,
