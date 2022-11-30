@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApisInfo } from 'src/app/config/apisInfo';
-import { cityModel } from 'src/app/models/city.model';
+import { CityModel } from 'src/app/models/city.model';
 import { cityModel2 } from 'src/app/models/city.model2';
 
 @Injectable({
@@ -20,17 +20,17 @@ export class CityService {
    * Obtiene la lista de departamentos
    * @returns lista de departamentos en estructura JSON
    */
-   getRecorList():Observable<cityModel[]>{
-    return this.http.get<cityModel[]>(this.url);   
+   getRecorList():Observable<CityModel[]>{
+    return this.http.get<CityModel[]>(this.url);   
    }
  
     /**
     * obtine el departamento por el id
     * @returns id
     */
-     getRecorByID(id:string):Observable<cityModel>{
+     getRecorByID(id:string):Observable<CityModel>{
        console.log("Ruta ",this.url+"/"+id)
-       return this.http.get<cityModel>(this.url+"/"+id,{
+       return this.http.get<CityModel>(this.url+"/"+id,{
        headers:new HttpHeaders({
          "Authorization":"Bearer "+this.jwt
        })
@@ -41,8 +41,8 @@ export class CityService {
     * @param record info del registro a crear
     * @returns registro creado
     */
-   saveRecord(record:cityModel2):Observable<cityModel>{
-     return this.http.post<cityModel>(this.url,record,{
+   saveRecord(record:cityModel2):Observable<CityModel>{
+     return this.http.post<CityModel>(this.url,record,{
        headers:new HttpHeaders({
          "Authorization": `Bearer ${this.jwt}`,
        })
@@ -53,7 +53,7 @@ export class CityService {
      * @param record registro a actualizar
      * @returns NA
      */
-    editRecord(record:cityModel){
+    editRecord(record:CityModel){
      return this.http.put(this.url+"/"+record.id,record,{
        headers:new HttpHeaders({
          "Authorization": `Bearer ${this.jwt}`

@@ -20,6 +20,10 @@ import { EditRolComponent } from './rols/edit-rol/edit-rol.component';
 import { RemoveRolComponent } from './rols/remove-rol/remove-rol.component';
 //
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateCityComponent } from './city/create-city/create-city.component';
+import { EditCityComponent } from './city/edit-city/edit-city.component';
+import { ListCityComponent } from './city/list-city/list-city.component';
+import { RemoveCityComponent } from './city/remove-city/remove-city.component';
 import { CreateUserComponent } from './users/create-user/create-user.component';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { RemoveUserComponent } from './users/remove-user/remove-user.component';
@@ -29,12 +33,6 @@ import { EditDepartmentComponent } from './department/edit-department/edit-depar
 import { ListDepartmentComponent } from './department/list-department/list-department.component';
 import { RemoveDepartmentComponent } from './department/remove-department/remove-department.component';
 import { ContactenosComponent } from './contactenos/contactenos/contactenos.component';
-import { CreateCityComponent } from './city/create-city/create-city.component';
-import { EditCityComponent } from './city/edit-city/edit-city.component';
-import { ListCityComponent } from './city/list-city/list-city.component';
-import { RemoveCityComponent } from './city/remove-city/remove-city.component';
-
-
 
 
 @NgModule({
@@ -55,6 +53,10 @@ import { RemoveCityComponent } from './city/remove-city/remove-city.component';
     ListRolComponent,
     EditRolComponent,
     RemoveRolComponent,
+    CreateCityComponent,
+    EditCityComponent,
+    ListCityComponent,
+    RemoveCityComponent,
     CreateUserComponent,
     EditUserComponent,
     RemoveUserComponent,

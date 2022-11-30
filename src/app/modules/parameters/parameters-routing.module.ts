@@ -120,6 +120,24 @@ const routes: Routes = [
     component:RemoveRolComponent,
     canActivate: [AutenticatedGuard]
   },
+  {
+    path: 'create-city',
+    component:CreateCityComponent,
+    canActivate: [AutenticatedGuard]
+  },
+  {
+    path: 'edit-city/:code',
+    component:EditCityComponent,
+    canActivate: [AutenticatedGuard]
+  }, {
+    path: 'list-cities',
+    component:ListCityComponent,
+    canActivate: [AutenticatedGuard]
+  }, {
+    path: 'remove-city/:code',
+    component:RemoveCityComponent,
+    canActivate: [AutenticatedGuard]
+  },
     /////
   {
     path: 'create-department',
