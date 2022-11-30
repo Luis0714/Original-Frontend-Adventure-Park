@@ -29,6 +29,10 @@ import { EditDepartmentComponent } from './department/edit-department/edit-depar
 import { ListDepartmentComponent } from './department/list-department/list-department.component';
 import { RemoveDepartmentComponent } from './department/remove-department/remove-department.component';
 import { ContactenosComponent } from './contactenos/contactenos/contactenos.component';
+import { CreateCityComponent } from './city/create-city/create-city.component';
+import { EditCityComponent } from './city/edit-city/edit-city.component';
+import { ListCityComponent } from './city/list-city/list-city.component';
+import { RemoveCityComponent } from './city/remove-city/remove-city.component';
 
 
 
@@ -59,7 +63,11 @@ import { ContactenosComponent } from './contactenos/contactenos/contactenos.comp
     ListDepartmentComponent,
     RemoveDepartmentComponent,
     CreateDepartmentComponent,
-    ContactenosComponent
+    ContactenosComponent,
+    CreateCityComponent,
+    EditCityComponent,
+    ListCityComponent,
+    RemoveCityComponent
   ],
   imports: [
     CommonModule,

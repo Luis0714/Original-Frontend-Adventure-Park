@@ -5,6 +5,10 @@ import { CreateAttractionComponent } from './attractions/create-attraction/creat
 import { EditAttractionComponent } from './attractions/edit-attraction/edit-attraction.component';
 import { ListAttractionComponent } from './attractions/list-attraction/list-attraction.component';
 import { RemoveAttractionComponent } from './attractions/remove-attraction/remove-attraction.component';
+import { CreateCityComponent } from './city/create-city/create-city.component';
+import { EditCityComponent } from './city/edit-city/edit-city.component';
+import { ListCityComponent } from './city/list-city/list-city.component';
+import { RemoveCityComponent } from './city/remove-city/remove-city.component';
 import { ContactenosComponent } from './contactenos/contactenos/contactenos.component';
 import { CreateDepartmentComponent } from './department/create-department/create-department.component';
 import { EditDepartmentComponent } from './department/edit-department/edit-department.component';
@@ -32,6 +36,8 @@ const routes: Routes = [
     path: 'contactenos',
     component:ContactenosComponent
   },
+
+///////////////////////////////
   {
     path: 'create-plan',
     component:CreatePlanComponent,
@@ -50,6 +56,10 @@ const routes: Routes = [
     component:RemovePlanComponent,
     canActivate: [AutenticatedGuard]
   },
+
+
+//////////////////////////////
+
   {
     path: 'create-attraction',
     component:CreateAttractionComponent,
@@ -68,6 +78,8 @@ const routes: Routes = [
     component:RemoveAttractionComponent,
     canActivate: [AutenticatedGuard]
   },
+
+  ////////////////////////////
   {
     path: 'create-park',
     component:CreateParkComponent,
@@ -86,6 +98,10 @@ const routes: Routes = [
     component:RemoveParkComponent,
     canActivate: [AutenticatedGuard]
   },
+
+
+////////////////////////////
+
   {
     path: 'create-rol',
     component:CreateRolComponent,
@@ -123,6 +139,8 @@ const routes: Routes = [
     component:RemoveDepartmentComponent,
     canActivate: [AutenticatedGuard]
   },
+
+  ///////////////////////
   {
     path: 'create-user',
     component:CreateUserComponent,
@@ -136,11 +154,32 @@ const routes: Routes = [
     path: 'list-user',
     component:ListUserComponent,
     canActivate: [AutenticatedGuard]
-  }, {
+  }, 
+  {
     path: 'remove-user/:id',
     component:RemoveUserComponent,
     canActivate: [AutenticatedGuard]
   },
+
+//////////
+
+  {path: 'create-city',
+  component:CreateCityComponent,
+  canActivate: [AutenticatedGuard]
+},
+{
+  path: 'edit-city/:id',
+  component:EditCityComponent,
+  canActivate: [AutenticatedGuard]
+}, {
+  path: 'list-city',
+  component:ListCityComponent,
+  canActivate: [AutenticatedGuard]
+}, {
+  path: 'remove-city/:id',
+  component:RemoveCityComponent,
+  canActivate: [AutenticatedGuard]
+},
   
 ];
 
