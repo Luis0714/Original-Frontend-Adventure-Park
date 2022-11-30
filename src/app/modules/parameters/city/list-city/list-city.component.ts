@@ -32,10 +32,12 @@ export class ListCityComponent implements OnInit {
   ngOnInit(): void {
     this.ListRecords();
   }
+
   ListRecords() {
     this.CityService.getRecorList().subscribe({
       next: (data) => {
-        data.forEach(D => this.DepartmentService.getRecorByID2(D.fk_code_department).subscribe({
+        console.log("AQUIIIII",data)
+        data.forEach(D => this.DepartmentService.getRecorByID2(D.id).subscribe({
           next: (department) => {
             console.log("hola")
             D.fk_code_department = department.nombre;
