@@ -9,14 +9,14 @@
     <li><a *ngIf="isLogged" routerLink="parameters/list-park">Parques</a></li>
     <li><a *ngIf="isLogged" routerLink="parameters/list-rol">Roles</a></li>
     <li class="divider"></li>
-    <li ><a *ngIf="isLogged" routerLink="security/logout">Logout</a></li>
+    <li ><a *ngIf="isLogged" href="">Logout</a></li>
   </ul>
 
   <ul id="dropdown2" class="dropdown-content">
     <li><a *ngIf="isLogged" routerLink="parameters/list-attraction">Atracciones</a></li>
     <li><a routerLink="">two</a></li>
     <li class="divider"></li>
-    <li ><a *ngIf="isLogged" routerLink="security/logout">Logout</a></li>
+    <li ><a *ngIf="isLogged" href="">Logout</a></li>
   </ul>
 
   <div class="nav-wrapper">
@@ -69,5 +69,5 @@
   <li class="divider"></li>
   <li><a *ngIf="isLogged && rolId==rolIdAdmin 
           && rolId==rolIdAdmin|| rolId==rolIdAuxiliar"
-      routerLink="security/logout">Logout</a></li>
+      href="">Logout</a></li>
 </ul>

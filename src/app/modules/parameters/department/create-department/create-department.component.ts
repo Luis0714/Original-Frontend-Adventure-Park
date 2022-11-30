@@ -39,6 +39,9 @@ export class CreateDepartmentComponent implements OnInit {
     let datos:departmentModel2={
       nombre:nombre
     }
+    if(this.fGroup.invalid){
+      alert("Faltan datos")
+    }else{
     this.DepartmentService.saveRecord(datos).subscribe({
       next:(data) =>{
         if(data){
@@ -53,6 +56,7 @@ export class CreateDepartmentComponent implements OnInit {
         alert("Se ha presentado un fallo creacion del registro")
       }
   })
+}
 }
   get fg(){
     return this.fGroup.controls;

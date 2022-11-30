@@ -49,6 +49,7 @@ SearchRequest(){
 }
 EditDepartmentAction(){
   console.log("Entreee");
+  
   let id = this.fGroup.controls["id"].value;
   let nombre = this.fGroup.controls["nombre"].value;
   let datos:departmentModel={
@@ -56,6 +57,9 @@ EditDepartmentAction(){
     nombre:nombre
     
   }
+  if(this.fGroup.invalid){
+    alert("Faltan datos")
+  }else{
   this.DepartmentService.editRecord(datos).subscribe({
     next:(data) =>{
       if(!data){
@@ -68,6 +72,7 @@ EditDepartmentAction(){
       alert("Se ha presentado un fallo creacion del registro")
     }
 })
+  }
 }
 get fg(){
   return this.fGroup.controls;
