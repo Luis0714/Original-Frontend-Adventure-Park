@@ -1,4 +1,6 @@
-export class CityModel{
+export class cityModel2{
     nombre: string = '';
-    departamentoId: string = '';
+    postal: string ='';
+    fk_code_department: string = '';
 }
+

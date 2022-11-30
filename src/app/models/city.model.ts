@@ -1,5 +1,7 @@
 export class CityModel{
     id: string = '';
     nombre: string = '';
-    departamentoId: string = '';
+    fk_code_department: string = '';
 }
+
+
