@@ -63,7 +63,7 @@ rolname:string='';
         return nombre
       },
       error:(err)=>{
-        console.log("Erro obteniendo el nombre del rol")
+        console.log("Error obteniendo el nombre del rol")
       }
     })
     return nombre;
