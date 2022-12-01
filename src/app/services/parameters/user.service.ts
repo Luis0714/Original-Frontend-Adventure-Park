@@ -34,7 +34,7 @@ export class UserService {
    * @returns id
    */
     getRecorByID(id:string):Observable<UserModel2>{
-      console.log("Ruta ",this.url+"/"+id)
+      console.log("RUTAAAAAA ",this.url+"/"+id)
       return this.http.get<UserModel2>(this.url+"/"+id,{
       headers:new HttpHeaders({
         "Authorization":"Bearer "+this.jwt

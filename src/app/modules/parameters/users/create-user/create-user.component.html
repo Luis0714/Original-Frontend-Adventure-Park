@@ -2,8 +2,8 @@
 <br>
 <br>
 <form  [formGroup]="fGroup">
-    <div class="row">
-        
+    <div id="container"  class="row">
+
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
@@ -37,17 +37,29 @@
 
                     </ul>
                 </div>
-            
-                    <select id="event" required>
-                        <option value="">Elija un tipo de evento</option>
-                        <option value="E1">Conciertos</option>
-                        <option value="E2">Eventos deportivos</option>
-                        <option value="E3">Festivales de teatro</option>
-                        <option value="E4">Ferias y fiestas</option>
-                    </select>
-              
-
             </div>
+            <div class="row" id="conta">
+                <div id="lista"  class="row">
+                    <i class="material-icons prefix col">person</i>
+                    <label id="rol" class="col" for="roles">Rol</label>
+                </div>
+                   
+                    <select id="roles" name="miselect" formControlName="seleccionado" class="browser-default ">
+                        <option value="" disabled selected>Seleccione el rol</option>
+                        <option value={{rol._id}} *ngFor="let rol of roles">{{rol.nombre}}</option>
+                    </select>
+                    
+               
+                <div class="input-error" *ngIf="fg['seleccionado'].errors && (fg['seleccionado'].dirty || fg['seleccionado'].touched)">
+                    <ul>
+                        <li><strong *ngIf="fg['seleccionado'].errors['seleccionado']">Este campo es requerido.</strong><br /></li>
+    
+                    </ul>
+                </div>
+            </div>
+            
+           
+
             <div class="center">
                 <input type="button" (click)="RegisterAction()" value="Register" name="register" class="btn waves-effect waves-light "
                     style="width:100%; background-color: #0756af;">
