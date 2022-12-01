@@ -1,66 +1,88 @@
-<form action="" [formGroup]="fGroup">
+<form [formGroup]="fGroup">
     <div id="container" class="card-panel z-depth-5">
         <div class="row margin">
             <div class="col s12 m12 l12 center">
-                <img src="https://i.imgur.com/ypAbAYt.png" alt="" class="responsive-img circle" style="width:100px;">
+                <img src="../../../../../assets/rol.png" alt="" class="responsive-img " style="width:100px;">
                 <p>CREATE PARK</p>
             </div>
         </div>
-        <div class="col s12 m12 l12">
-            <div class="input-field">
-                <i class="material-icons prefix">person</i>
-                <input formControlName="username" type="text" name="username" id="username">
-                <label class="active" for="username">Username</label>
-            </div>
-            <div class="input-error" *ngIf="fg['username'].errors && (fg['username'].dirty || fg['username'].touched)">
-                <ul>
-                    <li><strong *ngIf="fg['username'].errors['required']">Este campo es requerido.</strong><br /></li>
-                    <li><strong *ngIf="fg['username'].errors['email']">Este campo debe tener un formato de correo
-                            electrónico.</strong><br /></li>
-                    <li><strong *ngIf="fg['username'].errors['minlength']">El valor de este campo debe ser mínimo de 5
-                            caracteres.</strong><br /></li>
-                </ul>
-            </div>
+
+        <div class="input-field">
+            <i class="material-icons prefix">create</i>
+            <input formControlName="nombre" type="text" name="nombre" id="nombre">
+            <label class="active" for="nombre">Nombre de la Parque</label>
+        </div>
+        <div class="input-error" *ngIf="fg['nombre'].errors && (fg['nombre'].dirty || fg['nombre'].touched)">
+            <ul>
+                <li><strong *ngIf="fg['nombre'].errors['nombre']">Este campo es requerido.</strong><br /></li>
+            </ul>
         </div>
         <div class="input-field">
-            <i class="material-icons prefix">lock</i>
-            <input formControlName="password" type="password" name="password" id="password">
-            <label class="active" for="password">Password</label>
+            <i class="material-icons prefix">edit_location</i>
+            <input formControlName="direccion" type="text" name="direccion" id="direccion">
+            <label class="active" for="direccion">Direccion</label>
         </div>
-        <div class="input-error" *ngIf="fg['password'].errors && (fg['password'].dirty || fg['password'].touched)">
+        <div class="input-error" *ngIf="fg['direccion'].errors && (fg['direccion'].dirty || fg['direccion'].touched)">
             <ul>
-                <li><strong *ngIf="fg['password'].errors['required']">Este campo es requerido.</strong><br /></li>
+                <li><strong *ngIf="fg['direccion'].errors['direccion']">Este campo es requerido.</strong><br /></li>
             </ul>
+        </div>
+        <div class="input-field">
+                <i class="material-icons prefix col">add_location</i>
+                <input formControlName="Ciudad" type="text" name="ciudad" id="ciudad">
+                <label class="active" for="direccion">Ciudad</label>
+        <div class="input-error" *ngIf="fg['ciudad'].errors && (fg['ciudad'].dirty || fg['ciudad'].touched)">
+            <ul>
+                <li><strong *ngIf="fg['ciudad'].errors['ciudad']">Este campo es requerido.</strong><br /></li>
+            </ul>
+        </div>
+        <div class="input-field">
+            <i class="material-icons prefix col">accessibility</i>
+            <input formControlName="visitors" type="text" name="visitors" id="visitors">
+            <label class="active" for="direccion">Cantidad de Visitantes</label>
+        <div class="input-error" *ngIf="fg['visitors'].errors && (fg['visitors'].dirty || fg['visitors'].touched)">
+            <ul>
+                <li><strong *ngIf="fg['visitors'].errors['visitors']">Este campo es requerido.</strong><br /></li>
+            </ul>
+        </div>
+            <div class="file-field input-field">
+              <div class="btn">
+                <span>File</span>
+                <input type="file">
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+              </div>
+              <div class="row margin">
+                <div class="col s12 m12 l12 center">
+                    <img src=" /" alt="" class="imgInput">
+                </div>
+            </div>
+            </div>
+
+
+        
+        <div class="input-field">
+            <i class="material-icons prefix col">comment</i>
+            <input formControlName="description" type="text" name="description" id="description">
+            <label class="active" for="description">Descripcion</label>
+        <div class="input-error" *ngIf="fg['description'].errors && (fg['description'].dirty || fg['description'].touched)">
+            <ul>
+                <li><strong *ngIf="fg['description'].errors['description']">Este campo es requerido.</strong><br /></li>
+            </ul>
+        </div>
+            
+            
+            
+       
         </div>
     </div>
 
     <!-- Form Chekbox (Remember Me) Input Section -->
 
-    <div class="left">
-        <input type="checkbox" id="checkbox">
-        <label for="checkbox">autor: Luis Estremor</label>
-    </div>
-
-    <br><br>
-    <div class="row">
-        <div class="input-field col s6 m6 l6">
-            <p class="margin medium-small"><a routerLink="/security/register">Register Now!</a></p>
-        </div>
-        <div class="">
-            <p class="margin right-align medium-small"><a routerLink="/security/change-password">Change password?</a>
-            </p>
-        </div>
-        <div class="input-field col s6 m6 l6">
-            <p class="margin right-align medium-small"><a routerLink="/security/forgot-password">Forgot password?</a>
-            </p>
-        </div>
-    </div>
-
-
     <div class="center">
-        <input type="button"  value="Login" name="login" class="btn waves-effect waves-light "
+        <input type="button" (click)="CreateParkAction()" value="CREATE" name="login" class="btn waves-effect waves-light "
             style="width:100%; background-color: #ff4081;">
     </div>
 
     <br>
-</form>

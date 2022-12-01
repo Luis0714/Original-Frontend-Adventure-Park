@@ -4,6 +4,7 @@ import { DefaultValues } from 'src/app/config/default-values';
 import { ParkModel } from 'src/app/models/park.model';
 import { UserModel } from 'src/app/models/user.model';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { CityService } from 'src/app/services/parameters/city.service';
 import { ParkService } from 'src/app/services/parameters/park.service';
 import { SecurityService } from 'src/app/services/security.service';
 
@@ -18,10 +19,22 @@ export class ListParkComponent implements OnInit {
   rolId:string = '';
   rolIdAdmin:string = DefaultValues.RolIdSuperAdmin;
   name:string = '';
+  parque: ParkModel={
+    id:'',
+    nombre:'',
+    direccion:'',
+    cantidadVisitas:'',
+    logo:'',
+    mapa:'',
+    slogan:'',
+    descripcion:'',
+    ciudadId:'' 
+  }
   constructor(
     private parkService: ParkService,
     private SecuritySevice: SecurityService,
-    private LocalStorage: LocalStorageService
+    private LocalStorage: LocalStorageService,
+    private cityService: CityService
   ) { 
     
   }
@@ -47,7 +60,27 @@ export class ListParkComponent implements OnInit {
   ListRecords() {
     this.parkService.getRecorList().subscribe({
       next: (data) => {
-        this.recordList = data;
+
+        data.forEach(P => this.cityService.getRecorByID(P.ciudadId).subscribe({
+          next: (ciudad) => {
+            console.log("hola")
+            this.parque={
+              id: P.id + '',
+              nombre: P.nombre,
+              direccion:P.direccion,
+              cantidadVisitas:P.cantidadVisitas,
+              logo:P.logo,
+              mapa:P.mapa,
+              slogan:P.slogan,
+              descripcion:P.descripcion,
+              ciudadId:ciudad.nombre 
+            }
+            this.recordList.push(this.parque)
+          },
+          error:(err)=>{
+            console.log("Error obteniendo el nombre del departamento")
+          }
+        }))
         console.log("parques ",this.recordList)
         
       },

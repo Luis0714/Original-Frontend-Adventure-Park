@@ -1,5 +1,5 @@
 <a *ngIf="isLogged && rolId==rolIdAdmin" id="btn-crear" class="waves-effect waves-light btn-large green"
-  routerLink="/parameters/create-department"><i class="material-icons left">add</i>Agregar</a>
+  routerLink="/parameters/create-park"><i class="material-icons left">add</i>Agregar</a>
 <div class="tabla">
   <table class="responsive-table">
     <thead>
@@ -9,6 +9,7 @@
         <th>Ciudad</th>
         <th>Visitantes Permitidos</th>
         <th>Logo</th>
+        <th></th>
         <th>Mapa</th>
         <th>Eslogan</th>
         <th>Descripción</th>
@@ -20,12 +21,16 @@
 
         <td>{{r.nombre}}</td>
         <td>{{r.direccion}}</td>
+        <td>{{r.ciudadId}}</td>
         <td>{{r.cantidadVisitas}}</td>
-        <td>{{r.logo}}</td>
-        <td>{{r.mapa}}</td>
+        <td>
+          <img src="{{urlServer}}/ObtenerArchivo/1/{{r.logo}}" alt="logo"/>
+          </td>
+        <td>
+          <img src="{{urlServer}}/ObtenerArchivo/1/{{r.mapa}}" alt="mapa"/>
+          </td>
         <td>{{r.slogan}}</td>
         <td>{{r.descripcion}}</td>
-        <td>{{r.ciudadId}}</td>
 
         <td>
           <div id="btns" class="botones row">

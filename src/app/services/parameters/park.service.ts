@@ -19,7 +19,7 @@ export class ParkService {
     private http: HttpClient,
     private LocalStorage: LocalStorageService
   ) {
-    this.jwt = LocalStorage.GetSesionToken();
+    this.jwt = this.LocalStorage.GetSesionToken();
    }
 
  /**
@@ -93,6 +93,18 @@ getRecorByID2(id: string): Observable<ParkModel>{
         "Authorization": `Bearer ${this.jwt}`
       })
     });
+  }
+  RegisternewPARK(name:string, postal:string, ciudadId:string):Observable<ParkModel>{
+    let actionName = "ciudades";
+    console.log("NOMBRE: ", name, "POSTAL: ", postal, "DEPARTAMENTOID: ", ciudadId)
+    return this.http.post<ParkModel>(`${this.Baseurl}/${actionName}`,{
+      nombre:name,
+      postal:postal,  
+      departamentoId:ciudadId
+    }
+    );
+    
+
   }
 }
 
