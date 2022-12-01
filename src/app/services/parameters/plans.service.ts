@@ -26,13 +26,13 @@ export class PlansService {
    * @returns lista de departamentos en estructura JSON
    */
    getRecorList(): Observable<planModel[]> {
-    console.log("RUTA PLANes ", "Token ",this.url)
     return this.http.get<planModel[]>(this.url,{
-      headers: new HttpHeaders({
-        "Authorization": "Bearer " + this.jwt
+      headers:new HttpHeaders({
+        "Authorization":"Bearer "+this.jwt
       })
     });
-  }
+   }
+  
 
  
   /**
@@ -102,10 +102,10 @@ getRecorByID2(id: number): Observable<planModel>{
 
   RegisternewPlan(record:planModel2):Observable<planModel2>{
     let actionName = "planes";
-    return this.http.post<planModel2>(`${this.Baseurl}/${actionName}`,record
-   
-    );
-    
-
+    return this.http.post<planModel2>(`${this.Baseurl}/${actionName}`,record, {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.jwt}`,
+      })
+    });
   }
 }

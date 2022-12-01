@@ -13,24 +13,24 @@ import { LocalStorageService } from '../local-storage.service';
 export class CityService {
   Baseurl:string=ApisInfo.MS_LOG_URL;
   actionName = 'ciudades';
-  jwt:string = '';
+  jwt:string = ''
   url = `${this.Baseurl}/${this.actionName}`;
   constructor(
     private http: HttpClient,
-    private lsService: LocalStorageService
+    private LocalStorage: LocalStorageService
   ) { 
-    this.jwt = lsService.GetSesionToken();
+    this.jwt=this.LocalStorage.GetSesionToken();
   }
   /**
    * Obtiene la lista de Ciudades
    * @returns lista de Ciudades en estructura JSON
    */
    getRecorList():Observable<cityModel[]>{
-    return this.http.get<cityModel[]>(this.url+'?filter={"include":["departamento"]}',{
-      headers: new HttpHeaders({
-        "Authorization": "Bearer " + this.jwt
+    return this.http.get<cityModel[]>(this.url,{
+      headers:new HttpHeaders({
+        "Authorization":"Bearer "+this.jwt
       })
-    });    
+    });
    }
  
     /**
@@ -86,9 +86,10 @@ export class CityService {
     RegisternewCity(record:cityModel3):Observable<cityModel2>{
       let actionName = "ciudades";
       console.log(record, "RECORD")
-      return this.http.post<cityModel2>(`${this.Baseurl}/${actionName}`,record
-      );
-      
-  
-    }
+      return this.http.post<cityModel2>(`${this.Baseurl}/${actionName}`,record,{
+        headers:new HttpHeaders({
+          "Authorization":"Bearer "+this.jwt
+        })
+      });
+     }
 }

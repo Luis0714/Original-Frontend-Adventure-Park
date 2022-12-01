@@ -28,11 +28,11 @@ export class ParkService {
    */
   getRecorList(): Observable<ParkModel[]> {
     return this.http.get<ParkModel[]>(this.url,{
-      headers: new HttpHeaders({
-        "Authorization": "Bearer " + this.jwt
+      headers:new HttpHeaders({
+        "Authorization":"Bearer "+this.jwt
       })
     });
-  }
+   }
 
  
   /**
