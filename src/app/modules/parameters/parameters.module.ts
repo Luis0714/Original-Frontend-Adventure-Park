@@ -33,6 +33,10 @@ import { EditDepartmentComponent } from './department/edit-department/edit-depar
 import { ListDepartmentComponent } from './department/list-department/list-department.component';
 import { RemoveDepartmentComponent } from './department/remove-department/remove-department.component';
 import { ContactenosComponent } from './contactenos/contactenos/contactenos.component';
+import { CreateZonaComponent } from './zonas/create-zona/create-zona.component';
+import { RemoveZonaComponent } from './zonas/remove-zona/remove-zona.component';
+import { EditZonaComponent } from './zonas/edit-zona/edit-zona.component';
+import { ListZonaComponent } from './zonas/list-zona/list-zona.component';
 
 
 @NgModule({
@@ -66,6 +70,10 @@ import { ContactenosComponent } from './contactenos/contactenos/contactenos.comp
     RemoveDepartmentComponent,
     CreateDepartmentComponent,
     ContactenosComponent,
+    CreateZonaComponent,
+    RemoveZonaComponent,
+    EditZonaComponent,
+    ListZonaComponent,
    
   ],
   imports: [

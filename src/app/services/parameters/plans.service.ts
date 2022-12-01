@@ -19,14 +19,19 @@ export class PlansService {
     private http: HttpClient,
     private LocalStorage: LocalStorageService
   ) { 
-    this.jwt = LocalStorage.GetSesionToken();
+    this.jwt = this.LocalStorage.GetSesionToken();
   }
   /**
    * Obtiene la lista de planes
    * @returns lista de departamentos en estructura JSON
    */
    getRecorList(): Observable<planModel[]> {
-    return this.http.get<planModel[]>(this.url);
+    console.log("RUTA PLANes ", "Token ",this.url)
+    return this.http.get<planModel[]>(this.url,{
+      headers: new HttpHeaders({
+        "Authorization": "Bearer " + this.jwt
+      })
+    });
   }
 
  

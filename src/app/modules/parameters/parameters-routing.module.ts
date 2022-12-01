@@ -31,6 +31,10 @@ import { CreateUserComponent } from './users/create-user/create-user.component';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { ListUserComponent } from './users/list-user/list-user.component';
 import { RemoveUserComponent } from './users/remove-user/remove-user.component';
+import { CreateZonaComponent } from './zonas/create-zona/create-zona.component';
+import { EditZonaComponent } from './zonas/edit-zona/edit-zona.component';
+import { ListZonaComponent } from './zonas/list-zona/list-zona.component';
+import { RemoveZonaComponent } from './zonas/remove-zona/remove-zona.component';
 
 const routes: Routes = [
   {
@@ -182,7 +186,25 @@ const routes: Routes = [
     component:RemoveUserComponent,
     canActivate: [AutenticatedGuard]
   },
-
+  {
+    path: 'create-zona',
+    component:CreateZonaComponent,
+    canActivate: [AutenticatedGuard]
+  },
+  {
+    path: 'edit-zona/:id',
+    component:EditZonaComponent,
+    canActivate: [AutenticatedGuard]
+  }, {
+    path: 'list-zona',
+    component:ListZonaComponent,
+    canActivate: [AutenticatedGuard]
+  }, 
+  {
+    path: 'remove-zona/:id',
+    component:RemoveZonaComponent,
+    canActivate: [AutenticatedGuard]
+  },
 //////////
   
 ];

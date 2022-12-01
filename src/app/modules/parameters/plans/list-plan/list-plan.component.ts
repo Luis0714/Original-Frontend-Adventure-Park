@@ -22,9 +22,11 @@ export class ListPlanComponent implements OnInit {
     private SecuritySevice: SecurityService,
     private LocalStorage: LocalStorageService
   ) { }
+
   idToRemove: number = 0;
   recordList: planModel[]= [];
   urlServer = ApisInfo.MS_LOG_URL;
+  
   ngOnInit(): void {
     this.ListRecords();
     this.SecuritySevice.GetUserData().subscribe({
@@ -42,8 +44,7 @@ export class ListPlanComponent implements OnInit {
     this.PlanService.getRecorList().subscribe({
       next: (data) => {
         this.recordList = data;
-        console.log("departamentos ",this.recordList)
-        
+        console.log("PLanes ",this.recordList)
       },
       error: (err) => {
         alert("Error obteniendo la información")
