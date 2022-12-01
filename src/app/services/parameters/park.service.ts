@@ -27,8 +27,12 @@ export class ParkService {
    * @returns lista de departamentos en estructura JSON
    */
   getRecorList(): Observable<ParkModel[]> {
-    return this.http.get<ParkModel[]>(this.url);
-  }
+    return this.http.get<ParkModel[]>(this.url,{
+      headers:new HttpHeaders({
+        "Authorization":"Bearer "+this.jwt
+      })
+    });
+   }
 
  
   /**

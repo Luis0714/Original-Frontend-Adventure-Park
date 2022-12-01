@@ -28,8 +28,12 @@ export class DepartmentService {
    * @returns lista de departamentos en estructura JSON
    */
   getRecorList(): Observable<departmentModel[]> {
-    return this.http.get<departmentModel[]>(this.url);
-  }
+    return this.http.get<departmentModel[]>(this.url,{
+      headers:new HttpHeaders({
+        "Authorization":"Bearer "+this.jwt
+      })
+    });
+   }
 
  
   /**

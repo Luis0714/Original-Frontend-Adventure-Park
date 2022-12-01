@@ -8,6 +8,7 @@ import { departmentModel2 } from 'src/app/models/department.model2';
 import { cityModel2 } from 'src/app/models/city.model2';
 import { DepartmentService } from 'src/app/services/parameters/department.service';
 import { cityModel3 } from 'src/app/models/city.model3';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-create-city',
@@ -28,7 +29,8 @@ export class CreateCityComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private CityService:CityService,
-    private DepartamentoService: DepartmentService
+    private DepartamentoService: DepartmentService,
+    private LocalStoreService: LocalStorageService
   ) { }
 
   ngOnInit(): void {
