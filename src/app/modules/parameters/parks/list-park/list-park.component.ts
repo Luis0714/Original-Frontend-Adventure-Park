@@ -82,7 +82,6 @@ export class ListParkComponent implements OnInit {
           }
         }))
         console.log("parques ",this.recordList)
-        
       },
       error: (err) => {
         alert("Error obteniendo la información")

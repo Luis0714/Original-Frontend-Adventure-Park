@@ -5,6 +5,7 @@ import { ApisInfo } from 'src/app/config/apisInfo';
 import { cityModel } from 'src/app/models/city.model';
 import { cityModel2 } from 'src/app/models/city.model2';
 import { cityModel3 } from 'src/app/models/city.model3';
+import { LocalStorageService } from '../local-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,17 +13,24 @@ import { cityModel3 } from 'src/app/models/city.model3';
 export class CityService {
   Baseurl:string=ApisInfo.MS_LOG_URL;
   actionName = 'ciudades';
-  jwt:string = '';
+  jwt:string = ''
   url = `${this.Baseurl}/${this.actionName}`;
   constructor(
-    private http: HttpClient
-  ) { }
+    private http: HttpClient,
+    private LocalStorage: LocalStorageService
+  ) { 
+    this.jwt=this.LocalStorage.GetSesionToken();
+  }
   /**
    * Obtiene la lista de Ciudades
    * @returns lista de Ciudades en estructura JSON
    */
    getRecorList():Observable<cityModel[]>{
-    return this.http.get<cityModel[]>(this.url);   
+    return this.http.get<cityModel[]>(this.url,{
+      headers:new HttpHeaders({
+        "Authorization":"Bearer "+this.jwt
+      })
+    });
    }
  
     /**
@@ -43,6 +51,7 @@ export class CityService {
     * @returns registro creado
     */
    saveRecord(record:cityModel2):Observable<cityModel>{
+    console.log(this.jwt);
      return this.http.post<cityModel>(this.url,record,{
        headers:new HttpHeaders({
          "Authorization": `Bearer ${this.jwt}`,
@@ -74,16 +83,13 @@ export class CityService {
      });
     }
 
-    RegisternewCity(name:string, postal:string, departamentoId:string):Observable<cityModel3>{
+    RegisternewCity(record:cityModel3):Observable<cityModel2>{
       let actionName = "ciudades";
-      console.log("NOMBRE: ", name, "POSTAL: ", postal, "DEPARTAMENTOID: ", departamentoId)
-      return this.http.post<cityModel3>(`${this.Baseurl}/${actionName}`,{
-        nombre:name,
-        postal:postal,  
-        departamentoId:departamentoId
-      }
-      );
-      
-  
-    }
+      console.log(record, "RECORD")
+      return this.http.post<cityModel2>(`${this.Baseurl}/${actionName}`,record,{
+        headers:new HttpHeaders({
+          "Authorization":"Bearer "+this.jwt
+        })
+      });
+     }
 }

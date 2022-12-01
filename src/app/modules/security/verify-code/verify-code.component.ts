@@ -58,6 +58,7 @@ export class VerifyCodeComponent implements OnInit {
 
           //Mandar al home
           this.entra = true;
+          document.location.reload();
           this.router.navigate(["/home"])
           document.location.reload();
         }else{

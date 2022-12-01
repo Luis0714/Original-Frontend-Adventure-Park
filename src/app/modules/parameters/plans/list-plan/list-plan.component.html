@@ -25,3 +25,12 @@
     </tbody>
   </table>
 </div>
+<div id="modalConfirmation" class="modal">
+  <div class="modal-content">
+    <h4>Confirmación de evento</h4>
+    <p id="pConfirmationMessage"></p>
+  </div>
+  <div class="modal-footer row">
+    <button id="eliminar" class="modal-close waves-effect waves-green btn btn-success col green" (click)="RemoveRecord()">Eliminar</button>
+    <button id="cancelar" class="modal-close waves-effect waves-green btn-flat btn btn-success col orange">Cancelar</button>
+  </div>
