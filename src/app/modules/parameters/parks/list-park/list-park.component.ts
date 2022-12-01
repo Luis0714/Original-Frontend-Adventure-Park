@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApisInfo } from 'src/app/config/apisInfo';
 import { DefaultValues } from 'src/app/config/default-values';
+import { cityModel } from 'src/app/models/city.model';
 import { ParkModel } from 'src/app/models/park.model';
 import { UserModel } from 'src/app/models/user.model';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
@@ -19,6 +20,14 @@ export class ListParkComponent implements OnInit {
   rolId:string = '';
   rolIdAdmin:string = DefaultValues.RolIdSuperAdmin;
   name:string = '';
+
+  ciudad:cityModel={
+    id: '',
+    nombre: '',
+    postal: '',
+    departamentoId: ''
+  }
+  
   parque: ParkModel={
     id:'',
     nombre:'',
@@ -60,37 +69,15 @@ export class ListParkComponent implements OnInit {
   ListRecords() {
     this.parkService.getRecorList().subscribe({
       next: (data) => {
-
-        data.forEach(P => this.cityService.getRecorByID(P.ciudadId).subscribe({
-          next: (ciudad) => {
-            console.log("hola")
-            this.parque={
-              id: P.id + '',
-              nombre: P.nombre,
-              direccion:P.direccion,
-              cantidadVisitas:P.cantidadVisitas,
-              logo:P.logo,
-              mapa:P.mapa,
-              slogan:P.slogan,
-              descripcion:P.descripcion,
-              ciudadId:ciudad.nombre 
-            }
-            this.recordList.push(this.parque)
-          },
-          error:(err)=>{
-            console.log("Error obteniendo el nombre del departamento")
-          }
-        }))
-        console.log("parques ",this.recordList)
-      },
-      error: (err) => {
-        alert("Error obteniendo la información")
-      }
-    })
+        this.recordList = data;        },
+        error: (err) => {
+         alert("Error obteniendo la información")
+        }
+      });
   }
 
   ShowRemoveWindow(id: string) {
-    OpenConfirmModal("¿Está seguro que dea elimminar el departamento?")
+    OpenConfirmModal("¿Está seguro que dea elimminar el Parque?")
     this.idToRemove = parseInt(id);
   }
 

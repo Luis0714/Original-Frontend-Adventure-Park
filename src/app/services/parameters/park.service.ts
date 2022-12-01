@@ -24,8 +24,8 @@ export class ParkService {
    }
 
  /**
-   * Obtiene la lista de departamentos
-   * @returns lista de departamentos en estructura JSON
+   * Obtiene la lista de parques
+   * @returns lista de parques en estructura JSON
    */
   getRecorList(): Observable<ParkModel[]> {
     return this.http.get<ParkModel[]>(this.url,{
@@ -37,7 +37,7 @@ export class ParkService {
 
  
   /**
-  * obtine el departamento por el id
+  * obtine el parque por el id
   * @returns id
   */
   getRecorByID(id: string): Observable<ParkModel> {
@@ -49,7 +49,7 @@ export class ParkService {
     });
   }
  /**
-* obtine el departamento por el id
+* obtine el parque por el id
 * @returns id
 */
 getRecorByID2(id: string): Observable<ParkModel>{

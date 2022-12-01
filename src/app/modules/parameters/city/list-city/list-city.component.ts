@@ -34,7 +34,6 @@ export class ListCityComponent implements OnInit {
     nombre: '',
     postal: '',
     departamentoId: ''
-
   }
   
 
