@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AutenticatedGuard } from 'src/app/guards/autenticated.guard';
+import { UnauthenticatedGuard } from 'src/app/guards/unauthenticated.guard';
 import { CreateAttractionComponent } from './attractions/create-attraction/create-attraction.component';
 import { EditAttractionComponent } from './attractions/edit-attraction/edit-attraction.component';
 import { ListAttractionComponent } from './attractions/list-attraction/list-attraction.component';
@@ -50,7 +51,8 @@ const routes: Routes = [
   }, {
     path: 'list-plan',
     component:ListPlanComponent,
-    canActivate: [AutenticatedGuard]
+    
+     
   }, {
     path: 'remove-plan',
     component:RemovePlanComponent,
@@ -71,8 +73,8 @@ const routes: Routes = [
     canActivate: [AutenticatedGuard]
   }, {
     path: 'list-attraction',
-    component:ListAttractionComponent,
-    canActivate: [AutenticatedGuard]
+    component:ListAttractionComponent
+    
   }, {
     path: 'remove-attraction',
     component:RemoveAttractionComponent,
@@ -91,8 +93,8 @@ const routes: Routes = [
     canActivate: [AutenticatedGuard]
   }, {
     path: 'list-park',
-    component:ListParkComponent,
-    canActivate: [AutenticatedGuard]
+    component:ListParkComponent
+    
   }, {
     path: 'remove-park',
     component:RemoveParkComponent,
@@ -120,6 +122,8 @@ const routes: Routes = [
     component:RemoveRolComponent,
     canActivate: [AutenticatedGuard]
   },
+
+  ///////////////////////////
   {
     path: 'create-city',
     component:CreateCityComponent,
@@ -130,7 +134,7 @@ const routes: Routes = [
     component:EditCityComponent,
     canActivate: [AutenticatedGuard]
   }, {
-    path: 'list-cities',
+    path: 'list-city',
     component:ListCityComponent,
     canActivate: [AutenticatedGuard]
   }, {
@@ -180,24 +184,6 @@ const routes: Routes = [
   },
 
 //////////
-
-  {path: 'create-city',
-  component:CreateCityComponent,
-  canActivate: [AutenticatedGuard]
-},
-{
-  path: 'edit-city/:id',
-  component:EditCityComponent,
-  canActivate: [AutenticatedGuard]
-}, {
-  path: 'list-city',
-  component:ListCityComponent,
-  canActivate: [AutenticatedGuard]
-}, {
-  path: 'remove-city/:id',
-  component:RemoveCityComponent,
-  canActivate: [AutenticatedGuard]
-},
   
 ];
 

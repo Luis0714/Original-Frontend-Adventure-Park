@@ -7,6 +7,8 @@ import { UserModel } from '../models/user.model';
 import { UserModelRegister} from '../models/register-user.models';
 import { LocalStorageService } from './local-storage.service';
 import { RolModel } from '../models/rol.model';
+import { cityModel } from '../models/city.model';
+import { cityModel3 } from '../models/city.model3';
 
 
 
@@ -116,6 +118,8 @@ export class SecurityService {
     });
 
   }
+
+ 
 
 
 }

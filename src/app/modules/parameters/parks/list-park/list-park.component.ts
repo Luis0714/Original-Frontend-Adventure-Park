@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ApisInfo } from 'src/app/config/apisInfo';
+import { DefaultValues } from 'src/app/config/default-values';
 import { ParkModel } from 'src/app/models/park.model';
+import { UserModel } from 'src/app/models/user.model';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ParkService } from 'src/app/services/parameters/park.service';
+import { SecurityService } from 'src/app/services/security.service';
 
 declare const OpenConfirmModal: any;
 @Component({
@@ -10,9 +14,14 @@ declare const OpenConfirmModal: any;
   styleUrls: ['./list-park.component.css']
 })
 export class ListParkComponent implements OnInit {
-
+  isLogged: boolean = false;
+  rolId:string = '';
+  rolIdAdmin:string = DefaultValues.RolIdSuperAdmin;
+  name:string = '';
   constructor(
-    private parkService: ParkService
+    private parkService: ParkService,
+    private SecuritySevice: SecurityService,
+    private LocalStorage: LocalStorageService
   ) { 
     
   }
@@ -23,6 +32,16 @@ export class ListParkComponent implements OnInit {
 
   ngOnInit(): void {
     this.ListRecords();
+    this.SecuritySevice.GetUserData().subscribe({
+      next:(data:UserModel)=>{
+        this.name = data.nombre.substring(0,(data.nombre.length-8));
+        this.isLogged = data.isLogged;
+        this.rolId = this.LocalStorage.GetRolId();
+      },
+      error: (err) =>{
+
+      }
+    })
   }
 
   ListRecords() {
