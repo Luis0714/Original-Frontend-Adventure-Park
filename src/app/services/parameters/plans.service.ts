@@ -86,7 +86,7 @@ getRecorByID2(id: number): Observable<planModel>{
    * @param id id del registro a eliminar
    * @returns NA
    */
-  removeRecord(id: number) {
+  removeRecord(id: string) {
     return this.http.delete(this.url + "/" + id, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.jwt}`
@@ -95,14 +95,10 @@ getRecorByID2(id: number): Observable<planModel>{
   }
 
 
-  RegisternewPlan(nombre:string, color:string, valor:number, parqueId:string):Observable<planModel2>{
+  RegisternewPlan(record:planModel2):Observable<planModel2>{
     let actionName = "planes";
-    return this.http.post<planModel2>(`${this.Baseurl}/${actionName}`,{
-      nombre:nombre,
-      color:color,  
-      valor:valor,
-      parqueId:parqueId
-    }
+    return this.http.post<planModel2>(`${this.Baseurl}/${actionName}`,record
+   
     );
     
 

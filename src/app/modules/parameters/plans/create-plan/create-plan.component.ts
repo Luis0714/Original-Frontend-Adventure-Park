@@ -69,7 +69,14 @@ export class CreatePlanComponent implements OnInit {
     if(this.fGroup.invalid){
       alert("Faltan datos")
     }else{
-    this.PlanService.RegisternewPlan(nombre, color, valor, parqueId).subscribe({
+      let record: planModel2={
+        nombre:nombre,
+        color: color,
+        valor: parseInt(valor),
+        parqueId: parseInt(parqueId)
+      }
+      console.log(record, "RECORD")
+    this.PlanService.RegisternewPlan(record).subscribe({
       next:(data) =>{
         console.log(data, "RECIBEEEEEE")
         if(data){

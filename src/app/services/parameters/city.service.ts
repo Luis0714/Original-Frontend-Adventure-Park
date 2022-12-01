@@ -74,14 +74,10 @@ export class CityService {
      });
     }
 
-    RegisternewCity(name:string, postal:string, departamentoId:string):Observable<cityModel3>{
+    RegisternewCity(record:cityModel3):Observable<cityModel2>{
       let actionName = "ciudades";
-      console.log("NOMBRE: ", name, "POSTAL: ", postal, "DEPARTAMENTOID: ", departamentoId)
-      return this.http.post<cityModel3>(`${this.Baseurl}/${actionName}`,{
-        nombre:name,
-        postal:postal,  
-        departamentoId:departamentoId
-      }
+      console.log(record, "RECORD")
+      return this.http.post<cityModel2>(`${this.Baseurl}/${actionName}`,record
       );
       
   

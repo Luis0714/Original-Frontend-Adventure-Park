@@ -22,7 +22,7 @@ export class ListPlanComponent implements OnInit {
     private SecuritySevice: SecurityService,
     private LocalStorage: LocalStorageService
   ) { }
-  idToRemove: number = 0;
+  idToRemove: string = '';
   recordList: planModel[]= [];
   urlServer = ApisInfo.MS_LOG_URL;
   ngOnInit(): void {
@@ -42,7 +42,7 @@ export class ListPlanComponent implements OnInit {
     this.PlanService.getRecorList().subscribe({
       next: (data) => {
         this.recordList = data;
-        console.log("departamentos ",this.recordList)
+        console.log("Planes ",this.recordList)
         
       },
       error: (err) => {
@@ -50,7 +50,7 @@ export class ListPlanComponent implements OnInit {
       }
     });
   }
-  ShowRemoveWindow(id: number) {
+  ShowRemoveWindow(id: string) {
     OpenConfirmModal("¿Está seguro que dea elimminar el departamento?")
     this.idToRemove = id;
   }
