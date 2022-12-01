@@ -1,6 +1,5 @@
 
 
-
 export class planModel{
     id: string =''
     nombre: string =''
