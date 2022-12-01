@@ -38,15 +38,24 @@
                 <li><strong *ngIf="fg['valor'].errors['valor']">Este campo es requerido.</strong><br /></li>
             </ul>
         </div>
-        <div class="input-field">
-            <i class="material-icons prefix">add_location</i>
-            <input formControlName="parqueId" type="text" name="parqueId" id="parqueId">
-            <label class="active" for="parqueId">Parque al que pertenece</label>
-        </div>
-        <div class="input-error" *ngIf="fg['parqueId'].errors && (fg['parqueId'].dirty || fg['parqueId'].touched)">
-            <ul>
-                <li><strong *ngIf="fg['parqueId'].errors['parqueId']">Este campo es requerido.</strong><br /></li>
-            </ul>
+        <div class="row" id="conta">
+            <div id="lista"  class="row">
+                <i class="material-icons prefix col">add_location</i>
+                <label id="rol" class="col" for="roles">Parque al que pertenece el Plan</label>
+            </div>
+               
+                <select id="roles" name="miselect" formControlName="seleccionado" class="browser-default ">
+                    <option value="" disabled selected>Seleccione el Parque al que pertenece</option>
+                    <option value={{parqueId.id}} *ngFor="let parqueId of parques">{{parqueId.nombre}}</option>
+                </select>
+                
+           
+            <div class="input-error" *ngIf="fg['seleccionado'].errors && (fg['seleccionado'].dirty || fg['seleccionado'].touched)">
+                <ul>
+                    <li><strong *ngIf="fg['seleccionado'].errors['seleccionado']">Este campo es requerido.</strong><br /></li>
+
+                </ul>
+            </div>
         </div>
     </div>
 

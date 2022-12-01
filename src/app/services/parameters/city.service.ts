@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ApisInfo } from 'src/app/config/apisInfo';
 import { cityModel } from 'src/app/models/city.model';
 import { cityModel2 } from 'src/app/models/city.model2';
+import { cityModel3 } from 'src/app/models/city.model3';
 
 @Injectable({
   providedIn: 'root'
@@ -71,5 +72,18 @@ export class CityService {
          "Authorization": `Bearer ${this.jwt}`
        })
      });
+    }
+
+    RegisternewCity(name:string, postal:string, departamentoId:string):Observable<cityModel3>{
+      let actionName = "ciudades";
+      console.log("NOMBRE: ", name, "POSTAL: ", postal, "DEPARTAMENTOID: ", departamentoId)
+      return this.http.post<cityModel3>(`${this.Baseurl}/${actionName}`,{
+        nombre:name,
+        postal:postal,  
+        departamentoId:departamentoId
+      }
+      );
+      
+  
     }
 }

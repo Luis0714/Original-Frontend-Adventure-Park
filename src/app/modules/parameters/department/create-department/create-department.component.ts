@@ -29,8 +29,7 @@ export class CreateDepartmentComponent implements OnInit {
    */
   BuildingForm(){
     this.fGroup = this.fb.group({
-      id:['',[Validators.required],Validators.minLength(5)],
-      nombre:['',[Validators.required],Validators.maxLength(50)]
+      nombre:['',[Validators.required,Validators.maxLength(50)]]
     })
   }
 
@@ -44,6 +43,7 @@ export class CreateDepartmentComponent implements OnInit {
     }else{
     this.DepartmentService.saveRecord(datos).subscribe({
       next:(data) =>{
+        console.log("DATA DEPARTAMENTO",data)
         if(data){
           alert('Registro creado con exito')
           this.router.navigate(["/parameters/list-department"])

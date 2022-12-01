@@ -93,4 +93,18 @@ getRecorByID2(id: number): Observable<planModel>{
       })
     });
   }
+
+
+  RegisternewPlan(nombre:string, color:string, valor:number, parqueId:string):Observable<planModel2>{
+    let actionName = "planes";
+    return this.http.post<planModel2>(`${this.Baseurl}/${actionName}`,{
+      nombre:nombre,
+      color:color,  
+      valor:valor,
+      parqueId:parqueId
+    }
+    );
+    
+
+  }
 }

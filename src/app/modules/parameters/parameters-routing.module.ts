@@ -134,7 +134,7 @@ const routes: Routes = [
     component:EditCityComponent,
     canActivate: [AutenticatedGuard]
   }, {
-    path: 'list-cities',
+    path: 'list-city',
     component:ListCityComponent,
     canActivate: [AutenticatedGuard]
   }, {

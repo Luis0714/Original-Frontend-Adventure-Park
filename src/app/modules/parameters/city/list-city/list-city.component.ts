@@ -20,7 +20,7 @@ export class ListCityComponent implements OnInit {
     private DepartmentService: DepartmentService
   ) { }
   idToRemove: string = "";
-  recordList: cityModel3[]= [];
+  recordList: cityModel[]= [];
   urlServer = ApisInfo.MS_LOG_URL;
   fk_code_department_list:cityModel[] = [];
 
@@ -29,7 +29,7 @@ export class ListCityComponent implements OnInit {
     nombre:''
   };
 
-  ciudad:cityModel3={
+  ciudad:cityModel={
     id: '',
     nombre: '',
     postal: '',
