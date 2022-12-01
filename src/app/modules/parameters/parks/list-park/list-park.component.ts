@@ -17,6 +17,7 @@ declare const OpenConfirmModal: any;
 })
 export class ListParkComponent implements OnInit {
   isLogged: boolean = false;
+  
   rolId:string = '';
   rolIdAdmin:string = DefaultValues.RolIdSuperAdmin;
   name:string = '';
@@ -39,6 +40,7 @@ export class ListParkComponent implements OnInit {
     descripcion:'',
     ciudadId:'' 
   }
+
   constructor(
     private parkService: ParkService,
     private SecuritySevice: SecurityService,
@@ -74,7 +76,8 @@ export class ListParkComponent implements OnInit {
          alert("Error obteniendo la información")
         }
       });
-  }
+    }
+    
 
   ShowRemoveWindow(id: string) {
     OpenConfirmModal("¿Está seguro que dea elimminar el Parque?")
@@ -98,4 +101,4 @@ export class ListParkComponent implements OnInit {
       }
     })
   }
-}
+  }

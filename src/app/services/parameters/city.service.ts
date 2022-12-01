@@ -25,12 +25,12 @@ export class CityService {
    * Obtiene la lista de Ciudades
    * @returns lista de Ciudades en estructura JSON
    */
-   getRecorList():Observable<cityModel[]>{
-    return this.http.get<cityModel[]>(this.url,{
-      headers:new HttpHeaders({
-        "Authorization":"Bearer "+this.jwt
+   getRecorList():Observable<cityModel[]>{ 
+    return this.http.get<cityModel[]>(this.url+'?filter={"include":["departamento"]}',{
+      headers: new HttpHeaders({
+        "Authorization": "Bearer " + this.jwt
       })
-    });
+    });     
    }
  
     /**

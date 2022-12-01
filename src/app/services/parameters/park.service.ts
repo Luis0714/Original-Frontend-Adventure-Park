@@ -18,21 +18,21 @@ export class ParkService {
 
   constructor(
     private http: HttpClient,
-    private LocalStorage: LocalStorageService
+    private lsService: LocalStorageService
   ) {
-    this.jwt = this.LocalStorage.GetSesionToken();
+    this.jwt = lsService.GetSesionToken();
    }
 
  /**
    * Obtiene la lista de parques
    * @returns lista de parques en estructura JSON
    */
-  getRecorList(): Observable<ParkModel[]> {
-    return this.http.get<ParkModel[]>(this.url,{
-      headers:new HttpHeaders({
-        "Authorization":"Bearer "+this.jwt
+  getRecorList():Observable<ParkModel[]>{ 
+    return this.http.get<ParkModel[]>(this.url+'?filter={"include":["ciudad"]}',{
+      headers: new HttpHeaders({
+        "Authorization": "Bearer " + this.jwt
       })
-    });
+    });    
    }
 
  

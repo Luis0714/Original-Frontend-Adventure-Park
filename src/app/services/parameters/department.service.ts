@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ApisInfo } from 'src/app/config/apisInfo';
 import { departmentModel } from 'src/app/models/department.model';
 import { departmentModel2 } from 'src/app/models/department.model2';
+import { ParkModel } from 'src/app/models/park.model';
 import { LocalStorageService } from '../local-storage.service';
 
 
@@ -27,14 +28,13 @@ export class DepartmentService {
    * Obtiene la lista de departamentos
    * @returns lista de departamentos en estructura JSON
    */
-  getRecorList(): Observable<departmentModel[]> {
+   getRecorList(): Observable<departmentModel[]> {
     return this.http.get<departmentModel[]>(this.url,{
       headers:new HttpHeaders({
         "Authorization":"Bearer "+this.jwt
       })
     });
    }
-
  
   /**
   * obtine el departamento por el id
