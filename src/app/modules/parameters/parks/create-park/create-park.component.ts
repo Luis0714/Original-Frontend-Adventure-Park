@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApisInfo } from 'src/app/config/apisInfo';
+import { ParkModel } from 'src/app/models/park.model';
 import { ParkService } from 'src/app/services/parameters/park.service';
 import { SecurityService } from 'src/app/services/security.service';
 
@@ -10,6 +12,9 @@ import { SecurityService } from 'src/app/services/security.service';
   styleUrls: ['./create-park.component.css']
 })
 export class CreateParkComponent implements OnInit {
+  urlServer: string = ApisInfo.MS_LOG_URL;
+  uploadedImage: string = '';
+  isFileSelected: boolean = false;
   fGroup: FormGroup = new FormGroup({});
   
   constructor(
@@ -27,35 +32,66 @@ export class CreateParkComponent implements OnInit {
    */
   BuildingForm(){
     this.fGroup = this.fb.group({
-      name:['',[Validators.required,Validators.minLength(5)]],
-      details:['',[Validators.required],Validators.maxLength(50)]
+      id:['',[]],
+      nombre:['',[Validators.required,Validators.minLength(5)]],
+      direccion:['',[Validators.required]],
+      ciudad:['',[Validators.required],Validators.maxLength(4)],
+      visitantes:['',[Validators.required]],
+      mapa:['',[Validators.required]],
+      logo:['',[Validators.required]],
+      slogan:['',[Validators.required]],
+      descripcion:['',[Validators.required]]
     })
   }
-  CreateParkAction(){
-    let nombre = this.fGroup.controls["nombre"].value;
-    let postal = this.fGroup.controls["postal"].value;
-    let departamentoId = this.fGroup.controls["seleccionado"].value;
-    console.log("Seleccionado", departamentoId)
-    if(this.fGroup.invalid){
-      alert("Faltan datos")
-    }else{
-      //console.log("nombre", nombre, "postal", postal, "departamento", departamentoId)
-    this.parkService.RegisternewPARK(nombre, postal, departamentoId).subscribe({
-      next:(data) =>{
-        if(data){
-          alert("Por favor revise la bandeja de entrada de su correo");
-          this.router.navigate(["/parameters/list-park"])
-        }else{
-          alert("No se pudo crear la nueva ciudad, por favor intentelo de nuevo");
-        }
-      },
-      error:(err) =>{
-        console.log(err)
-        alert("Error en el registro de Ciudad")
-      }
+
+  /**
+   * Se obtiene el archivo seleccionado del input file
+   * @param evt evento de selección
+   */
+   onFileSelect(evt: any) {
+    if (evt.target.files.length > 0) {
+      const f = evt.target.files[0];
+      this.fGroup.controls["file"].setValue(f);
+      this.isFileSelected = true;
     }
-    );
   }
+
+  UploadImage() {
+    const formData = new FormData();
+    formData.append('file', this.fGroup.controls["file"].value);
+    this.parkService.uploadImage(formData).subscribe({
+      next: (data) => {
+        this.uploadedImage = data.file;
+        alert("Imagen cargada");
+      },
+      error: (err) => {
+
+      }
+    });
+  }
+
+  SaveRecord() {
+    if(this.fGroup.invalid){
+      alert("Faltan datos");
+    }else{
+      let model = new ParkModel();
+      model.logo = this.uploadedImage;
+      model.mapa = this.uploadedImage;
+      model.nombre = this.fGroup.controls["name"].value;
+      model.direccion = this.fGroup.controls["direccion"].value;
+      model.ciudadId = this.fGroup.controls["ciudad"].value;
+      model.slogan = this.fGroup.controls["slogan"].value;
+      model.descripcion = this.fGroup.controls["descripcion"].value;
+      this.parkService.saveRecord(model).subscribe({
+        next:(data)=>{
+          alert("Registro almacenado correctamente.");
+          this.router.navigate(["/parameters/list-park"]);
+        },
+        error:(err)=>{
+
+        }
+      });
+    }
   }
 
   get fg(){

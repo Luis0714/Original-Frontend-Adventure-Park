@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ApisInfo } from 'src/app/config/apisInfo';
 import { ParkModel } from 'src/app/models/park.model';
 import { LocalStorageService } from '../local-storage.service';
+import { UploadedFileModel } from 'src/app/models/uploaded.file.model';
 
 @Injectable({
   providedIn: 'root'
@@ -56,55 +57,57 @@ getRecorByID2(id: string): Observable<ParkModel>{
     })
   });
 }
-
-
+saveRecord(record: ParkModel): Observable<ParkModel> {
+  return this.http.post<ParkModel>(this.url, {
+    nombre: record.nombre,
+    direccion: record.direccion,
+    cantidadVisitas: record.cantidadVisitas,
+    logo: record.logo,
+    mapa: record.mapa,
+    slogan: record.slogan,
+    descripcion: record.descripcion,
+    ciudad: record.ciudadId,
+  }, {
+    headers: new HttpHeaders({
+      "Authorization": `Bearer ${this.jwt}`
+    })
+  });
+}
   /**
-   * crea un nuevo registro
-   * @param record info del registro a crear
-   * @returns registro creado
-   */
-  saveRecord(record: ParkModel): Observable<ParkModel> {
-    return this.http.post<ParkModel>(this.url, record, {
-      headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.jwt}`,
-      })
-    });
-  }
-  /**
-   * actualiza un registro
+   * Actualiza un registro
    * @param record registro a actualizar
    * @returns NA
    */
-  editRecord(record: ParkModel) {
+   editRecord(record: ParkModel) {
     return this.http.put(this.url + "/" + record.id, record, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.jwt}`
       })
     });
   }
+
   /**
-   * elimina unregistro
+   * Elimina un registro
    * @param id id del registro a eliminar
    * @returns NA
    */
-  removeRecord(id: string) {
+  removeRecord(id: number) {
     return this.http.delete(this.url + "/" + id, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.jwt}`
       })
     });
   }
-  RegisternewPARK(name:string, postal:string, ciudadId:string):Observable<ParkModel>{
-    let actionName = "ciudades";
-    console.log("NOMBRE: ", name, "POSTAL: ", postal, "DEPARTAMENTOID: ", ciudadId)
-    return this.http.post<ParkModel>(`${this.Baseurl}/${actionName}`,{
-      nombre:name,
-      postal:postal,  
-      departamentoId:ciudadId
-    }
-    );
-    
 
+
+  uploadImage(formData: FormData): Observable<UploadedFileModel> {
+    let actionName: string = "cargar-archivo-movimiento";
+    return this.http.post<UploadedFileModel>(`${this.Baseurl}/${actionName}`, formData, {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.jwt}`
+      })
+    });
   }
+
 }
 

@@ -39,7 +39,7 @@ export class ListParkComponent implements OnInit {
     
   }
 
-  idToRemove: string = "";
+  idToRemove: number = 0;
   recordList: ParkModel[]= [];
   urlServer = ApisInfo.MS_LOG_URL;
 
@@ -92,7 +92,7 @@ export class ListParkComponent implements OnInit {
 
   ShowRemoveWindow(id: string) {
     OpenConfirmModal("¿Está seguro que dea elimminar el departamento?")
-    this.idToRemove = id;
+    this.idToRemove = parseInt(id);
   }
 
   
@@ -104,7 +104,7 @@ export class ListParkComponent implements OnInit {
     this.parkService.removeRecord(this.idToRemove).subscribe({
       next: (data) => {
         //this.ListRecords();
-        this.recordList = this.recordList.filter(x => x.id != this.idToRemove);
+        this.recordList = this.recordList.filter(x => parseInt(x.id) != this.idToRemove);
         
       },
       error: (err) => {

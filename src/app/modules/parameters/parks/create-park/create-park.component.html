@@ -3,6 +3,11 @@
         <div class="row margin">
             <div class="col s12 m12 l12 center">
                 <img src="../../../../../assets/rol.png" alt="" class="responsive-img " style="width:100px;">
+                <img
+                *ngIf="uploadedImage != ''"
+                src="{{ urlServer }}/ObtenerArchivo/2/{{ uploadedImage }}"
+                class="imgInput"
+                />
                 <p>CREATE PARK</p>
             </div>
         </div>
@@ -38,11 +43,11 @@
         </div>
         <div class="input-field">
             <i class="material-icons prefix col">accessibility</i>
-            <input formControlName="visitors" type="text" name="visitors" id="visitors">
-            <label class="active" for="direccion">Cantidad de Visitantes</label>
-        <div class="input-error" *ngIf="fg['visitors'].errors && (fg['visitors'].dirty || fg['visitors'].touched)">
+            <input formControlName="visitantes" type="text" name="visitantes" id="visitantes">
+            <label class="active" for="visitantes">Cantidad de Visitantes</label>
+        <div class="input-error" *ngIf="fg['visitantes'].errors && (fg['visitantes'].dirty || fg['visitantes'].touched)">
             <ul>
-                <li><strong *ngIf="fg['visitors'].errors['visitors']">Este campo es requerido.</strong><br /></li>
+                <li><strong *ngIf="fg['visitantes'].errors['visitantes']">Este campo es requerido.</strong><br /></li>
             </ul>
         </div>
             <div class="file-field input-field">
@@ -55,11 +60,31 @@
               </div>
               <div class="row margin">
                 <div class="col s12 m12 l12 center">
-                    <img src=" /" alt="" class="imgInput">
+                    <img src="/assets/images/not_img.png" alt="" class="imgInput">
                 </div>
+                <div class="col sm-4">
+                    <button (click)="UploadImage()" [disabled]="!isFileSelected" class="btn orange">Cargar</button>
+                  </div>
             </div>
             </div>
-
+        </div>
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>File</span>
+            <input type="file">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+          <div class="row margin">
+            <div class="col s12 m12 l12 center">
+                <img src="/assets/images/not_img.png" alt="" class="imgInput">
+            </div>
+            <div class="col sm-4">
+                <button (click)="UploadImage()" [disabled]="!isFileSelected" class="btn orange">Cargar</button>
+              </div>
+        </div>
+        </div>
 
         
         <div class="input-field">
@@ -80,9 +105,17 @@
 
     <!-- Form Chekbox (Remember Me) Input Section -->
 
-    <div class="center">
-        <input type="button" (click)="CreateParkAction()" value="CREATE" name="login" class="btn waves-effect waves-light "
-            style="width:100%; background-color: #ff4081;">
+    <div class="row">
+        <div class="input-field col s12">
+          <button class="btn btn-success" (click)="SaveRecord()">
+            <i class="material-icons left">save</i>Guardar
+          </button>
+          &nbsp;
+          <a
+            routerLink="/parameters/list-parties"
+            class="waves-effect waves-light btn red"
+            ><i class="material-icons left">cancel</i>Cancelar</a
+          >
     </div>
 
     <br>
