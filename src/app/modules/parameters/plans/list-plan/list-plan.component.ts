@@ -23,7 +23,7 @@ export class ListPlanComponent implements OnInit {
     private LocalStorage: LocalStorageService
   ) { }
 
-  idToRemove: number = 0;
+ 
   idToRemove: string = '';
   recordList: planModel[]= [];
   urlServer = ApisInfo.MS_LOG_URL;
