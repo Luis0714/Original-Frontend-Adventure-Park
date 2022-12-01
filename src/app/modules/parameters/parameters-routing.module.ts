@@ -49,7 +49,7 @@ const routes: Routes = [
     canActivate: [AutenticatedGuard]
   },
   {
-    path: 'edit-plan',
+    path: 'edit-plan/:id',
     component:EditPlanComponent,
     canActivate: [AutenticatedGuard]
   }, {
@@ -58,7 +58,7 @@ const routes: Routes = [
     
      
   }, {
-    path: 'remove-plan',
+    path: 'remove-plan/:id',
     component:RemovePlanComponent,
     canActivate: [AutenticatedGuard]
   },
@@ -134,7 +134,7 @@ const routes: Routes = [
     canActivate: [AutenticatedGuard]
   },
   {
-    path: 'edit-city/:code',
+    path: 'edit-city/:id',
     component:EditCityComponent,
     canActivate: [AutenticatedGuard]
   }, {
@@ -142,7 +142,7 @@ const routes: Routes = [
     component:ListCityComponent,
     canActivate: [AutenticatedGuard]
   }, {
-    path: 'remove-city/:code',
+    path: 'remove-city/:id',
     component:RemoveCityComponent,
     canActivate: [AutenticatedGuard]
   },

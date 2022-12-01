@@ -7,6 +7,7 @@ import { departmentModel } from 'src/app/models/department.model';
 import { departmentModel2 } from 'src/app/models/department.model2';
 import { cityModel2 } from 'src/app/models/city.model2';
 import { DepartmentService } from 'src/app/services/parameters/department.service';
+import { cityModel3 } from 'src/app/models/city.model3';
 
 @Component({
   selector: 'app-create-city',
@@ -65,11 +66,16 @@ export class CreateCityComponent implements OnInit {
     if(this.fGroup.invalid){
       alert("Faltan datos")
     }else{
+      let record: cityModel3={
+        nombre:nombre,
+        postal:postal,
+        departamentoId:parseInt(departamentoId)
+      }
       //console.log("nombre", nombre, "postal", postal, "departamento", departamentoId)
-    this.CityService.RegisternewCity(nombre, postal, departamentoId).subscribe({
+    this.CityService.RegisternewCity(record).subscribe({
       next:(data) =>{
         if(data){
-          alert("Por favor revise la bandeja de entrada de su correo");
+          alert("Registro ingresado correctamente");
           this.router.navigate(["/parameters/list-city"])
         }else{
           alert("No se pudo crear la nueva ciudad, por favor intentelo de nuevo");

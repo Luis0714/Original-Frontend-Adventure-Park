@@ -24,6 +24,7 @@ export class ListPlanComponent implements OnInit {
   ) { }
 
   idToRemove: number = 0;
+  idToRemove: string = '';
   recordList: planModel[]= [];
   urlServer = ApisInfo.MS_LOG_URL;
   
@@ -44,14 +45,15 @@ export class ListPlanComponent implements OnInit {
     this.PlanService.getRecorList().subscribe({
       next: (data) => {
         this.recordList = data;
-        console.log("PLanes ",this.recordList)
+        console.log("Planes ",this.recordList)
+        
       },
       error: (err) => {
         alert("Error obteniendo la información")
       }
     });
   }
-  ShowRemoveWindow(id: number) {
+  ShowRemoveWindow(id: string) {
     OpenConfirmModal("¿Está seguro que dea elimminar el departamento?")
     this.idToRemove = id;
   }
