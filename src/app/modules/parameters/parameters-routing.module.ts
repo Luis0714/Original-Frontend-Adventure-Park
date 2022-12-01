@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AutenticatedGuard } from 'src/app/guards/autenticated.guard';
+import { UnauthenticatedGuard } from 'src/app/guards/unauthenticated.guard';
 import { CreateAttractionComponent } from './attractions/create-attraction/create-attraction.component';
 import { EditAttractionComponent } from './attractions/edit-attraction/edit-attraction.component';
 import { ListAttractionComponent } from './attractions/list-attraction/list-attraction.component';
 import { RemoveAttractionComponent } from './attractions/remove-attraction/remove-attraction.component';
+import { CreateCityComponent } from './city/create-city/create-city.component';
+import { EditCityComponent } from './city/edit-city/edit-city.component';
+import { ListCityComponent } from './city/list-city/list-city.component';
+import { RemoveCityComponent } from './city/remove-city/remove-city.component';
 import { ContactenosComponent } from './contactenos/contactenos/contactenos.component';
 import { CreateDepartmentComponent } from './department/create-department/create-department.component';
 import { EditDepartmentComponent } from './department/edit-department/edit-department.component';
@@ -32,6 +37,8 @@ const routes: Routes = [
     path: 'contactenos',
     component:ContactenosComponent
   },
+
+///////////////////////////////
   {
     path: 'create-plan',
     component:CreatePlanComponent,
@@ -44,12 +51,17 @@ const routes: Routes = [
   }, {
     path: 'list-plan',
     component:ListPlanComponent,
-    canActivate: [AutenticatedGuard]
+    
+     
   }, {
     path: 'remove-plan',
     component:RemovePlanComponent,
     canActivate: [AutenticatedGuard]
   },
+
+
+//////////////////////////////
+
   {
     path: 'create-attraction',
     component:CreateAttractionComponent,
@@ -61,13 +73,15 @@ const routes: Routes = [
     canActivate: [AutenticatedGuard]
   }, {
     path: 'list-attraction',
-    component:ListAttractionComponent,
-    canActivate: [AutenticatedGuard]
+    component:ListAttractionComponent
+    
   }, {
     path: 'remove-attraction',
     component:RemoveAttractionComponent,
     canActivate: [AutenticatedGuard]
   },
+
+  ////////////////////////////
   {
     path: 'create-park',
     component:CreateParkComponent,
@@ -79,13 +93,17 @@ const routes: Routes = [
     canActivate: [AutenticatedGuard]
   }, {
     path: 'list-park',
-    component:ListParkComponent,
-    canActivate: [AutenticatedGuard]
+    component:ListParkComponent
+    
   }, {
     path: 'remove-park',
     component:RemoveParkComponent,
     canActivate: [AutenticatedGuard]
   },
+
+
+////////////////////////////
+
   {
     path: 'create-rol',
     component:CreateRolComponent,
@@ -102,6 +120,26 @@ const routes: Routes = [
   }, {
     path: 'remove-rol/:_id',
     component:RemoveRolComponent,
+    canActivate: [AutenticatedGuard]
+  },
+
+  ///////////////////////////
+  {
+    path: 'create-city',
+    component:CreateCityComponent,
+    canActivate: [AutenticatedGuard]
+  },
+  {
+    path: 'edit-city/:code',
+    component:EditCityComponent,
+    canActivate: [AutenticatedGuard]
+  }, {
+    path: 'list-city',
+    component:ListCityComponent,
+    canActivate: [AutenticatedGuard]
+  }, {
+    path: 'remove-city/:code',
+    component:RemoveCityComponent,
     canActivate: [AutenticatedGuard]
   },
     /////
@@ -123,6 +161,8 @@ const routes: Routes = [
     component:RemoveDepartmentComponent,
     canActivate: [AutenticatedGuard]
   },
+
+  ///////////////////////
   {
     path: 'create-user',
     component:CreateUserComponent,
@@ -136,11 +176,14 @@ const routes: Routes = [
     path: 'list-user',
     component:ListUserComponent,
     canActivate: [AutenticatedGuard]
-  }, {
+  }, 
+  {
     path: 'remove-user/:id',
     component:RemoveUserComponent,
     canActivate: [AutenticatedGuard]
   },
+
+//////////
   
 ];
 

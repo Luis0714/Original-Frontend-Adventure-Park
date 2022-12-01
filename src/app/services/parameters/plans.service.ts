@@ -1,57 +1,55 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { ApisInfo } from 'src/app/config/apisInfo';
-import { departmentModel } from 'src/app/models/department.model';
-import { departmentModel2 } from 'src/app/models/department.model2';
 import { LocalStorageService } from '../local-storage.service';
-
+import { planModel } from 'src/app/models/plans.model';
+import { planModel2 } from 'src/app/models/plans.model2';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DepartmentService {
+export class PlansService {
   Baseurl: string = ApisInfo.MS_LOG_URL;
-  actionName = 'departamentos';
+  actionName = 'planes';
   jwt: string = '';
   url = `${this.Baseurl}/${this.actionName}`;
-
+  
   constructor(
     private http: HttpClient,
     private LocalStorage: LocalStorageService
-  ) {
+  ) { 
     this.jwt = LocalStorage.GetSesionToken();
   }
-
   /**
-   * Obtiene la lista de departamentos
+   * Obtiene la lista de planes
    * @returns lista de departamentos en estructura JSON
    */
-  getRecorList(): Observable<departmentModel[]> {
-    return this.http.get<departmentModel[]>(this.url);
+   getRecorList(): Observable<planModel[]> {
+    return this.http.get<planModel[]>(this.url);
   }
 
  
   /**
-  * obtine el departamento por el id
+  * obtine el planes por el id
   * @returns id
   */
-  getRecorByID(id: string): Observable<departmentModel> {
+  getRecorByID(id: string): Observable<planModel> {
     console.log("Ruta ", this.url + "/" + id)
-    return this.http.get<departmentModel>(this.url + "/" + id, {
+    return this.http.get<planModel>(this.url + "/" + id, {
       headers: new HttpHeaders({
         "Authorization": "Bearer " + this.jwt
       })
     });
   }
  /**
-* obtine el departamento por el id
+* obtine el planes por el id
 * @returns id
 */
-getRecorByID2(id: string): Observable<departmentModel>{
+getRecorByID2(id: number): Observable<planModel>{
   console.log(id)
   console.log("Ruta ", this.url + "/" + id)
-  return this.http.get<departmentModel>(this.url + "/" + id, {
+  return this.http.get<planModel>(this.url + "/" + id, {
     headers: new HttpHeaders({
       "Authorization": "Bearer " + this.jwt
     })
@@ -64,8 +62,8 @@ getRecorByID2(id: string): Observable<departmentModel>{
    * @param record info del registro a crear
    * @returns registro creado
    */
-  saveRecord(record: departmentModel2): Observable<departmentModel> {
-    return this.http.post<departmentModel>(this.url, record, {
+  saveRecord(record: planModel2): Observable<planModel> {
+    return this.http.post<planModel>(this.url, record, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.jwt}`,
       })
@@ -76,7 +74,7 @@ getRecorByID2(id: string): Observable<departmentModel>{
    * @param record registro a actualizar
    * @returns NA
    */
-  editRecord(record: departmentModel) {
+  editRecord(record: planModel) {
     return this.http.put(this.url + "/" + record.id, record, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.jwt}`
@@ -88,11 +86,25 @@ getRecorByID2(id: string): Observable<departmentModel>{
    * @param id id del registro a eliminar
    * @returns NA
    */
-  removeRecord(id: string) {
+  removeRecord(id: number) {
     return this.http.delete(this.url + "/" + id, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.jwt}`
       })
     });
+  }
+
+
+  RegisternewPlan(nombre:string, color:string, valor:number, parqueId:string):Observable<planModel2>{
+    let actionName = "planes";
+    return this.http.post<planModel2>(`${this.Baseurl}/${actionName}`,{
+      nombre:nombre,
+      color:color,  
+      valor:valor,
+      parqueId:parqueId
+    }
+    );
+    
+
   }
 }

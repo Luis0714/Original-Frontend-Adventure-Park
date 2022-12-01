@@ -1,0 +1,62 @@
+
+
+<form [formGroup]="fGroup">
+    <div id="container" class="card-panel z-depth-5">
+
+        <div class="row margin">
+            <div class="col s12 m12 l12 center">
+                <img src="../../../../../assets/rol.png" alt="" class="responsive-img " style="width:100px;">
+                <p>CREATE CITY</p>
+            </div>
+        </div>
+
+        <div class="input-field">
+            <i class="material-icons prefix">create</i>
+            <input formControlName="nombre" type="text" name="nombre" id="nombre">
+            <label class="active" for="nombre">Nombre de la Ciudad</label>
+        </div>
+        <div class="input-error" *ngIf="fg['nombre'].errors && (fg['nombre'].dirty || fg['nombre'].touched)">
+            <ul>
+                <li><strong *ngIf="fg['nombre'].errors['nombre']">Este campo es requerido.</strong><br /></li>
+            </ul>
+        </div>
+        <div class="input-field">
+            <i class="material-icons prefix">add_location</i>
+            <input formControlName="postal" type="text" name="postal" id="postal">
+            <label class="active" for="postal">Código Postal</label>
+        </div>
+        <br><br>
+        <div class="input-error" *ngIf="fg['postal'].errors && (fg['postal'].dirty || fg['postal'].touched)">
+            <ul>
+                <li><strong *ngIf="fg['postal'].errors['postal']">Este campo es requerido.</strong><br /></li>
+            </ul>
+        </div>
+        <div class="row" id="conta">
+            <div id="lista"  class="row">
+                <i class="material-icons prefix col">edit_location</i>
+                <label id="rol" class="col" for="roles">Departamento</label>
+            </div>
+            
+            
+            <select id="roles" name="miselect" formControlName="seleccionado" class="browser-default ">
+                <option value="" disabled selected>Seleccione el Departamento</option>
+                <option value={{departamentoId.id}} *ngFor="let departamentoId of departamentos">{{departamentoId.nombre}}</option>
+            </select>
+            
+       
+        <div class="input-error" *ngIf="fg['seleccionado'].errors && (fg['seleccionado'].dirty || fg['seleccionado'].touched)">
+            <ul>
+                <li><strong *ngIf="fg['seleccionado'].errors['seleccionado']">Este campo es requerido.</strong><br /></li>
+
+            </ul>
+        </div>
+    </div>
+
+    <!-- Form Chekbox (Remember Me) Input Section -->
+
+    <div class="center">
+        <input type="button" (click)="CreateCityAction()" value="CREATE" name="login" class="btn waves-effect waves-light "
+            style="width:100%; background-color: #ff4081;">
+    </div>
+
+    <br>
