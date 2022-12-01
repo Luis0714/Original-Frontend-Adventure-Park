@@ -5,6 +5,7 @@ import { ApisInfo } from 'src/app/config/apisInfo';
 import { cityModel } from 'src/app/models/city.model';
 import { cityModel2 } from 'src/app/models/city.model2';
 import { cityModel3 } from 'src/app/models/city.model3';
+import { LocalStorageService } from '../local-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,14 +16,21 @@ export class CityService {
   jwt:string = '';
   url = `${this.Baseurl}/${this.actionName}`;
   constructor(
-    private http: HttpClient
-  ) { }
+    private http: HttpClient,
+    private lsService: LocalStorageService
+  ) { 
+    this.jwt = lsService.GetSesionToken();
+  }
   /**
    * Obtiene la lista de Ciudades
    * @returns lista de Ciudades en estructura JSON
    */
    getRecorList():Observable<cityModel[]>{
-    return this.http.get<cityModel[]>(this.url);   
+    return this.http.get<cityModel[]>(this.url+'?filter={"include":["departamento"]}',{
+      headers: new HttpHeaders({
+        "Authorization": "Bearer " + this.jwt
+      })
+    });    
    }
  
     /**
@@ -43,6 +51,7 @@ export class CityService {
     * @returns registro creado
     */
    saveRecord(record:cityModel2):Observable<cityModel>{
+    console.log(this.jwt);
      return this.http.post<cityModel>(this.url,record,{
        headers:new HttpHeaders({
          "Authorization": `Bearer ${this.jwt}`,

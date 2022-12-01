@@ -26,7 +26,11 @@ export class ZonaService {
    * @returns lista de roles en json
    */
   getRecorList(): Observable<ZonaModel[]> {
-    return this.http.get<ZonaModel[]>(this.url);
+    return this.http.get<ZonaModel[]>(this.url,{
+      headers: new HttpHeaders({
+        "Authorization": "Bearer " + this.jwt
+      })
+    });
   }
 
   /**

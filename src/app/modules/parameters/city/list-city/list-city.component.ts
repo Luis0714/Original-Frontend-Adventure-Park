@@ -45,23 +45,7 @@ export class ListCityComponent implements OnInit {
   ListRecords() {
     this.CityService.getRecorList().subscribe({
       next: (data) => {
-        console.log("AQUIIIII",data)
-        data.forEach(C => this.DepartmentService.getRecorByID2(C.departamentoId).subscribe({
-          next: (departamento) => {
-            console.log("hola")
-            this.ciudad={
-              id: C.id + '',
-              nombre: C.nombre,
-              postal: C.postal,
-              departamentoId: departamento.nombre
-            }
-            this.recordList.push(this.ciudad)
-          },
-          error:(err)=>{
-            console.log("Error obteniendo el nombre del departamento")
-          }
-        }))
-        },
+        this.recordList = data;        },
         error: (err) => {
          alert("Error obteniendo la información")
         }

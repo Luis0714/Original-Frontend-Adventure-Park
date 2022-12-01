@@ -52,12 +52,12 @@ const routes: Routes = [
     path: 'edit-plan/:id',
     component:EditPlanComponent,
     canActivate: [AutenticatedGuard]
-  }, {
+  }, 
+  {
     path: 'list-plan',
     component:ListPlanComponent,
-    
-     
-  }, {
+  }, 
+  {
     path: 'remove-plan/:id',
     component:RemovePlanComponent,
     canActivate: [AutenticatedGuard]

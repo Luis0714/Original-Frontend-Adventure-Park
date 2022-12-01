@@ -1,3 +1,4 @@
+import { departmentModel } from "./department.model"
 
 
 export class cityModel{
@@ -5,4 +6,5 @@ export class cityModel{
     nombre: string = ''
     postal: string = ''
     departamentoId: string = ''
+    departamento?: departmentModel = new departmentModel()
 }
