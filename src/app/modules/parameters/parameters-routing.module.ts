@@ -35,6 +35,8 @@ import { CreateVentaPlanComponent } from './venta-plans/create-venta-plan/create
 import { EditVentaPlanComponent } from './venta-plans/edit-venta-plan/edit-venta-plan.component';
 import { ListVentaPlanComponent } from './venta-plans/list-venta-plan/list-venta-plan.component';
 import { RemoveVentaPlanComponent } from './venta-plans/remove-venta-plan/remove-venta-plan.component';
+import { TarjetaComponent } from './tarjeta/tarjeta.component'
+
 const routes: Routes = [
   {
     path: 'contactenos',
@@ -208,6 +210,13 @@ const routes: Routes = [
   canActivate: [AutenticatedGuard]
 },
 
+//////////
+
+{
+  path: 'tarjeta/:id',
+  component: TarjetaComponent,
+  canActivate: [AutenticatedGuard]
+},
 
 ];
 

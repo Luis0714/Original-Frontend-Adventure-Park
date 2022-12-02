@@ -19,7 +19,9 @@ export class VentaPlansService {
     private LocalStorage: LocalStorageService
   ) { 
     this.jwt = LocalStorage.GetSesionToken();
-  } /**
+  } 
+  
+  /**
   * Obtiene la lista de la venta de planes
   * @returns lista de venta en estructura JSON
   */
