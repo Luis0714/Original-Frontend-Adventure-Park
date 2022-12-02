@@ -31,7 +31,10 @@ import { CreateUserComponent } from './users/create-user/create-user.component';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { ListUserComponent } from './users/list-user/list-user.component';
 import { RemoveUserComponent } from './users/remove-user/remove-user.component';
-
+import { CreateVentaPlanComponent } from './venta-plans/create-venta-plan/create-venta-plan.component';
+import { EditVentaPlanComponent } from './venta-plans/edit-venta-plan/edit-venta-plan.component';
+import { ListVentaPlanComponent } from './venta-plans/list-venta-plan/list-venta-plan.component';
+import { RemoveVentaPlanComponent } from './venta-plans/remove-venta-plan/remove-venta-plan.component';
 const routes: Routes = [
   {
     path: 'contactenos',
@@ -184,7 +187,28 @@ const routes: Routes = [
   },
 
 //////////
-  
+
+{
+  path: 'create-venta-plan',
+  component:CreateVentaPlanComponent,
+  canActivate: [AutenticatedGuard]
+},
+{
+  path: 'edit-venta-plan/:_id',
+  component:EditVentaPlanComponent,
+  canActivate: [AutenticatedGuard]
+}, {
+  path: 'list-venta-plan',
+  component:ListVentaPlanComponent,
+  canActivate: [AutenticatedGuard]
+}, 
+{
+  path: 'remove-venta-plan/:id',
+  component:RemoveVentaPlanComponent,
+  canActivate: [AutenticatedGuard]
+},
+
+
 ];
 
 @NgModule({
