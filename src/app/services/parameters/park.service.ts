@@ -5,6 +5,8 @@ import { ApisInfo } from 'src/app/config/apisInfo';
 import { ParkModel } from 'src/app/models/park.model';
 import { LocalStorageService } from '../local-storage.service';
 import { UploadedFileModel } from 'src/app/models/uploaded.file.model';
+import { ParkModel2 } from 'src/app/models/park.model2';
+import { ParkModel3 } from 'src/app/models/park.model3';
 
 @Injectable({
   providedIn: 'root'
@@ -105,13 +107,21 @@ saveRecord(record: ParkModel): Observable<ParkModel> {
 
 
   uploadImage(formData: FormData): Observable<UploadedFileModel> {
-    let actionName: string = "cargar-archivo-movimiento";
+    let actionName: string = "cargar-archivo";
     return this.http.post<UploadedFileModel>(`${this.Baseurl}/${actionName}`, formData, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.jwt}`
       })
     });
   }
-
+  RegisternewPark(record:ParkModel2):Observable<ParkModel3>{
+    let actionName = "parques";
+    console.log(record, "RECORD")
+    return this.http.post<ParkModel3>(`${this.Baseurl}/${actionName}`,record,{
+      headers:new HttpHeaders({
+        "Authorization":"Bearer "+this.jwt
+      })
+    });
+   }
 }
 

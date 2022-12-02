@@ -32,6 +32,14 @@ export class CityService {
       })
     });     
    }
+
+   getRecorListCity(): Observable<cityModel[]> {
+    return this.http.get<cityModel[]>(this.url,{
+      headers:new HttpHeaders({
+        "Authorization":"Bearer "+this.jwt
+      })
+    });
+   }
  
     /**
     * obtine el ciudades por el id
