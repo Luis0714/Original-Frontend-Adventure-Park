@@ -1,5 +1,6 @@
+
+
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { ApisInfo } from 'src/app/config/apisInfo';
 import { DefaultValues } from 'src/app/config/default-values';
 import { UserModel } from 'src/app/models/user.model';
@@ -45,17 +46,6 @@ export class ListVentaPlanComponent implements OnInit {
 
       }
     });
-  /*
-    this.PlanService.getRecorList().subscribe({
-      next:(data:planModel)=>{
-        this.nombre = data.nombre
-
-      },
-      error:(err) =>{
-
-      }
-    })
-    */
   }
 
 

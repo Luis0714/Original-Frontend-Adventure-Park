@@ -1,3 +1,5 @@
+import { cityModel } from "./city.model"
+
 export class ParkModel{
     id: string = ''
     nombre: string = ''
@@ -7,5 +9,8 @@ export class ParkModel{
     mapa: string = ''
     slogan: string = ''
     descripcion: string = ''
-    ciudadId: string = ''    
+    ciudadId: string = ''
+    email: string=''
+    ciudad?: cityModel = new cityModel()
+        
 }

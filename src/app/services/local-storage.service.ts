@@ -51,8 +51,7 @@ export class LocalStorageService {
       let userToken: string = JSON.parse(userAsString).Token;
       return userToken;
     }
-    return '';
-  }
+    return '';}
 }
 
 

@@ -49,6 +49,7 @@ import { RemoveFoodStandComponent } from './food-stand/remove-food-stand/remove-
 import { TarejetaValidateComponent } from './tarejeta/tarejeta-validate/tarejeta-validate.component';
 
 
+
 @NgModule({
   declarations: [
     CreatePlanComponent,
@@ -88,12 +89,12 @@ import { TarejetaValidateComponent } from './tarejeta/tarejeta-validate/tarejeta
     EditVentaPlanComponent,
     ListVentaPlanComponent,
     RemoveVentaPlanComponent,
-
     CreateFoodStandComponent,
     EditFoodStandComponent,
     ListFoodStandComponent,
     RemoveFoodStandComponent,
     TarejetaValidateComponent,
+
    
   ],
   imports: [

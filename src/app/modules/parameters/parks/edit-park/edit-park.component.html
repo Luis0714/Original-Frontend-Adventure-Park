@@ -1,1 +1,164 @@
-<p>edit-park works!</p>
+
+
+<form [formGroup]="fGroup">
+    <div id="container" class="card-panel z-depth-5">
+        <input type="hidden" formControlName="id">
+        <div class="row margin">
+            <div class="col s12 m12 l12 center">
+                <img src="../../../../../assets/rol.png" alt="" class="responsive-img " style="width:100px;">
+                <p>EDIT PARQUE</p>
+            </div>
+        </div>
+        <div class="input-field">
+            <i class="material-icons prefix">create</i>
+            <input formControlName="nombre" type="text" name="nombre" id="nombre">
+            <label class="active" for="nombre">Nombre</label>
+        </div>
+        <div class="input-error" *ngIf="fg['nombre'].errors && (fg['nombre'].dirty || fg['nombre'].touched)">
+            <ul>
+                <li><strong *ngIf="fg['nombre'].errors['required']">Este campo es requerido.</strong><br /></li>
+            </ul>
+        </div>
+        <div class="input-field">
+            <i class="material-icons prefix">create</i>
+            <input formControlName="slogan" type="text" name="slogan" id="slogan">
+            <label class="active" for="slogan">slogan</label>
+        </div>
+        <div class="input-error" *ngIf="fg['slogan'].errors && (fg['slogan'].dirty || fg['slogan'].touched)">
+            <ul>
+                <li><strong *ngIf="fg['slogan'].errors['required']">Este campo es requerido.</strong><br /></li>
+            </ul>
+        </div>
+        <div class="input-field">
+            <i class="material-icons prefix">attach_money</i>
+            <input formControlName="direccion" type="text" name="direccion" id="direccion">
+            <label class="active" for="direccion">direccion</label>
+        </div>
+        <div class="input-error" *ngIf="fg['direccion'].errors && (fg['direccion'].dirty || fg['direccion'].touched)">
+            <ul>
+                <li><strong *ngIf="fg['direccion'].errors['required']">Este campo es requerido.</strong><br /></li>
+            </ul>
+        </div>
+        <div class="input-field">
+            <i class="material-icons prefix">attach_money</i>
+            <input formControlName="email" type="text" name="email" id="email">
+            <label class="active" for="email">email</label>
+        </div>
+        <div class="input-error" *ngIf="fg['email'].errors && (fg['email'].dirty || fg['email'].touched)">
+            <ul>
+                <li><strong *ngIf="fg['email'].errors['required']">Este campo es requerido.</strong><br /></li>
+            </ul>
+        </div>
+        <div class="input-field">
+            <i class="material-icons prefix">attach_money</i>
+            <input formControlName="cantidadVisitas" type="text" name="cantidadVisitas" id="cantidadVisitas">
+            <label class="active" for="cantidadVisitas">cantidad de visitas</label>
+        </div>
+        <div class="input-error" *ngIf="fg['cantidadVisitas'].errors && (fg['cantidadVisitas'].dirty || fg['cantidadVisitas'].touched)">
+            <ul>
+                <li><strong *ngIf="fg['cantidadVisitas'].errors['required']">Este campo es requerido.</strong><br /></li>
+                <li><strong *ngIf="fg['cantidadVisitas'].errors['number']">Este campo tiene que ser un número.</strong><br /></li>
+            </ul>
+        </div>
+        <div class="file-field input-field">
+            <div class="btn">
+                <span>Cargar Logo</span>
+                <input type="file" (change)="onLogoFileSelect($event)" />
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+            <div class="row margin">
+                <div class="col s12 m12 l12 center">
+                    <img *ngIf="uploadedImageLogo == ''" src="/assets/images/not_img.png " class="imgInput" />
+                    <img *ngIf="uploadedImageLogo != ''"
+                        src="{{ urlServer }}/ObtenerArchivo/1/{{ uploadedImageLogo }}" class="imgInput" />
+                </div>
+
+            </div>
+        </div>
+        <div class="row margin">
+            <div class="col sm-4">
+                <button (click)="UploadImageLogo()" [disabled]="!isLogoFileSelected"
+                    class="btn orange">Cargar</button>
+            </div>
+        </div>
+
+        <div class="file-field input-field">
+            <div class="btn">
+                <span>Cargar Mapa</span>
+                <input type="file" (change)="onMapFileSelect($event)" />
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+            <div class="row margin">
+                <div class="col s12 m12 l12 center">
+                    <img *ngIf="uploadedImageMap == ''" src="/assets/images/not_img.png " class="imgInput" />
+                    <img *ngIf="uploadedImageMap != ''"
+                        src="{{ urlServer }}/ObtenerArchivo/1/{{ uploadedImageMap }}" class="imgInput" />
+                </div>
+
+            </div>
+        </div>
+        <div class="row margin">
+            <div class="col sm-4">
+                <button (click)="UploadImageMap()" [disabled]="!isMapFileSelected"
+                    class="btn orange">Cargar</button>
+            </div>
+        </div>
+        <div class="input-field">
+            <i class="material-icons prefix">attach_money</i>
+            <input formControlName="descripcion" type="text" name="descripcion" id="descripcion">
+            <label class="active" for="descripcion">descripción</label>
+        </div>
+        <div class="input-error" *ngIf="fg['descripcion'].errors && (fg['descripcion'].dirty || fg['descripcion'].touched)">
+            <ul>
+                <li><strong *ngIf="fg['descripcion'].errors['required']">Este campo es requerido.</strong><br /></li>
+                
+            </ul>
+        </div>
+        <div class="input-field">
+            <i class="material-icons prefix">edit_location</i>
+            <input formControlName="direccion" type="text" name="direccion" id="direccion">
+            <label class="active" for="direccion">Direccion</label>
+        </div>
+        <div class="input-error" *ngIf="fg['direccion'].errors && (fg['direccion'].dirty || fg['direccion'].touched)">
+            <ul>
+                <li><strong *ngIf="fg['direccion'].errors['direccion']">Este campo es requerido.</strong><br /></li>
+            </ul>
+        </div>
+        <div class="row" id="conta">
+            <div id="lista"  class="row">
+                <i class="material-icons prefix col">edit_location</i>
+                <label id="rol" class="col" for="roles">Ciudad a la que pertenece el parque</label>
+            </div>
+            
+            
+            <select id="roles" name="miselect" formControlName="seleccionado" class="browser-default ">
+                <option value="" disabled selected>{{nombre}}</option>
+                <option value={{ciudadId.id}} *ngFor="let ciudadId of ciudades">{{ciudadId.nombre}}</option>
+            </select>
+            
+       
+        <div class="input-error" *ngIf="fg['seleccionado'].errors && (fg['seleccionado'].dirty || fg['seleccionado'].touched)">
+            <ul>
+                <li><strong *ngIf="fg['seleccionado'].errors['seleccionado']">Este campo es requerido.</strong><br /></li>
+
+            </ul>
+        </div>
+    </div>
+
+    <!-- Form Chekbox (Remember Me) Input Section -->
+<div class="botones row">
+    <div class="center col">
+        <input type="button" (click)="EditParkAction()" value="Confirmar" name="edit" class="btn waves-effect waves-light green"
+            style="width:100%; background-color: #ff4081;">
+    </div>
+    <div class="center col">
+        <input  type="button" routerLink="/parameters/list-park" value="Cancelar" name="cancel" class="btn waves-effect waves-light orange"
+            style="width:100%; background-color: #ff4081;">
+    </div>
+</div>
+
+

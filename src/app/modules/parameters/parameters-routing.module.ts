@@ -98,7 +98,7 @@ const routes: Routes = [
     canActivate: [AutenticatedGuard]
   },
   {
-    path: 'edit-park',
+    path: 'edit-park/:id',
     component:EditParkComponent,
     canActivate: [AutenticatedGuard]
   }, {

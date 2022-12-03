@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ApisInfo } from 'src/app/config/apisInfo';
 import { DefaultValues } from 'src/app/config/default-values';
+import { cityModel } from 'src/app/models/city.model';
 import { ParkModel } from 'src/app/models/park.model';
 import { UserModel } from 'src/app/models/user.model';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { CityService } from 'src/app/services/parameters/city.service';
 import { ParkService } from 'src/app/services/parameters/park.service';
 import { SecurityService } from 'src/app/services/security.service';
 
@@ -15,18 +17,41 @@ declare const OpenConfirmModal: any;
 })
 export class ListParkComponent implements OnInit {
   isLogged: boolean = false;
+  
   rolId:string = '';
   rolIdAdmin:string = DefaultValues.RolIdSuperAdmin;
   name:string = '';
+
+  ciudad:cityModel={
+    id: '',
+    nombre: '',
+    postal: '',
+    departamentoId: ''
+  }
+  
+  parque: ParkModel={
+    id:'',
+    nombre:'',
+    direccion:'',
+    cantidadVisitas:'',
+    logo:'',
+    mapa:'',
+    slogan:'',
+    descripcion:'',
+    ciudadId:'',
+    email:'' 
+  }
+
   constructor(
     private parkService: ParkService,
     private SecuritySevice: SecurityService,
-    private LocalStorage: LocalStorageService
+    private LocalStorage: LocalStorageService,
+    private cityService: CityService
   ) { 
     
   }
 
-  idToRemove: string = "";
+  idToRemove: number = 0;
   recordList: ParkModel[]= [];
   urlServer = ApisInfo.MS_LOG_URL;
 
@@ -47,18 +72,17 @@ export class ListParkComponent implements OnInit {
   ListRecords() {
     this.parkService.getRecorList().subscribe({
       next: (data) => {
-        this.recordList = data;
-        console.log("parques ",this.recordList)
-      },
-      error: (err) => {
-        alert("Error obteniendo la información")
-      }
-    })
-  }
+        this.recordList = data;        },
+        error: (err) => {
+         alert("Error obteniendo la información")
+        }
+      });
+    }
+    
 
   ShowRemoveWindow(id: string) {
-    OpenConfirmModal("¿Está seguro que dea elimminar el departamento?")
-    this.idToRemove = id;
+    OpenConfirmModal("¿Está seguro que dea elimminar el Parque?")
+    this.idToRemove = parseInt(id);
   }
 
   
@@ -70,7 +94,7 @@ export class ListParkComponent implements OnInit {
     this.parkService.removeRecord(this.idToRemove).subscribe({
       next: (data) => {
         //this.ListRecords();
-        this.recordList = this.recordList.filter(x => x.id != this.idToRemove);
+        this.recordList = this.recordList.filter(x => parseInt(x.id) != this.idToRemove);
         
       },
       error: (err) => {
@@ -78,4 +102,4 @@ export class ListParkComponent implements OnInit {
       }
     })
   }
-}
+  }
