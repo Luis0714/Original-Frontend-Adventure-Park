@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { filter, Observable } from 'rxjs';
 import { ApisInfo } from 'src/app/config/apisInfo';
+import { VentaPlanModel2 } from 'src/app/models/plan.venta.model2';
 import { VentaPlanModel } from 'src/app/models/venta-plans.model';
 import { LocalStorageService } from '../local-storage.service';
 
@@ -26,7 +27,7 @@ export class VentaPlansService {
   * @returns lista de venta en estructura JSON
   */
   getRecorList(): Observable<VentaPlanModel[]> {
-   return this.http.get<VentaPlanModel[]>(this.url+'?filter={"include":["planes"]}',{
+   return this.http.get<VentaPlanModel[]>('http://localhost:3000/ventas-planes',{
      headers:new HttpHeaders({
        "Authorization":"Bearer "+this.jwt
      })
@@ -67,7 +68,7 @@ getRecorByID2(id: number): Observable<VentaPlanModel>{
   * @param record info del registro a crear
   * @returns registro creado
   */
- saveRecord(record: VentaPlanModel): Observable<VentaPlanModel> {
+ saveRecord(record: VentaPlanModel2): Observable<VentaPlanModel> {
    return this.http.post<VentaPlanModel>(this.url, record, {
      headers: new HttpHeaders({
        "Authorization": `Bearer ${this.jwt}`,

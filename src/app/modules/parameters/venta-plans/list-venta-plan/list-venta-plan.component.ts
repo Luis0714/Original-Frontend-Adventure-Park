@@ -21,13 +21,8 @@ export class ListVentaPlanComponent implements OnInit {
   rolIdAdmin:string = DefaultValues.RolIdSuperAdmin;
   name:string = '';
   nombre: string = '';
-  seleccionado: planModel={
-    id: '',
-    nombre: '',
-    color: '',
-    valor: 0,
-    parqueId: 0
-  }
+  venta:VentaPlanModel = new VentaPlanModel()
+
 
   constructor(
     private VentaPlanService: VentaPlansService,
@@ -65,16 +60,17 @@ export class ListVentaPlanComponent implements OnInit {
 
 
   ListRecords() {
+ 
     this.VentaPlanService.getRecorList().subscribe({
       next: (data) => {
-        this.recordList = data;
-        console.log("VentaPlan ",this.recordList)
+      
         
-      },
-      error: (err) => {
-        alert("Error obteniendo la información")
-      }
-    });
+        this.recordList = data;
+        },
+        error: (err) => {
+         alert("Error obteniendo la información")
+        }
+      });
   }
   ShowRemoveWindow(id: string) {
     OpenConfirmModal("¿Está seguro que dea elimminar el departamento?")
@@ -89,7 +85,7 @@ export class ListVentaPlanComponent implements OnInit {
     this.VentaPlanService.removeRecord(this.idToRemove).subscribe({
       next: (data) => {
         //this.ListRecords();
-        this.recordList = this.recordList.filter(x => x.id != this.idToRemove);
+        this.recordList = this.recordList.filter(x => x.id != parseInt(this.idToRemove));
         
       },
       error: (err) => {

@@ -1,0 +1,64 @@
+<br>
+<br>
+<br>
+<form  [formGroup]="fGroup">
+    <div *ngIf="!stado">
+        <div class="input-field col s6">
+            <i class="material-icons prefix">account_circle</i>
+            <input formControlName="cantidad" id="name" type="number" class="validate" name="name">
+            <label class="active" for="name">Cantidad</label>
+        </div>
+
+        <div class="center">
+            <input type="button" (click)="GuargarCantidad()" value="Comprar" name="" class="btn waves-effect waves-light "
+                style="width:100%; background-color: #0756af;">
+        </div>
+    </div>
+  
+    <div id="container"  class="row" *ngIf="stado">
+
+        <h2>INFORMACION DE LA TAREJETA</h2>
+
+            <div class="row">
+           
+    
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input formControlName="nombre" id="name" type="text" class="validate" name="name">
+                    <label for="name">Nombre</label>
+                </div>
+                
+                <div class="input-field col s6">
+                    <input formControlName="numero" id="last_name" type="text" class="validate" name="last_name">
+                    <label for="last_name">Numero de la tarejeta</label>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">email</i>
+                    <input formControlName="fecha" id="email" type="date" class="validate" name="email">
+                    <label for="email">Fecha de vencimiento</label>
+                </div>
+               
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">phone</i>
+                    <input formControlName="csv" id="cel" type="text" class="validate" name="cel">
+                    <label for="cel">CSV</label>
+                </div>
+            </div>
+           
+            
+           
+            <div class="center">
+                <input type="button" (click)="ValidarTarjeta()" value="Register" name="register" class="btn waves-effect waves-light "
+                    style="width:100%; background-color: #0756af;">
+            </div>
+
+        
+    </div>
+
+    <br>
+</form>

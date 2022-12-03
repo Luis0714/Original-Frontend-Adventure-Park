@@ -6,4 +6,5 @@ export class planModel{
     color: string =''
     valor: number =0
     parqueId: number =0
+    plan?: string = ''
 }

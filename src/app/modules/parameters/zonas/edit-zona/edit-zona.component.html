@@ -1,70 +1,64 @@
-<br>
-<br>
-<br>
-<form  [formGroup]="fGroup">
-    <div id="container"  class="row">
+<form [formGroup]="fGroup">
+    <div id="container" class="row">
         <div class="row margin">
             <div class="col s12 m12 l12 center">
                 <img src="../../../../../assets/rol.png" alt="" class="responsive-img " style="width:100px;">
                 <p>CREATE ZONA</p>
             </div>
         </div>
-            <div class="row">
-                <div class="input-field col s6">
-                    <i class="material-icons prefix">play_arrow</i>
-                    <input  formControlName="nombre" id="name" type="text" class="validate" name="name">
-                    <label class="active" for="name">Nombre</label>
-                </div>
-                
-                <div class="input-field col s6">
-                    <i class="material-icons prefix">palette</i>
-                    <input  formControlName="color" id="last_name" type="text" class="validate" name="last_name">
-                    <label class="active" for="last_name">Color</label>
-                </div>
-                
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">mode_edit</i>
-                    <input  formControlName="descripcion" id="email" type="text" class="validate" name="email">
-                    <label class="active" for="email">Descripcion</label>
-                </div>
-               
-            </div>
-           
-            <div class="row" id="conta">
-                <div id="lista"  class="row">
-                    <i class="material-icons prefix col">golf_course</i>
-                    <label id="rol" class="col" for="roles">Parque</label>
-                </div>
-                   
-                    <select id="roles" name="miselect" formControlName="seleccionado" class="browser-default ">
-                        <option value="" disabled selected>{{nombre}}</option>
-                        <option value={{Parque.id}} *ngFor="let Parque of parques">{{Parque.nombre}}</option>
-                    </select>
-                <div class="input-error" *ngIf="fg['seleccionado'].errors && (fg['seleccionado'].dirty || fg['seleccionado'].touched)">
-                    <ul>
-                        <li><strong *ngIf="fg['seleccionado'].errors['seleccionado']">Este campo es requerido.</strong><br /></li>
-    
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="botones row">
-                <div class="center col">
-                    <input type="button" (click)="EditAction2()" value="Confirmar" name="edit" class="btn waves-effect waves-light green"
-                        style="width:100%; background-color: #ff4081;">
-                </div>
-                <div class="center col">
-                    <input  type="button" routerLink="/parameters/list-zona" value="Cancelar" name="cancel" class="btn waves-effect waves-light orange"
-                        style="width:100%; background-color: #ff4081;">
-                </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">play_arrow</i>
+                <input formControlName="nombre" id="name" type="text" class="validate" name="name">
+                <label class="active" for="name">Nombre</label>
             </div>
 
-        
+            <div class="input-field col s6">
+                <i class="material-icons prefix">palette</i>
+                <input formControlName="color" id="last_name" type="text" class="validate" name="last_name">
+                <label class="active" for="last_name">Color</label>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">mode_edit</i>
+                <input formControlName="descripcion" id="email" type="text" class="validate" name="email">
+                <label class="active" for="email">Descripcion</label>
+            </div>
+
+        </div>
+
+        <div class="row" id="conta">
+            <div id="lista" class="row">
+                <i class="material-icons prefix col">golf_course</i>
+                <label id="rol" class="col" for="roles">Parque</label>
+            </div>
+
+            <select id="roles" name="miselect" formControlName="seleccionado" class="browser-default ">
+                <option value="" disabled selected>{{nombre}}</option>
+                <option value={{Parque.id}} *ngFor="let Parque of parques">{{Parque.nombre}}</option>
+            </select>
+            <div class="input-error"
+                *ngIf="fg['seleccionado'].errors && (fg['seleccionado'].dirty || fg['seleccionado'].touched)">
+                <ul>
+                    <li><strong *ngIf="fg['seleccionado'].errors['seleccionado']">Este campo es
+                            requerido.</strong><br /></li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="botones row">
+            <div class="center col">
+                <input type="button" (click)="EditAction2()" value="Confirmar" name="edit"
+                    class="btn waves-effect waves-light green" style="width:100%; background-color: #ff4081;">
+            </div>
+
+            <div class="center col">
+                <input type="button" routerLink="/parameters/list-zona" value="Cancelar" name="cancel"
+                    class="btn waves-effect waves-light orange" style="width:100%; background-color: #ff4081;">
+            </div>
+        </div>
     </div>
-
-    
-
-    <br>
 </form>

@@ -1,5 +1,4 @@
 
-<a *ngIf="isLogged && rolId==rolIdAdmin" id="btn-crear" class="waves-effect waves-light btn-large green" routerLink="/parameters/create-plan"><i class="material-icons left">add</i>Agregar</a>
 <div class="tabla">
 <table class="responsive-table">
     <thead>
@@ -14,14 +13,14 @@
 
     <tbody>
       <tr *ngFor="let r of recordList">
-        <td>{{r.planes?.nombre}}</td>
+        <td>{{r.planesId}}</td>
         <td>{{r.fecha}}</td>
         <td>{{r.cant}}</td>
         <td>{{r.impuestos}}</td>
         <td>{{r.total}}</td>
         <td>
           <div id="btns" class="botones row">
-            &nbsp;<button *ngIf="isLogged && rolId==rolIdAdmin" id="remove" data-target="modal1" class="btn modal-trigger col"(click)="ShowRemoveWindow(r.id)" type="button" class="waves-effect waves-light btn-large red "><i class="material-icons left">delete</i>Eliminar</button>
+            &nbsp;<button *ngIf="isLogged && rolId==rolIdAdmin" id="remove" data-target="modal1" class="btn modal-trigger col"(click)="ShowRemoveWindow(r.id+'')" type="button" class="waves-effect waves-light btn-large red "><i class="material-icons left">delete</i>Eliminar</button>
           </div>
         </td>
       </tr>
