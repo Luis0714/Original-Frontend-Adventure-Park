@@ -1,0 +1,59 @@
+
+<form [formGroup]="fGroup">
+	<div class="contenedor">
+
+		<!-- Tarjeta -->
+		<section class="tarjeta" id="tarjeta">
+			<div class="delantera">
+				<div class="logo-marca" id="logo-marca">
+					<img src="../../../../assets/images/img/logos/visa.png" alt="">
+				</div>
+				<img src="../../../../assets/images/img/chip-tarjeta.png" class="chip" alt="">
+				<div class="datos">
+					<div class="grupo" id="numero">
+						<p class="label">Número Tarjeta</p>
+						<input class="tarjetaNumero" for="tarjetaNumero" placeholder = "#### #### #### ####"type="text" class="numero">
+                        
+					</div>
+					<div class="flexbox">
+						<div class="grupo" id="nombre">
+							<p class="label">Nombre Tarjeta</p>
+							<input class="tarjetaNumero" for= "nombreTarjera" placeholder = "Nombre de la Tarjeta"type="text" class="numero">
+						</div>
+                        
+                        </div>
+						<div class="grupo" id="expiracion">
+							<p class="label">Expiracion</p>
+							<input class="tarjetaNumero" for= "FechExp" placeholder = "MM/AA" type="date" class="numero">
+						</div>
+                        <div class="grupo" id="ccv">
+                            <p class="label">CCV</p>
+                            <input class="tarjetaNumero" for= "csv" placeholder = "###" type="text" class="numero">
+					</div>
+				</div>
+			</div>
+
+			<div class="trasera">
+				<div class="barra-magnetica"></div>
+				<div class="datos">
+					<div class="grupo" id="firma">
+						<p class="label">Firma</p>
+						<div class="firma"><p></p></div>
+					</div>
+					
+				</div>
+				<p class="leyenda">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus exercitationem, voluptates illo.</p>
+				<a href="#" class="link-banco">www.tubanco.com</a>
+			</div>
+		</section>
+
+		<!-- Contenedor Boton Abrir Formulario -->
+		<div class="contenedor-btn">
+			<button class="btn-abrir-formulario" id="btn-abrir-formulario" (click)="ValidarTarjeta()">
+				<i class="fas fa-plus"></i>
+			</button>
+		</div>
+
+
+
+

@@ -35,6 +35,11 @@ import { CreateZonaComponent } from './zonas/create-zona/create-zona.component';
 import { EditZonaComponent } from './zonas/edit-zona/edit-zona.component';
 import { ListZonaComponent } from './zonas/list-zona/list-zona.component';
 import { RemoveZonaComponent } from './zonas/remove-zona/remove-zona.component';
+import { CreateVentaPlanComponent } from './venta-plans/create-venta-plan/create-venta-plan.component';
+import { EditVentaPlanComponent } from './venta-plans/edit-venta-plan/edit-venta-plan.component';
+import { ListVentaPlanComponent } from './venta-plans/list-venta-plan/list-venta-plan.component';
+import { RemoveVentaPlanComponent } from './venta-plans/remove-venta-plan/remove-venta-plan.component';
+import { TarjetaComponent } from './tarjeta/tarjeta.component'
 
 const routes: Routes = [
   {
@@ -206,7 +211,35 @@ const routes: Routes = [
     canActivate: [AutenticatedGuard]
   },
 //////////
-  
+
+{
+  path: 'create-venta-plan',
+  component:CreateVentaPlanComponent,
+  canActivate: [AutenticatedGuard]
+},
+{
+  path: 'edit-venta-plan/:_id',
+  component:EditVentaPlanComponent,
+  canActivate: [AutenticatedGuard]
+}, {
+  path: 'list-venta-plan',
+  component:ListVentaPlanComponent,
+  canActivate: [AutenticatedGuard]
+}, 
+{
+  path: 'remove-venta-plan/:id',
+  component:RemoveVentaPlanComponent,
+  canActivate: [AutenticatedGuard]
+},
+
+//////////
+
+{
+  path: 'tarjeta/:id',
+  component: TarjetaComponent,
+  canActivate: [AutenticatedGuard]
+},
+
 ];
 
 @NgModule({

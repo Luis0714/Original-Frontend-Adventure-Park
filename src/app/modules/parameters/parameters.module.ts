@@ -41,6 +41,11 @@ import { CreateVentaPlanComponent } from './venta-plans/create-venta-plan/create
 import { EditVentaPlanComponent } from './venta-plans/edit-venta-plan/edit-venta-plan.component';
 import { ListVentaPlanComponent } from './venta-plans/list-venta-plan/list-venta-plan.component';
 import { RemoveVentaPlanComponent } from './venta-plans/remove-venta-plan/remove-venta-plan.component';
+import { TarjetaComponent } from './tarjeta/tarjeta.component';
+import { CreateFoodStandComponent } from './food-stand/create-food-stand/create-food-stand.component';
+import { EditFoodStandComponent } from './food-stand/edit-food-stand/edit-food-stand.component';
+import { ListFoodStandComponent } from './food-stand/list-food-stand/list-food-stand.component';
+import { RemoveFoodStandComponent } from './food-stand/remove-food-stand/remove-food-stand.component';
 
 
 @NgModule({
@@ -82,6 +87,11 @@ import { RemoveVentaPlanComponent } from './venta-plans/remove-venta-plan/remove
     EditVentaPlanComponent,
     ListVentaPlanComponent,
     RemoveVentaPlanComponent,
+    TarjetaComponent,
+    CreateFoodStandComponent,
+    EditFoodStandComponent,
+    ListFoodStandComponent,
+    RemoveFoodStandComponent,
    
   ],
   imports: [

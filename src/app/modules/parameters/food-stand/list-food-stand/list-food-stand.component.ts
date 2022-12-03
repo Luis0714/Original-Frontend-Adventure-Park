@@ -1,46 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { ApisInfo } from 'src/app/config/apisInfo';
 import { DefaultValues } from 'src/app/config/default-values';
+import { FoodStandModel } from 'src/app/models/food-stand.model';
 import { UserModel } from 'src/app/models/user.model';
-import { VentaPlanModel } from 'src/app/models/venta-plans.model';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
-import { VentaPlansService } from 'src/app/services/parameters/venta-plans.service';
+import { FoodStandService } from 'src/app/services/parameters/food-stand.service';
 import { SecurityService } from 'src/app/services/security.service';
-import { planModel} from 'src/app/models/plans.model'
-import { PlansService } from 'src/app/services/parameters/plans.service';
 declare const OpenConfirmModal: any;
+
 @Component({
-  selector: 'app-list-venta-plan',
-  templateUrl: './list-venta-plan.component.html',
-  styleUrls: ['./list-venta-plan.component.css']
+  selector: 'app-list-food-stand',
+  templateUrl: './list-food-stand.component.html',
+  styleUrls: ['./list-food-stand.component.css']
 })
-export class ListVentaPlanComponent implements OnInit {
+export class ListFoodStandComponent implements OnInit {
   isLogged: boolean = false;
   rolId:string = '';
   rolIdAdmin:string = DefaultValues.RolIdSuperAdmin;
   name:string = '';
-  nombre: string = '';
-  seleccionado: planModel={
-    id: '',
-    nombre: '',
-    color: '',
-    valor: 0,
-    parqueId: 0
-  }
-
   constructor(
-    private VentaPlanService: VentaPlansService,
-    private SecurityService: SecurityService,
-    private LocalStorage: LocalStorageService,
-    private PlanService: PlansService
+    private FoodStandService: FoodStandService,
+    private SecuritySevice: SecurityService,
+    private LocalStorage: LocalStorageService
   ) { }
   idToRemove: string = '';
-  recordList: VentaPlanModel[]= [];
+  //recordList: planModel[]= [];
   urlServer = ApisInfo.MS_LOG_URL;
+
   ngOnInit(): void {
-    this.ListRecords();
-    this.SecurityService.GetUserData().subscribe({
+    //this.ListRecords();
+    this.SecuritySevice.GetUserData().subscribe({
       next:(data:UserModel)=>{
         this.name = data.nombre.substring(0,(data.nombre.length-8));
         this.isLogged = data.isLogged;
@@ -49,26 +38,15 @@ export class ListVentaPlanComponent implements OnInit {
       error: (err) =>{
 
       }
-    });
-  /*
-    this.PlanService.getRecorList().subscribe({
-      next:(data:planModel)=>{
-        this.nombre = data.nombre
-
-      },
-      error:(err) =>{
-
-      }
     })
-    */
+
   }
-
-
+  /*
   ListRecords() {
-    this.VentaPlanService.getRecorList().subscribe({
+    this.FoodStandService.getRecorList().subscribe({
       next: (data) => {
         this.recordList = data;
-        console.log("VentaPlan ",this.recordList)
+        console.log("Planes ",this.recordList)
         
       },
       error: (err) => {
@@ -85,8 +63,9 @@ export class ListVentaPlanComponent implements OnInit {
    * 
    * @param id 
    */
-   RemoveRecord() {
-    this.VentaPlanService.removeRecord(this.idToRemove).subscribe({
+  /*
+  RemoveRecord() {
+    this.FoodStandService.removeRecord(this.idToRemove).subscribe({
       next: (data) => {
         //this.ListRecords();
         this.recordList = this.recordList.filter(x => x.id != this.idToRemove);
@@ -97,6 +76,5 @@ export class ListVentaPlanComponent implements OnInit {
       }
     })
   }
-
-
+*/
 }
