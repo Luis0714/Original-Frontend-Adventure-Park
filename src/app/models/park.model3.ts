@@ -1,10 +1,11 @@
-export class ParkModel2{
+export class ParkModel3{
+    id: number= 0
     nombre: string = ''
     direccion: string = ''
-    cantidadVisitas: number =0
+    cantidadVisitas: string = ''
     logo: string = ''
     mapa: string = ''
     slogan: string = ''
     descripcion?: string = ''
-    ciudadId: number = 0
+    ciudadId: number= 0
 }

@@ -4,6 +4,9 @@ import { Observable } from 'rxjs';
 import { ApisInfo } from 'src/app/config/apisInfo';
 import { ParkModel } from 'src/app/models/park.model';
 import { LocalStorageService } from '../local-storage.service';
+import { UploadedFileModel } from 'src/app/models/uploaded.file.model';
+import { ParkModel2 } from 'src/app/models/park.model2';
+import { ParkModel3 } from 'src/app/models/park.model3';
 
 @Injectable({
   providedIn: 'root'
@@ -17,26 +20,26 @@ export class ParkService {
 
   constructor(
     private http: HttpClient,
-    private LocalStorage: LocalStorageService
+    private lsService: LocalStorageService
   ) {
-    this.jwt = LocalStorage.GetSesionToken();
+    this.jwt = lsService.GetSesionToken();
    }
 
  /**
-   * Obtiene la lista de departamentos
-   * @returns lista de departamentos en estructura JSON
+   * Obtiene la lista de parques
+   * @returns lista de parques en estructura JSON
    */
-  getRecorList(): Observable<ParkModel[]> {
-    return this.http.get<ParkModel[]>(this.url,{
-      headers:new HttpHeaders({
-        "Authorization":"Bearer "+this.jwt
+  getRecorList():Observable<ParkModel[]>{ 
+    return this.http.get<ParkModel[]>(this.url+'?filter={"include":["ciudad"]}',{
+      headers: new HttpHeaders({
+        "Authorization": "Bearer " + this.jwt
       })
-    });
+    });    
    }
 
  
   /**
-  * obtine el departamento por el id
+  * obtine el parque por el id
   * @returns id
   */
   getRecorByID(id: string): Observable<ParkModel> {
@@ -48,7 +51,7 @@ export class ParkService {
     });
   }
  /**
-* obtine el departamento por el id
+* obtine el parque por el id
 * @returns id
 */
 getRecorByID2(id: string): Observable<ParkModel>{
@@ -60,43 +63,65 @@ getRecorByID2(id: string): Observable<ParkModel>{
     })
   });
 }
-
-
+saveRecord(record: ParkModel): Observable<ParkModel> {
+  return this.http.post<ParkModel>(this.url, {
+    nombre: record.nombre,
+    direccion: record.direccion,
+    cantidadVisitas: record.cantidadVisitas,
+    logo: record.logo,
+    mapa: record.mapa,
+    slogan: record.slogan,
+    descripcion: record.descripcion,
+    ciudad: record.ciudadId,
+  }, {
+    headers: new HttpHeaders({
+      "Authorization": `Bearer ${this.jwt}`
+    })
+  });
+}
   /**
-   * crea un nuevo registro
-   * @param record info del registro a crear
-   * @returns registro creado
-   */
-  saveRecord(record: ParkModel): Observable<ParkModel> {
-    return this.http.post<ParkModel>(this.url, record, {
-      headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.jwt}`,
-      })
-    });
-  }
-  /**
-   * actualiza un registro
+   * Actualiza un registro
    * @param record registro a actualizar
    * @returns NA
    */
-  editRecord(record: ParkModel) {
+   editRecord(record: ParkModel) {
     return this.http.put(this.url + "/" + record.id, record, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.jwt}`
       })
     });
   }
+
   /**
-   * elimina unregistro
+   * Elimina un registro
    * @param id id del registro a eliminar
    * @returns NA
    */
-  removeRecord(id: string) {
+  removeRecord(id: number) {
     return this.http.delete(this.url + "/" + id, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.jwt}`
       })
     });
   }
+
+
+  uploadImage(formData: FormData): Observable<UploadedFileModel> {
+    let actionName: string = "cargar-archivo";
+    return this.http.post<UploadedFileModel>(`${this.Baseurl}/${actionName}`, formData, {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.jwt}`
+      })
+    });
+  }
+  RegisternewPark(record:ParkModel2):Observable<ParkModel3>{
+    let actionName = "parques";
+    console.log(record, "RECORD")
+    return this.http.post<ParkModel3>(`${this.Baseurl}/${actionName}`,record,{
+      headers:new HttpHeaders({
+        "Authorization":"Bearer "+this.jwt
+      })
+    });
+   }
 }
 

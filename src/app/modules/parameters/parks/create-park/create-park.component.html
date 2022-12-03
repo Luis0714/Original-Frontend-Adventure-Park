@@ -1,66 +1,141 @@
-<form action="" [formGroup]="fGroup">
+<form [formGroup]="fGroup">
     <div id="container" class="card-panel z-depth-5">
         <div class="row margin">
             <div class="col s12 m12 l12 center">
-                <img src="https://i.imgur.com/ypAbAYt.png" alt="" class="responsive-img circle" style="width:100px;">
-                <p>CREATE PARK</p>
+                <img src="../../../../../assets/rol.png" alt="" class="responsive-img " style="width:100px;">
+                <img *ngIf="uploadedImage != ''" src="{{ urlServer }}/ObtenerArchivo/2/{{ uploadedImage }}"
+                    class="imgInput" />
+                <p>Agregar un Parque</p>
             </div>
         </div>
-        <div class="col s12 m12 l12">
-            <div class="input-field">
-                <i class="material-icons prefix">person</i>
-                <input formControlName="username" type="text" name="username" id="username">
-                <label class="active" for="username">Username</label>
-            </div>
-            <div class="input-error" *ngIf="fg['username'].errors && (fg['username'].dirty || fg['username'].touched)">
-                <ul>
-                    <li><strong *ngIf="fg['username'].errors['required']">Este campo es requerido.</strong><br /></li>
-                    <li><strong *ngIf="fg['username'].errors['email']">Este campo debe tener un formato de correo
-                            electrónico.</strong><br /></li>
-                    <li><strong *ngIf="fg['username'].errors['minlength']">El valor de este campo debe ser mínimo de 5
-                            caracteres.</strong><br /></li>
-                </ul>
-            </div>
-        </div>
+
         <div class="input-field">
-            <i class="material-icons prefix">lock</i>
-            <input formControlName="password" type="password" name="password" id="password">
-            <label class="active" for="password">Password</label>
+            <i class="material-icons prefix">create</i>
+            <input formControlName="nombre" type="text" name="nombre" id="nombre">
+            <label class="active" for="nombre">Nombre de la Parque</label>
         </div>
-        <div class="input-error" *ngIf="fg['password'].errors && (fg['password'].dirty || fg['password'].touched)">
+        <div class="input-error" *ngIf="fg['nombre'].errors && (fg['nombre'].dirty || fg['nombre'].touched)">
             <ul>
-                <li><strong *ngIf="fg['password'].errors['required']">Este campo es requerido.</strong><br /></li>
+                <li><strong *ngIf="fg['nombre'].errors['nombre']">Este campo es requerido.</strong><br /></li>
             </ul>
         </div>
-    </div>
-
-    <!-- Form Chekbox (Remember Me) Input Section -->
-
-    <div class="left">
-        <input type="checkbox" id="checkbox">
-        <label for="checkbox">autor: Luis Estremor</label>
-    </div>
-
-    <br><br>
-    <div class="row">
-        <div class="input-field col s6 m6 l6">
-            <p class="margin medium-small"><a routerLink="/security/register">Register Now!</a></p>
+        <div class="input-field">
+            <i class="material-icons prefix">edit_location</i>
+            <input formControlName="direccion" type="text" name="direccion" id="direccion">
+            <label class="active" for="direccion">Direccion</label>
         </div>
-        <div class="">
-            <p class="margin right-align medium-small"><a routerLink="/security/change-password">Change password?</a>
-            </p>
+        <div class="input-error" *ngIf="fg['direccion'].errors && (fg['direccion'].dirty || fg['direccion'].touched)">
+            <ul>
+                <li><strong *ngIf="fg['direccion'].errors['direccion']">Este campo es requerido.</strong><br /></li>
+            </ul>
         </div>
-        <div class="input-field col s6 m6 l6">
-            <p class="margin right-align medium-small"><a routerLink="/security/forgot-password">Forgot password?</a>
-            </p>
+        <div class="input-field">
+            <i class="material-icons prefix">comment</i>
+            <input formControlName="slogan" type="text" name="slogan" id="slogan">
+            <label class="active" for="slogan">Slogan</label>
         </div>
-    </div>
+        <div class="input-error" *ngIf="fg['slogan'].errors && (fg['slogan'].dirty || fg['slogan'].touched)">
+            <ul>
+                <li><strong *ngIf="fg['slogan'].errors['slogan']">Este campo es requerido.</strong><br /></li>
+            </ul>
+        </div>
+        <div class="row" id="conta">
+            <div id="lista"  class="row">
+                <i class="material-icons prefix col">add_location</i>
+                <label id="ciudad" class="col" for="ciudades">Ciudades</label>
+            </div>
+            <select id="ciudades" name="miselect" formControlName="ciudad1" class="browser-default ">
+                <option value="" disabled selected>Seleccione la ciudad</option>
+                <option value={{ciudadId.id}} *ngFor="let ciudadId of ciudades">{{ciudadId.nombre}}</option>
+            </select>
+        </div>
+            
+            <div class="input-field">
+                <i class="material-icons prefix col">accessibility</i>
+                <input formControlName="visitantes" type="text" name="visitantes" id="visitantes">
+                <label class="active" for="visitantes">Cantidad de Visitantes</label>
+                <div class="input-error"
+                    *ngIf="fg['visitantes'].errors && (fg['visitantes'].dirty || fg['visitantes'].touched)">
+                    <ul>
+                        <li><strong *ngIf="fg['visitantes'].errors['visitantes']">Este campo es
+                                requerido.</strong><br /></li>
+                    </ul>
+                </div>
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>Cargar Logo</span>
+                        <input type="file" (change)="onLogoFileSelect($event)"/>
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                    <div class="row margin">
+                        <div class="col s12 m12 l12 center">
+                            <img *ngIf="uploadedImageLogo == ''" src="/assets/images/not_img.png " class="imgInput" />
+                            <img *ngIf="uploadedImageLogo != ''" src="{{ urlServer }}/ObtenerArchivo/1/{{ uploadedImageLogo }}"
+                                class="imgInput" />
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="row margin">
+                    <div class="col sm-4">
+                        <button (click)="UploadImageLogo()" [disabled]="!isLogoFileSelected" class="btn orange">Cargar</button>
+                    </div>
+                </div>
+    
+            <div class="file-field input-field">
+                <div class="btn">
+                    <span>Cargar Mapa</span>
+                    <input type="file" (change)="onMapFileSelect($event)"/>
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                </div>
+                <div class="row margin">
+                    <div class="col s12 m12 l12 center">
+                        <img *ngIf="uploadedImageMap == ''" src="/assets/images/not_img.png " class="imgInput" />
+                        <img *ngIf="uploadedImageMap != ''" src="{{ urlServer }}/ObtenerArchivo/1/{{ uploadedImageMap }}"
+                            class="imgInput" />
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="row margin">
+                <div class="col sm-4">
+                    <button (click)="UploadImageMap()" [disabled]="!isMapFileSelected" class="btn orange">Cargar</button>
+                </div>
+            </div>
 
 
-    <div class="center">
-        <input type="button"  value="Login" name="login" class="btn waves-effect waves-light "
-            style="width:100%; background-color: #5340ff;">
-    </div>
+            <div class="input-field">
+                <i class="material-icons prefix col">comment</i>
+                <input formControlName="descripcion" type="text" name="descripcion" id="descripcion">
+                <label class="active" for="descripcion">Descripcion</label>
+                <div class="input-error"
+                    *ngIf="fg['descripcion'].errors && (fg['descripcion'].dirty || fg['descripcion'].touched)">
+                    <ul>
+                        <li><strong *ngIf="fg['descripcion'].errors['descripcion']">Este campo es
+                                requerido.</strong><br /></li>
+                    </ul>
+                </div>
 
-    <br>
-</form>
+
+
+
+            </div>
+        </div>
+
+        <!-- Form Chekbox (Remember Me) Input Section -->
+
+        <div class="row">
+            <div class="input-field col s12">
+                <button class="btn btn-success" (click)="SaveRecord()">
+                    <i class="material-icons left">save</i>Guardar
+                </button>
+                &nbsp;
+                <a routerLink="/parameters/list-parties" class="waves-effect waves-light btn red"><i
+                        class="material-icons left">cancel</i>Cancelar</a>
+            </div>
+
+            <br>
