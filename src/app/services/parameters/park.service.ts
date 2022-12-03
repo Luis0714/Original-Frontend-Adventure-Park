@@ -84,7 +84,7 @@ saveRecord(record: ParkModel): Observable<ParkModel> {
    * @param record registro a actualizar
    * @returns NA
    */
-   editRecord(record: ParkModel) {
+   editRecord(record: ParkModel2) {
     return this.http.put(this.url + "/" + record.id, record, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.jwt}`

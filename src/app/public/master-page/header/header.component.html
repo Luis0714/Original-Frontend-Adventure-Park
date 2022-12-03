@@ -48,8 +48,9 @@
     <ul class="right hide-on-med-and-down" *ngIf="rolId==rolIdVisitante">
       <li><a href="">Inicio</a></li>
       <li><a *ngIf="!isLogged" routerLink="security/login">Login</a></li>
-      <li><a *ngIf="!isLogged" routerLink="parameters/list-park">Parques</a></li>
-      <li><a *ngIf="!isLogged" routerLink="parameters/list-attraction">Atracciones</a></li>
+      <li><a *ngIf="isLogged" routerLink="parameters/list-park">Parques</a></li>
+      <li><a *ngIf="isLogged" routerLink="parameters/list-plan">Planes</a></li>
+      <li><a *ngIf="isLogged" routerLink="parameters/list-attraction">Atracciones</a></li>
       <li><a  routerLink="parameters/contactenos">Contactenos</a></li>
       <li *ngIf="name!='' && isLogged" class="li-user"> <a class="dropdown-trigger"  data-target='dropdown2'><b>{{name}}</b><i class="material-icons right">arrow_drop_down</i></a></li>
     </ul>
@@ -60,7 +61,6 @@
   <li><a href="">Inicio</a></li>
   <li class="divider"></li>
   <li><a *ngIf="!isLogged" routerLink="parameters/list-plan">Planes</a></li>
-  <li><a *ngIf="!isLogged" routerLink="parameters/list-zona">Zonas</a></li>
   <li><a *ngIf="!isLogged" routerLink="parameters/list-park">Parques</a></li>
   <li><a *ngIf="!isLogged" routerLink="parameters/list-attraction">Atracciones</a></li>
   <li><a *ngIf="!isLogged" routerLink="security/login">Login</a></li>

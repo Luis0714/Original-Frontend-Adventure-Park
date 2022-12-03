@@ -38,7 +38,8 @@ export class ListParkComponent implements OnInit {
     mapa:'',
     slogan:'',
     descripcion:'',
-    ciudadId:'' 
+    ciudadId:'',
+    email:'' 
   }
 
   constructor(

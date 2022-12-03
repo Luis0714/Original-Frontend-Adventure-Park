@@ -10,6 +10,7 @@ export class ParkModel{
     slogan: string = ''
     descripcion: string = ''
     ciudadId: string = ''
+    email: string=''
     ciudad?: cityModel = new cityModel()
         
 }

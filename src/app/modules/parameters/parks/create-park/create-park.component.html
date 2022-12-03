@@ -40,7 +40,7 @@
             </ul>
         </div>
         <div class="row" id="conta">
-            <div id="lista"  class="row">
+            <div id="lista" class="row">
                 <i class="material-icons prefix col">add_location</i>
                 <label id="ciudad" class="col" for="ciudades">Ciudades</label>
             </div>
@@ -49,45 +49,46 @@
                 <option value={{ciudadId.id}} *ngFor="let ciudadId of ciudades">{{ciudadId.nombre}}</option>
             </select>
         </div>
-            
-            <div class="input-field">
-                <i class="material-icons prefix col">accessibility</i>
-                <input formControlName="visitantes" type="text" name="visitantes" id="visitantes">
-                <label class="active" for="visitantes">Cantidad de Visitantes</label>
-                <div class="input-error"
-                    *ngIf="fg['visitantes'].errors && (fg['visitantes'].dirty || fg['visitantes'].touched)">
-                    <ul>
-                        <li><strong *ngIf="fg['visitantes'].errors['visitantes']">Este campo es
-                                requerido.</strong><br /></li>
-                    </ul>
+
+        <div class="input-field">
+            <i class="material-icons prefix col">accessibility</i>
+            <input formControlName="visitantes" type="text" name="visitantes" id="visitantes">
+            <label class="active" for="visitantes">Cantidad de Visitantes</label>
+            <div class="input-error"
+                *ngIf="fg['visitantes'].errors && (fg['visitantes'].dirty || fg['visitantes'].touched)">
+                <ul>
+                    <li><strong *ngIf="fg['visitantes'].errors['visitantes']">Este campo es
+                            requerido.</strong><br /></li>
+                </ul>
+            </div>
+            <div class="file-field input-field">
+                <div class="btn">
+                    <span>Cargar Logo</span>
+                    <input type="file" (change)="onLogoFileSelect($event)" />
                 </div>
-                <div class="file-field input-field">
-                    <div class="btn">
-                        <span>Cargar Logo</span>
-                        <input type="file" (change)="onLogoFileSelect($event)"/>
-                    </div>
-                    <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text">
-                    </div>
-                    <div class="row margin">
-                        <div class="col s12 m12 l12 center">
-                            <img *ngIf="uploadedImageLogo == ''" src="/assets/images/not_img.png " class="imgInput" />
-                            <img *ngIf="uploadedImageLogo != ''" src="{{ urlServer }}/ObtenerArchivo/1/{{ uploadedImageLogo }}"
-                                class="imgInput" />
-                        </div>
-                        
-                    </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
                 </div>
                 <div class="row margin">
-                    <div class="col sm-4">
-                        <button (click)="UploadImageLogo()" [disabled]="!isLogoFileSelected" class="btn orange">Cargar</button>
+                    <div class="col s12 m12 l12 center">
+                        <img *ngIf="uploadedImageLogo == ''" src="/assets/images/not_img.png " class="imgInput" />
+                        <img *ngIf="uploadedImageLogo != ''"
+                            src="{{ urlServer }}/ObtenerArchivo/1/{{ uploadedImageLogo }}" class="imgInput" />
                     </div>
+
                 </div>
-    
+            </div>
+            <div class="row margin">
+                <div class="col sm-4">
+                    <button (click)="UploadImageLogo()" [disabled]="!isLogoFileSelected"
+                        class="btn orange">Cargar</button>
+                </div>
+            </div>
+
             <div class="file-field input-field">
                 <div class="btn">
                     <span>Cargar Mapa</span>
-                    <input type="file" (change)="onMapFileSelect($event)"/>
+                    <input type="file" (change)="onMapFileSelect($event)" />
                 </div>
                 <div class="file-path-wrapper">
                     <input class="file-path validate" type="text">
@@ -95,15 +96,16 @@
                 <div class="row margin">
                     <div class="col s12 m12 l12 center">
                         <img *ngIf="uploadedImageMap == ''" src="/assets/images/not_img.png " class="imgInput" />
-                        <img *ngIf="uploadedImageMap != ''" src="{{ urlServer }}/ObtenerArchivo/1/{{ uploadedImageMap }}"
-                            class="imgInput" />
+                        <img *ngIf="uploadedImageMap != ''"
+                            src="{{ urlServer }}/ObtenerArchivo/1/{{ uploadedImageMap }}" class="imgInput" />
                     </div>
-                    
+
                 </div>
             </div>
             <div class="row margin">
                 <div class="col sm-4">
-                    <button (click)="UploadImageMap()" [disabled]="!isMapFileSelected" class="btn orange">Cargar</button>
+                    <button (click)="UploadImageMap()" [disabled]="!isMapFileSelected"
+                        class="btn orange">Cargar</button>
                 </div>
             </div>
 
@@ -124,6 +126,23 @@
 
 
             </div>
+
+            <div class="input-field">
+                <i class="material-icons prefix col">email</i>
+                <input formControlName="email" type="text" name="email" id="email">
+                <label class="active" for="email">Email</label>
+                <div class="input-error"
+                    *ngIf="fg['email'].errors && (fg['email'].dirty || fg['email'].touched)">
+                    <ul>
+                        <li><strong *ngIf="fg['email'].errors['email']">Este campo es
+                                requerido.</strong><br /></li>
+                    </ul>
+                </div>
+
+
+
+
+            </div>
         </div>
 
         <!-- Form Chekbox (Remember Me) Input Section -->
@@ -134,8 +153,11 @@
                     <i class="material-icons left">save</i>Guardar
                 </button>
                 &nbsp;
-                <a routerLink="/parameters/list-parties" class="waves-effect waves-light btn red"><i
+                <a routerLink="/parameters/list-park" class="waves-effect waves-light btn red"><i
                         class="material-icons left">cancel</i>Cancelar</a>
             </div>
 
             <br>
+        </div>
+    </div>
+</form>
