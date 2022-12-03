@@ -1,22 +1,24 @@
-
-
-<a id="btn-crear" class="waves-effect waves-light btn-large green" routerLink="/parameters/create-city"><i class="material-icons left">add</i>Agregar</a>
+<a id="btn-crear" class="waves-effect waves-light btn-large green" routerLink="/parameters/create-zona"><i class="material-icons left">add</i>Agregar</a>
 <div class="tabla">
     <table class="responsive-table"  >
         <thead>
           <tr>
               <th>Nombre</th>
-              <th>Departamento</th>
+              <th>Color</th>
+              <th>Descripcion</th>
+              <th>Parque</th>
           </tr>
         </thead>
     
         <tbody>
           <tr *ngFor="let r of recordList">
                 <td>{{r.nombre}}</td>
-                <td>{{r.departamento?.nombre}}</td>
+                <td>{{r.color}}</td>
+                <td>{{r.descripcion}}</td>
+                <td>{{r.parque?.nombre}}</td>
                 <td>
-                    <a routerLink="/parameters/edit-city/{{r.id}}" class="waves-effect waves-light btn-large orange"><i class="material-icons left">edit</i>Editar</a>
-                    &nbsp;<button data-target="modal1" class="btn modal-trigger"(click)="ShowRemoveWindow(r.id)" type="button" class="waves-effect waves-light btn-large red "><i class="material-icons left">delete</i>Eliminar</button>
+                    <a routerLink="/parameters/edit-zona/{{r.id}}" class="waves-effect waves-light btn-large orange"><i class="material-icons left">edit</i>Editar</a>
+                    &nbsp;<button data-target="modal1" class="btn modal-trigger"(click)="ShowRemoveWindow(r.id+'')" type="button" class="waves-effect waves-light btn-large red "><i class="material-icons left">delete</i>Eliminar</button>
                 </td>
           </tr>
         </tbody>

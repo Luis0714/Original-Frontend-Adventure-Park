@@ -68,6 +68,7 @@ export class CreateUserComponent implements OnInit {
     let email = this.fGroup.controls["username"].value;
     let celular = this.fGroup.controls["celular"].value;
     let rol = this.fGroup.controls["seleccionado"].value;
+    
     console.log("Seleccionado ",rol);
     if(this.fGroup.invalid){
       alert("Faltan datos")

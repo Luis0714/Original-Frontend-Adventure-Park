@@ -1,26 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { ApisInfo } from 'src/app/config/apisInfo';
 import { cityModel } from 'src/app/models/city.model';
-import { cityModel2 } from 'src/app/models/city.model2';
-import { cityModel3 } from 'src/app/models/city.model3';
 import { departmentModel } from 'src/app/models/department.model';
-import { departmentModel2 } from 'src/app/models/department.model2';
+import { ZonaModel } from 'src/app/models/zona.model';
 import { CityService } from 'src/app/services/parameters/city.service';
-import { DepartmentService} from 'src/app/services/parameters/department.service'
+import { DepartmentService } from 'src/app/services/parameters/department.service';
+import { ParkService } from 'src/app/services/parameters/park.service';
+import { ZonaService } from 'src/app/services/parameters/zona.service';
 declare const OpenConfirmModal: any;
 @Component({
-  selector: 'app-list-city',
-  templateUrl: './list-city.component.html',
-  styleUrls: ['./list-city.component.css']
+  selector: 'app-list-zona',
+  templateUrl: './list-zona.component.html',
+  styleUrls: ['./list-zona.component.css']
 })
-export class ListCityComponent implements OnInit {
+export class ListZonaComponent implements OnInit {
 
   constructor(
     private CityService: CityService,
     private DepartmentService: DepartmentService
+    ,private serviceZona:ZonaService,
+    private servicePark:ParkService
   ) { }
   idToRemove: string = "";
-  recordList: cityModel[]= [];
+  recordList: ZonaModel[]= [];
   urlServer = ApisInfo.MS_LOG_URL;
   fk_code_department_list:cityModel[] = [];
 
@@ -43,10 +45,11 @@ export class ListCityComponent implements OnInit {
   }
 
   ListRecords() {
-    this.CityService.getRecorList().subscribe({
-      next: (data) => {
-        this.recordList = data;        },
-        error: (err) => {
+    this.serviceZona.getRecorList().subscribe({
+      next: (data) =>{
+        this.recordList = data
+      },   
+      error: (err) => {
          alert("Error obteniendo la información")
         }
       });
@@ -55,6 +58,7 @@ export class ListCityComponent implements OnInit {
     
 
   ShowRemoveWindow(id: string) {
+    console.log("El ID ",id)
     OpenConfirmModal("¿Está seguro que dea elimminar el departamento?")
     this.idToRemove = id;
   }
@@ -64,11 +68,10 @@ export class ListCityComponent implements OnInit {
    * @param id 
    */
   RemoveRecord() {
-    this.CityService.removeRecord(this.idToRemove).subscribe({
+    this.serviceZona.removeRecord(this.idToRemove).subscribe({
       next: (data) => {
         //this.ListRecords();
-        this.recordList = this.recordList.filter(x => x.id != this.idToRemove);
-        
+        this.recordList = this.recordList.filter(x => x.id != parseInt(this.idToRemove));
       },
       error: (err) => {
         alert("Error obteniendo la información")

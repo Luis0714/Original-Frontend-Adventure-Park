@@ -22,9 +22,12 @@ export class ListPlanComponent implements OnInit {
     private SecuritySevice: SecurityService,
     private LocalStorage: LocalStorageService
   ) { }
+
+ 
   idToRemove: string = '';
   recordList: planModel[]= [];
   urlServer = ApisInfo.MS_LOG_URL;
+  
   ngOnInit(): void {
     this.ListRecords();
     this.SecuritySevice.GetUserData().subscribe({

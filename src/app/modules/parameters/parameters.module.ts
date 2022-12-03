@@ -33,6 +33,10 @@ import { EditDepartmentComponent } from './department/edit-department/edit-depar
 import { ListDepartmentComponent } from './department/list-department/list-department.component';
 import { RemoveDepartmentComponent } from './department/remove-department/remove-department.component';
 import { ContactenosComponent } from './contactenos/contactenos/contactenos.component';
+import { CreateZonaComponent } from './zonas/create-zona/create-zona.component';
+import { RemoveZonaComponent } from './zonas/remove-zona/remove-zona.component';
+import { EditZonaComponent } from './zonas/edit-zona/edit-zona.component';
+import { ListZonaComponent } from './zonas/list-zona/list-zona.component';
 import { CreateVentaPlanComponent } from './venta-plans/create-venta-plan/create-venta-plan.component';
 import { EditVentaPlanComponent } from './venta-plans/edit-venta-plan/edit-venta-plan.component';
 import { ListVentaPlanComponent } from './venta-plans/list-venta-plan/list-venta-plan.component';
@@ -75,6 +79,10 @@ import { RemoveFoodStandComponent } from './food-stand/remove-food-stand/remove-
     RemoveDepartmentComponent,
     CreateDepartmentComponent,
     ContactenosComponent,
+    CreateZonaComponent,
+    RemoveZonaComponent,
+    EditZonaComponent,
+    ListZonaComponent,
     CreateVentaPlanComponent,
     EditVentaPlanComponent,
     ListVentaPlanComponent,

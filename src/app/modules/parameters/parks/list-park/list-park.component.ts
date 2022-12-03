@@ -49,7 +49,6 @@ export class ListParkComponent implements OnInit {
       next: (data) => {
         this.recordList = data;
         console.log("parques ",this.recordList)
-        
       },
       error: (err) => {
         alert("Error obteniendo la información")

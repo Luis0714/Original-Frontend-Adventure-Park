@@ -19,7 +19,7 @@ export class PlansService {
     private http: HttpClient,
     private LocalStorage: LocalStorageService
   ) { 
-    this.jwt = LocalStorage.GetSesionToken();
+    this.jwt = this.LocalStorage.GetSesionToken();
   }
   /**
    * Obtiene la lista de planes

@@ -26,7 +26,8 @@ fGroup: FormGroup = new FormGroup({})
       nombre:['',[Validators.required,Validators.minLength(3)]],
       numero:['',[Validators.required,Validators.maxLength(16), Validators.minLength(16)]],
       fecha:['',[Validators.required]],
-      csv:['',[Validators.required, Validators.maxLength(3), Validators.minLength(3)]]
+      csv:['',[Validators.required, Validators.maxLength(3), Validators.minLength(3)]],
+      cant:['',[Validators.required]]
     })
   }
 
@@ -41,6 +42,10 @@ fGroup: FormGroup = new FormGroup({})
         next: (data)=>{
           console.log("VENTA PLAN ",data);
           ventaPlan=data
+          ventaPlan.planesId=id
+          ventaPlan.fecha=Date.now()+''
+          ventaPlan.cant=this.fGroup.controls["cant"].value
+          //ventaPlan.total=() CALCULAR EL TOTAL DE LA VENTA CON IMPUESTO
           this.CreatePlanVentaService.saveRecord(ventaPlan).subscribe({
             next: (data)=>{
               console.log("RESPUESTA ",data);

@@ -46,6 +46,7 @@ export class LocalStorageService {
   
   GetSesionToken():string{
     let userAsString = localStorage.getItem("user-data");
+    console.log(userAsString)
     if(userAsString){
       let userToken: string = JSON.parse(userAsString).Token;
       return userToken;

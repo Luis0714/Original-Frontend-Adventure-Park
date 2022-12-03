@@ -26,7 +26,7 @@ export class CityService {
    * @returns lista de Ciudades en estructura JSON
    */
    getRecorList():Observable<cityModel[]>{
-    return this.http.get<cityModel[]>(this.url,{
+    return this.http.get<cityModel[]>(this.url+'?filter={"include":["departamento"]}',{
       headers:new HttpHeaders({
         "Authorization":"Bearer "+this.jwt
       })
@@ -51,6 +51,7 @@ export class CityService {
     * @returns registro creado
     */
    saveRecord(record:cityModel2):Observable<cityModel>{
+    console.log(this.jwt);
      return this.http.post<cityModel>(this.url,record,{
        headers:new HttpHeaders({
          "Authorization": `Bearer ${this.jwt}`,
