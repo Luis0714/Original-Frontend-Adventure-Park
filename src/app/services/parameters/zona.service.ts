@@ -26,7 +26,7 @@ export class ZonaService {
    * @returns lista de roles en json
    */
   getRecorList(): Observable<ZonaModel[]> {
-    return this.http.get<ZonaModel[]>(this.url,{
+    return this.http.get<ZonaModel[]>(this.url+'?filter={"include":["parque"]}',{
       headers: new HttpHeaders({
         "Authorization": "Bearer " + this.jwt
       })
@@ -39,7 +39,7 @@ export class ZonaService {
   */
   getRecorByID(id: string): Observable<ZonaModel> {
     console.log("Ruta ", this.url + "/" + id)
-    return this.http.get<ZonaModel>(this.url + "/" + id, {
+    return this.http.get<ZonaModel>(this.url + "/" + id+'?filter={"include":["parque"]}', {
       headers: new HttpHeaders({
         "Authorization": "Bearer " + this.jwt
       })
@@ -67,7 +67,7 @@ export class ZonaService {
   saveRecord(record: ZonaModel2):Observable<ZonaModel> {
     return this.http.post<ZonaModel>(this.url, record, {
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.jwt}`
+        "Authorization": "Bearer " +this.jwt
       })
     });
   }
@@ -77,7 +77,7 @@ export class ZonaService {
    * @returns NA
    */
   editRecord(record: ZonaModel) {
-    return this.http.put(this.url + "/" + record.id, record, {
+    return this.http.put(this.url + "/" + record.id+"", record, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.jwt}`
       })

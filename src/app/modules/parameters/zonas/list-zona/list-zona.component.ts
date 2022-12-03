@@ -3,7 +3,6 @@ import { ApisInfo } from 'src/app/config/apisInfo';
 import { cityModel } from 'src/app/models/city.model';
 import { departmentModel } from 'src/app/models/department.model';
 import { ZonaModel } from 'src/app/models/zona.model';
-import { ZonaModel2 } from 'src/app/models/zona.model2';
 import { CityService } from 'src/app/services/parameters/city.service';
 import { DepartmentService } from 'src/app/services/parameters/department.service';
 import { ParkService } from 'src/app/services/parameters/park.service';
@@ -47,26 +46,10 @@ export class ListZonaComponent implements OnInit {
 
   ListRecords() {
     this.serviceZona.getRecorList().subscribe({
-      next: (data) => {
-        console.log("AQUIIIII",data)
-        data.forEach(Z => this.servicePark.getRecorByID(Z.parqueId).subscribe({
-          next: (park) => {
-            console.log("hola")
-            let Zona:ZonaModel={
-              id:Z.id,
-              nombre:Z.nombre,
-              color:Z.color,
-              descripcion:Z.descripcion,
-              parqueId:park.nombre  
-          }
-            this.recordList.push(Zona)
-          },
-          error:(err)=>{
-            console.log("Error obteniendo el nombre del departamento")
-          }
-        }))
-        },
-        error: (err) => {
+      next: (data) =>{
+        this.recordList = data
+      },   
+      error: (err) => {
          alert("Error obteniendo la información")
         }
       });
@@ -75,6 +58,7 @@ export class ListZonaComponent implements OnInit {
     
 
   ShowRemoveWindow(id: string) {
+    console.log("El ID ",id)
     OpenConfirmModal("¿Está seguro que dea elimminar el departamento?")
     this.idToRemove = id;
   }
@@ -84,11 +68,10 @@ export class ListZonaComponent implements OnInit {
    * @param id 
    */
   RemoveRecord() {
-    this.CityService.removeRecord(this.idToRemove).subscribe({
+    this.serviceZona.removeRecord(this.idToRemove).subscribe({
       next: (data) => {
         //this.ListRecords();
-        this.recordList = this.recordList.filter(x => x.id != this.idToRemove);
-        
+        this.recordList = this.recordList.filter(x => x.id != parseInt(this.idToRemove));
       },
       error: (err) => {
         alert("Error obteniendo la información")
