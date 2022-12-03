@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ParkModel } from 'src/app/models/park.model';
 import { planModel } from 'src/app/models/plans.model';
+import { ParkService } from 'src/app/services/parameters/park.service';
 import { PlansService } from 'src/app/services/parameters/plans.service';
 
 @Component({
@@ -11,17 +13,13 @@ import { PlansService } from 'src/app/services/parameters/plans.service';
 })
 export class EditPlanComponent implements OnInit {
   fGroup: FormGroup = new FormGroup({});
-  planes: planModel[] = [];
-  seleccionado: planModel ={
-    id: '',
-    nombre: '',
-    color: '',
-    valor: 0,
-    parqueId: 0
-  };
+  parques: ParkModel[] = [];
+  nombre:string='';
+ 
   constructor(
     private fb: FormBuilder,
     private PlanService: PlansService,
+    private ParkService: ParkService,
     private router: Router,
     private route:ActivatedRoute
   ) { }
@@ -46,12 +44,20 @@ export class EditPlanComponent implements OnInit {
     console.log("ID ",id)
     this.PlanService.getRecorByID(id).subscribe({
       next: (data)=>{
-        console.log("DATA ",data);
-        this.fGroup.controls["id"].setValue(data.id);
-        this.fGroup.controls["nombre"].setValue(data.nombre);
-        this.fGroup.controls["color"].setValue(data.color);
-        this.fGroup.controls["valor"].setValue(data.valor);
-        this.fGroup.controls["seleccionado"].setValue(data.parqueId);
+        this.ParkService.getRecorByID(data.parqueId.toString()).subscribe({
+          next: (parque)=>{
+            this.fGroup.controls["id"].setValue(data.id);
+            this.fGroup.controls["nombre"].setValue(data.nombre);
+            this.fGroup.controls["color"].setValue(data.color);
+            this.fGroup.controls["valor"].setValue(data.valor);
+            this.fGroup.controls["seleccionado"].setValue(data.parqueId);
+            this.nombre=parque.nombre
+          },
+          error:(err)=>{
+            alert("Error obteniendo la informacion del registro");
+          }
+        })
+        
       },
       error:(err)=>{
         alert("Error obteniendo la informacion del registro");
@@ -60,10 +66,10 @@ export class EditPlanComponent implements OnInit {
   }
 
   ListRecords() {
-    this.PlanService.getRecorList().subscribe({
+    this.ParkService.getRecorList().subscribe({
       next: (data) => {
         console.log()
-         this.planes = data;
+         this.parques = data;
       },error: (err) => {
        alert("Error obteniendo la información")   
     }

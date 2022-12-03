@@ -17,6 +17,25 @@ form{
 html,  body {
     height: 100%;
 }
+form{
+    padding: 60px 160px 160px 160px;
+    
+}
+
+
+#roles{
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+#rol{
+    margin-left: 0;
+}
+#lista{
+
+    padding: 20px 50px 0px 0px;
+}
+html,  body {
+    height: 100%;
+}
 html {
     display: table;
     margin: auto;

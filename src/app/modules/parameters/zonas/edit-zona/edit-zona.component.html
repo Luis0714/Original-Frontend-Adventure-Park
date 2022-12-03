@@ -50,11 +50,15 @@
                 </div>
             </div>
             
-           
-
-            <div class="center">
-                <input type="button" (click)="EditAction2()" value="Register" name="register" class="btn waves-effect waves-light "
-                    style="width:100%; background-color: #0756af;">
+            <div class="botones row">
+                <div class="center col">
+                    <input type="button" (click)="EditAction2()" value="Confirmar" name="edit" class="btn waves-effect waves-light green"
+                        style="width:100%; background-color: #ff4081;">
+                </div>
+                <div class="center col">
+                    <input  type="button" routerLink="/parameters/list-zona" value="Cancelar" name="cancel" class="btn waves-effect waves-light orange"
+                        style="width:100%; background-color: #ff4081;">
+                </div>
             </div>
 
         

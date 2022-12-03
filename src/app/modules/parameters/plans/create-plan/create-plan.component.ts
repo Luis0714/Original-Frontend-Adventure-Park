@@ -44,7 +44,7 @@ export class CreatePlanComponent implements OnInit {
   BuildingForm(){
     this.fGroup = this.fb.group({
       nombre:['',[Validators.required,Validators.maxLength(50)]],
-      color:['',[Validators.required,Validators.maxLength(5)]],
+      color:['',[Validators.required,Validators.maxLength(50)]],
       valor:['',[Validators.required]],
       seleccionado:['',[Validators.required]]
     })

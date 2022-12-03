@@ -48,8 +48,8 @@
             
             
             <select id="roles" name="miselect" formControlName="seleccionado" class="browser-default ">
-                <option value="" disabled selected>Seleccione el Parque</option>
-                <option value={{parqueId.id}} *ngFor="let parqueId of planes">{{parqueId.nombre}}</option>
+                <option value="" disabled selected>{{nombre}}</option>
+                <option value={{parque.id}} *ngFor="let parque of parques">{{parque.nombre}}</option>
             </select>
             
        
