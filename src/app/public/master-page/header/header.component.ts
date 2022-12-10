@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ApisInfo } from 'src/app/config/apisInfo';
 import { DefaultValues } from 'src/app/config/default-values';
+import { CategoriaModel } from 'src/app/models/categoria.model';
 import { UserModel } from 'src/app/models/user.model';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { CatergoriaService } from 'src/app/services/parameters/catergoria.service';
 import { SecurityService } from 'src/app/services/security.service';
 
 @Component({
@@ -19,7 +21,8 @@ export class HeaderComponent implements OnInit {
   rolIdVisitante:string = DefaultValues.RolIdVisitante;
 
   constructor(private SecuritySevice: SecurityService,
-    private LocalStorage:LocalStorageService) { }
+    private LocalStorage:LocalStorageService,
+    ) { }
 
   ngOnInit(): void {
     this.SecuritySevice.GetUserData().subscribe({

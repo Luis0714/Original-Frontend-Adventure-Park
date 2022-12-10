@@ -63,7 +63,7 @@ export class VerifyCodeComponent implements OnInit {
           document.location.reload();
         }else{
           alert("Datos invalidos!");
-          this.router.navigate(["/security/login"])
+          this.router.navigate(["/security/verify-code"])
         }
       },
       error:(err) =>{

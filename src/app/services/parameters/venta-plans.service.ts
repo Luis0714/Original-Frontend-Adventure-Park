@@ -27,11 +27,7 @@ export class VentaPlansService {
   * @returns lista de venta en estructura JSON
   */
   getRecorList(): Observable<VentaPlanModel[]> {
-   return this.http.get<VentaPlanModel[]>('http://localhost:3000/ventas-planes',{
-     headers:new HttpHeaders({
-       "Authorization":"Bearer "+this.jwt
-     })
-   });
+   return this.http.get<VentaPlanModel[]>('http://localhost:3000/ventas-planes');
   }
  
 
@@ -42,11 +38,7 @@ export class VentaPlansService {
  */
  getRecorByID(id: string): Observable<VentaPlanModel> {
    console.log("Ruta ", this.url + "/" + id)
-   return this.http.get<VentaPlanModel>(this.url + "/" + id, {
-     headers: new HttpHeaders({
-       "Authorization": "Bearer " + this.jwt
-     })
-   });
+   return this.http.get<VentaPlanModel>(this.url + "/" + id);
  }
 /**
 * obtine el venta-planes por el id
@@ -55,11 +47,7 @@ export class VentaPlansService {
 getRecorByID2(id: number): Observable<VentaPlanModel>{
  console.log(id)
  console.log("Ruta ", this.url + "/" + id)
- return this.http.get<VentaPlanModel>(this.url + "/" + id, {
-   headers: new HttpHeaders({
-     "Authorization": "Bearer " + this.jwt
-   })
- });
+ return this.http.get<VentaPlanModel>(this.url + "/" + id);
 }
 
 
@@ -69,11 +57,7 @@ getRecorByID2(id: number): Observable<VentaPlanModel>{
   * @returns registro creado
   */
  saveRecord(record: VentaPlanModel2): Observable<VentaPlanModel> {
-   return this.http.post<VentaPlanModel>(this.url, record, {
-     headers: new HttpHeaders({
-       "Authorization": `Bearer ${this.jwt}`,
-     })
-   });
+   return this.http.post<VentaPlanModel>(this.url, record);
  }
  /**
   * actualiza un registro
@@ -81,11 +65,7 @@ getRecorByID2(id: number): Observable<VentaPlanModel>{
   * @returns NA
   */
  editRecord(record: VentaPlanModel) {
-   return this.http.put(this.url + "/" + record.id, record, {
-     headers: new HttpHeaders({
-       "Authorization": `Bearer ${this.jwt}`
-     })
-   });
+   return this.http.put(this.url + "/" + record.id, record);
  }
  /**
   * elimina un registro
@@ -93,20 +73,12 @@ getRecorByID2(id: number): Observable<VentaPlanModel>{
   * @returns NA
   */
  removeRecord(id: string) {
-   return this.http.delete(this.url + "/" + id, {
-     headers: new HttpHeaders({
-       "Authorization": `Bearer ${this.jwt}`
-     })
-   });
+   return this.http.delete(this.url + "/" + id);
  }
 
 
  RegisternewPlan(record:VentaPlanModel):Observable<VentaPlanModel>{
    let actionName = "planes";
-   return this.http.post<VentaPlanModel>(`${this.Baseurl}/${actionName}`,record, {
-     headers: new HttpHeaders({
-       "Authorization": `Bearer ${this.jwt}`,
-     })
-   });
+   return this.http.post<VentaPlanModel>(`${this.Baseurl}/${actionName}`,record);
  }
 }

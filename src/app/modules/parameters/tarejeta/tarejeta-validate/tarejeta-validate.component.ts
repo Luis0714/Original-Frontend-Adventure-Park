@@ -61,7 +61,7 @@ export class TarejetaValidateComponent implements OnInit {
               next:(ventaCreada)=>{
                 if(ventaCreada){
                   alert("compra exitosa")
-                  this.router.navigate(["/parameters/list-venta-plan"])
+                  this.router.navigate(["/parameters/list-plan"])
                 }
               },
               error:(err)=>{

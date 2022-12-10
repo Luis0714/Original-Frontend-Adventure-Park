@@ -30,7 +30,7 @@ export class ParkService {
    * @returns lista de parques en estructura JSON
    */
   getRecorList():Observable<ParkModel[]>{ 
-    return this.http.get<ParkModel[]>(this.url+'?filter={"include":["ciudad"]}',{
+    return this.http.get<ParkModel[]>(this.url+'?filter={"include":["ciudad","categoria"]}',{
       headers: new HttpHeaders({
         "Authorization": "Bearer " + this.jwt
       })

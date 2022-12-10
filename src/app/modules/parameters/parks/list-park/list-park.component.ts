@@ -5,6 +5,7 @@ import { cityModel } from 'src/app/models/city.model';
 import { ParkModel } from 'src/app/models/park.model';
 import { UserModel } from 'src/app/models/user.model';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { CatergoriaService } from 'src/app/services/parameters/catergoria.service';
 import { CityService } from 'src/app/services/parameters/city.service';
 import { ParkService } from 'src/app/services/parameters/park.service';
 import { SecurityService } from 'src/app/services/security.service';
@@ -46,7 +47,8 @@ export class ListParkComponent implements OnInit {
     private parkService: ParkService,
     private SecuritySevice: SecurityService,
     private LocalStorage: LocalStorageService,
-    private cityService: CityService
+    private cityService: CityService,
+    private categoriaService: CatergoriaService
   ) { 
     
   }

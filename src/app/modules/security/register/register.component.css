@@ -1,0 +1,20 @@
+html,  body {
+    height: 100%;
+}
+html {
+    display: table;
+    margin: auto;
+}
+body {
+    display: table-cell;
+    vertical-align: middle;
+}
+.input-error{
+    color: red;
+}
+#container{
+    margin-top: 50px;
+}
+form{
+    padding: 60px 160px 160px 160px;
+}
