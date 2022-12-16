@@ -78,7 +78,7 @@ const routes: Routes = [
     canActivate: [AutenticatedGuard]
   },
   {
-    path: 'edit-attraction',
+    path: 'edit-attraction/:id',
     component:EditAttractionComponent,
     canActivate: [AutenticatedGuard]
   }, {
@@ -86,7 +86,7 @@ const routes: Routes = [
     component:ListAttractionComponent
     
   }, {
-    path: 'remove-attraction',
+    path: 'remove-attraction/:id',
     component:RemoveAttractionComponent,
     canActivate: [AutenticatedGuard]
   },

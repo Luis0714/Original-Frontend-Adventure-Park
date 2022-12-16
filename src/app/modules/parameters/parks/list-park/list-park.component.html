@@ -9,11 +9,10 @@
         <th>Ciudad</th>
         <th>Visitantes Permitidos</th>
         <th>Logo</th>
-        <th></th>
         <th>Mapa</th>
         <th>Eslogan</th>
         <th>Descripción</th>
-        <th>Categoria</th>
+        
       </tr>
     </thead>
 
@@ -24,7 +23,7 @@
         <td>{{r.direccion}}</td>
         <td>{{r.ciudad?.nombre}}</td>
         <td>{{r.cantidadVisitas}}</td>
-        <td>{{r.categoria?.nombre}}</td>
+        
         <td>
           <img src="{{urlServer}}/ObtenerArchivo/1/{{r.logo}}" alt="logo"/>
           </td>

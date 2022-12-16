@@ -2,35 +2,31 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApisInfo } from 'src/app/config/apisInfo';
-import { ParkModel } from 'src/app/models/park.model';
-import { LocalStorageService } from '../local-storage.service';
+import { atraccionModel } from 'src/app/models/atraccion.model';
 import { UploadedFileModel } from 'src/app/models/uploaded.file.model';
-import { ParkModel2 } from 'src/app/models/park.model2';
-import { ParkModel3 } from 'src/app/models/park.model3';
+import { LocalStorageService } from '../local-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ParkService {
-
+export class AttractionService {
   Baseurl: string = ApisInfo.MS_LOG_URL;
-  actionName = 'parques';
+  actionName = 'atracciones';
   jwt: string = '';
   url = `${this.Baseurl}/${this.actionName}`;
 
   constructor(
     private http: HttpClient,
     private lsService: LocalStorageService
-  ) {
+  ) { 
     this.jwt = lsService.GetSesionToken();
-   }
-
- /**
+  }
+  /**
    * Obtiene la lista de parques
    * @returns lista de parques en estructura JSON
    */
-  getRecorList():Observable<ParkModel[]>{ 
-    return this.http.get<ParkModel[]>(this.url+'?filter={"include":["ciudad"]}',{
+   getRecorList():Observable<atraccionModel[]>{ 
+    return this.http.get<atraccionModel[]>(this.url+'?filter={"include":["zona"]}',{
       headers: new HttpHeaders({
         "Authorization": "Bearer " + this.jwt
       })
@@ -42,9 +38,9 @@ export class ParkService {
   * obtine el parque por el id
   * @returns id
   */
-  getRecorByID(id: string): Observable<ParkModel> {
+  getRecorByID(id: string): Observable<atraccionModel> {
     console.log("Ruta ", this.url + "/" + id)
-    return this.http.get<ParkModel>(this.url + "/" + id, {
+    return this.http.get<atraccionModel>(this.url + "/" + id, {
       headers: new HttpHeaders({
         "Authorization": "Bearer " + this.jwt
       })
@@ -54,25 +50,23 @@ export class ParkService {
 * obtine el parque por el id
 * @returns id
 */
-getRecorByID2(id: string): Observable<ParkModel>{
+getRecorByID2(id: string): Observable<atraccionModel>{
   console.log(id)
   console.log("Ruta ", this.url + "/" + id)
-  return this.http.get<ParkModel>(this.url + "/" + id, {
+  return this.http.get<atraccionModel>(this.url + "/" + id, {
     headers: new HttpHeaders({
       "Authorization": "Bearer " + this.jwt
     })
   });
 }
-saveRecord(record: ParkModel): Observable<ParkModel> {
-  return this.http.post<ParkModel>(this.url, {
+saveRecord(record: atraccionModel): Observable<atraccionModel> {
+  return this.http.post<atraccionModel>(this.url, {
     nombre: record.nombre,
-    direccion: record.direccion,
-    cantidadVisitas: record.cantidadVisitas,
-    logo: record.logo,
-    mapa: record.mapa,
-    slogan: record.slogan,
+    image: record.image,
+    minimo_altura: record.minimo_altura,
+    video: record.video,
     descripcion: record.descripcion,
-    ciudad: record.ciudadId,
+    zonaId: record.zonaId,
   }, {
     headers: new HttpHeaders({
       "Authorization": `Bearer ${this.jwt}`
@@ -84,7 +78,7 @@ saveRecord(record: ParkModel): Observable<ParkModel> {
    * @param record registro a actualizar
    * @returns NA
    */
-   editRecord(record: ParkModel2) {
+   editRecord(record: atraccionModel) {
     return this.http.put(this.url + "/" + record.id, record, {
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.jwt}`
@@ -114,14 +108,13 @@ saveRecord(record: ParkModel): Observable<ParkModel> {
       })
     });
   }
-  RegisternewPark(record:ParkModel2):Observable<ParkModel3>{
+  RegisternewPark(record:atraccionModel):Observable<atraccionModel>{
     let actionName = "parques";
     console.log(record, "RECORD")
-    return this.http.post<ParkModel3>(`${this.Baseurl}/${actionName}`,record,{
+    return this.http.post<atraccionModel>(`${this.Baseurl}/${actionName}`,record,{
       headers:new HttpHeaders({
         "Authorization":"Bearer "+this.jwt
       })
     });
    }
 }
-

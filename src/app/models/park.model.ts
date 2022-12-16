@@ -1,4 +1,4 @@
-import { CategoriaModel } from "./categoria.model"
+//import { CategoriaModel } from "./categoria.model"
 import { cityModel } from "./city.model"
 
 export class ParkModel{
@@ -13,5 +13,5 @@ export class ParkModel{
     ciudadId: string = ''
     email: string=''
     ciudad?: cityModel = new cityModel()
-    categoria?:CategoriaModel = new CategoriaModel()     
+    //categoria?:CategoriaModel = new CategoriaModel()     
 }

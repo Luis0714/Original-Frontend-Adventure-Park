@@ -30,18 +30,7 @@ export class ListParkComponent implements OnInit {
     departamentoId: ''
   }
   
-  parque: ParkModel={
-    id:'',
-    nombre:'',
-    direccion:'',
-    cantidadVisitas:'',
-    logo:'',
-    mapa:'',
-    slogan:'',
-    descripcion:'',
-    ciudadId:'',
-    email:'' 
-  }
+  
 
   constructor(
     private parkService: ParkService,
