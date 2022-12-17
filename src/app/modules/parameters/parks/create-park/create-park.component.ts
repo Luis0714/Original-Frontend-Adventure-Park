@@ -78,7 +78,8 @@ export class CreateParkComponent implements OnInit {
       model.slogan = this.fGroup.controls["slogan"].value;
       model.descripcion = this.fGroup.controls["descripcion"].value;
       model.email = this.fGroup.controls["email"].value;
-      this.parkService.RegisternewPark(model).subscribe({
+      console.log(model.descripcion, "email")
+      this.parkService.saveRecord(model).subscribe({
         next:(data)=>{
           if(data){
             alert("Registro almacenado correctamente.");
