@@ -72,7 +72,8 @@ saveRecord(record: ParkModel): Observable<ParkModel> {
     mapa: record.mapa,
     slogan: record.slogan,
     descripcion: record.descripcion,
-    ciudad: record.ciudadId,
+    email: record.email,
+    ciudadId: record.ciudadId,
   }, {
     headers: new HttpHeaders({
       "Authorization": `Bearer ${this.jwt}`

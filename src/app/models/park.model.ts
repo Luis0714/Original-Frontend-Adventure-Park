@@ -5,12 +5,12 @@ export class ParkModel{
     id: string = ''
     nombre: string = ''
     direccion: string = ''
-    cantidadVisitas: string = ''
+    cantidadVisitas: number = 0
     logo: string = ''
     mapa: string = ''
     slogan: string = ''
     descripcion: string = ''
-    ciudadId: string = ''
+    ciudadId: number = 0
     email: string=''
     ciudad?: cityModel = new cityModel()
     //categoria?:CategoriaModel = new CategoriaModel()     

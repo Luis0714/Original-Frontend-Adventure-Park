@@ -67,7 +67,7 @@ export class CreateParkComponent implements OnInit {
     if(this.fGroup.invalid){
       alert("Faltan datos");
     }else{
-      let model = new ParkModel2();
+      let model = new ParkModel();
       model.logo = this.uploadedImageLogo;
       model.mapa = this.uploadedImageMap;
       model.nombre = this.fGroup.controls["nombre"].value;
@@ -86,7 +86,7 @@ export class CreateParkComponent implements OnInit {
       console.log(model.descripcion, "DESCRIPCION")
       model.email = this.fGroup.controls["email"].value;
       console.log(model.descripcion, "email")
-      this.parkService.RegisternewPark(model).subscribe({
+      this.parkService.saveRecord(model).subscribe({
         next:(data)=>{
           alert("Registro almacenado correctamente.");
           this.router.navigate(["/parameters/list-park"]);

@@ -18,12 +18,12 @@ export class CreatePlanComponent implements OnInit {
     id: '',
     nombre: '',
     direccion: '',
-    cantidadVisitas: '',
+    cantidadVisitas: 0,
     logo: '',
     mapa: '',
     slogan: '',
     descripcion: '',
-    ciudadId: '',
+    ciudadId: 0,
     email:''
   }
      
