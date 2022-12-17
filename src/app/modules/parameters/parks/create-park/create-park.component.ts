@@ -67,29 +67,26 @@ export class CreateParkComponent implements OnInit {
     if(this.fGroup.invalid){
       alert("Faltan datos");
     }else{
-      let model = new ParkModel2();
+      let model = new ParkModel();
       model.logo = this.uploadedImageLogo;
       model.mapa = this.uploadedImageMap;
       model.nombre = this.fGroup.controls["nombre"].value;
-      console.log(model.nombre, "NOMBRE")
       model.direccion = this.fGroup.controls["direccion"].value;
-      console.log(model.direccion, "DIRECCION")
       model.cantidadVisitas = parseInt(this.fGroup.controls["visitantes"].value.toString());
-      console.log(model.cantidadVisitas, "CANTIDAD DE VISITAS")
       let ciudad1 = this.fGroup.controls["ciudad1"].value;
-      console.log(ciudad1, "CIUDAD1")
       model.ciudadId = parseInt(ciudad1);
-      console.log(model.ciudadId, "CIUDADID")
       model.slogan = this.fGroup.controls["slogan"].value;
-      console.log(model.slogan, "SLOGAN")
       model.descripcion = this.fGroup.controls["descripcion"].value;
-      console.log(model.descripcion, "DESCRIPCION")
       model.email = this.fGroup.controls["email"].value;
-      console.log(model.descripcion, "email")
       this.parkService.RegisternewPark(model).subscribe({
         next:(data)=>{
-          alert("Registro almacenado correctamente.");
+          if(data){
+            alert("Registro almacenado correctamente.");
           this.router.navigate(["/parameters/list-park"]);
+        }else{
+          alert("No se pudo crear la nueva ciudad, por favor intentelo de nuevo");
+        }
+          
         },
         error:(err)=>{
 

@@ -108,8 +108,8 @@ saveRecord(record: atraccionModel): Observable<atraccionModel> {
       })
     });
   }
-  RegisternewPark(record:atraccionModel):Observable<atraccionModel>{
-    let actionName = "parques";
+  RegisternewAttraction(record:atraccionModel):Observable<atraccionModel>{
+    let actionName = "atracciones";
     console.log(record, "RECORD")
     return this.http.post<atraccionModel>(`${this.Baseurl}/${actionName}`,record,{
       headers:new HttpHeaders({

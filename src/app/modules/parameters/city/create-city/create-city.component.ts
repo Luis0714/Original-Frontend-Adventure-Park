@@ -44,7 +44,7 @@ export class CreateCityComponent implements OnInit {
    BuildingForm(){
     this.fGroup = this.fb.group({
       nombre:['',[Validators.required,Validators.maxLength(50)]],
-      postal:['',[Validators.required,Validators.maxLength(5)]],
+      postal:['',[Validators.required]],
       seleccionado:['',[Validators.required]]
     })
   }

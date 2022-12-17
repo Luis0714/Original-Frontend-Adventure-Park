@@ -37,6 +37,14 @@ export class ParkService {
     });    
    }
 
+   getRecorListPark(): Observable<ParkModel[]> {
+    return this.http.get<ParkModel[]>(this.url,{
+      headers:new HttpHeaders({
+        "Authorization":"Bearer "+this.jwt
+      })
+    });
+   }
+
  
   /**
   * obtine el parque por el id
@@ -114,10 +122,10 @@ saveRecord(record: ParkModel): Observable<ParkModel> {
       })
     });
   }
-  RegisternewPark(record:ParkModel2):Observable<ParkModel3>{
+  RegisternewPark(record:ParkModel):Observable<ParkModel>{
     let actionName = "parques";
     console.log(record, "RECORD")
-    return this.http.post<ParkModel3>(`${this.Baseurl}/${actionName}`,record,{
+    return this.http.post<ParkModel>(`${this.Baseurl}/${actionName}`,record,{
       headers:new HttpHeaders({
         "Authorization":"Bearer "+this.jwt
       })
