@@ -25,13 +25,18 @@ export class ChartjsComponent implements OnInit {
 
   report(){
     const data = [
-      { month: "Enero", count: this.url+'?filter={"include":["planes"]}' },
-      { month: 2011, count: 20 },
-      { year: 2012, count: 15 },
-      { year: 2013, count: 25 },
-      { year: 2014, count: 22 },
-      { year: 2015, count: 30 },
-      { year: 2016, count: 28 },
+      { month: "Enero", count: this.url+'?$count=filter={"include":["ventasPlanes"]}'},
+      { month: "Febrero", count: 20 },
+      { month: "Marzo", count: 15 },
+      { month: "Abril", count: 25 },
+      { month: "Mayo", count: 22 },
+      { month: "Junio", count: 30 },
+      { month: "Julio", count: 28 },
+      { month: "Agosto", count: 28 },
+      { month: "Septiembre", count: 28 },
+      { month: "Octubre", count: 28 },
+      { month: "Noviembre", count: 28 },
+      { month: "Diciembre", count: this.url+'?$count=filter={"include":["ventasPlanes"]}'},
     ];
     FirstReport(data);
   }
