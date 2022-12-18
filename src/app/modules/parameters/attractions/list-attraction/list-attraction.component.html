@@ -16,7 +16,7 @@ routerLink="/parameters/create-attraction"><i class="material-icons left">add</i
   </thead>
 
   <tbody>
-    <tr *ngFor="let r of recordList">
+    <tr *ngFor="let r of recordList| paginate: { itemsPerPage: 5, currentPage: page }">
 
       <td>{{r.nombre}}</td>
       <td>
@@ -34,6 +34,11 @@ routerLink="/parameters/create-attraction"><i class="material-icons left">add</i
         </div>
       </td>
     </tr>
+    <tr>
+            <td colspan="7">
+            <pagination-controls class= "my-pagination" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente" ></pagination-controls>
+          </td>
+          </tr>
   </tbody>
 </table>
 </div>

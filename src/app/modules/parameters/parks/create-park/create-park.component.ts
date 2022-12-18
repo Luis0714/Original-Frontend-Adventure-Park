@@ -176,8 +176,6 @@ export class CreateParkComponent implements OnInit {
     });
   }
 
-  
-
   get fg(){
     return this.fGroup.controls;
   }

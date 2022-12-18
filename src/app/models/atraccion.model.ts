@@ -8,6 +8,6 @@ export class atraccionModel{
     minimo_altura: string = ''
     video: string =''
     descripcion?: string =''
-    zonaId: string =''
+    zonaId: number = 0
     zona?: ZonaModel = new ZonaModel()
 }

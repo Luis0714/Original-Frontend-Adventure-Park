@@ -14,6 +14,7 @@ declare const OpenConfirmModal: any;
   styleUrls: ['./list-attraction.component.css']
 })
 export class ListAttractionComponent implements OnInit {
+  page: number =1;
   isLogged: boolean = false;
   
   rolId:string = '';

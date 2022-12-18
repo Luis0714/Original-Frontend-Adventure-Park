@@ -19,6 +19,7 @@
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
     "@types/crypto-js": "^4.1.1",
+    "chart.js": "^4.1.1",
     "crypto-js": "^4.1.1",
     "forms-angular": "^0.11.0",
     "materialize-css": "^1.0.0-rc.2",

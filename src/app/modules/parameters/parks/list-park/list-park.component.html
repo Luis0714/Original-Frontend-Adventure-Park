@@ -12,6 +12,7 @@
         <th>Mapa</th>
         <th>Eslogan</th>
         <th>Descripción</th>
+        <th>Email</th>
         
       </tr>
     </thead>
@@ -24,14 +25,15 @@
         <td>{{r.ciudad?.nombre}}</td>
         <td>{{r.cantidadVisitas}}</td>
         
-        <td>
+        <td class="imagen">
           <img src="{{urlServer}}/ObtenerArchivo/1/{{r.logo}}" alt="logo"/>
           </td>
-        <td>
+        <td class="imagen">
           <img src="{{urlServer}}/ObtenerArchivo/1/{{r.mapa}}" alt="mapa"/>
           </td>
         <td>{{r.slogan}}</td>
         <td>{{r.descripcion}}</td>
+        <td>{{r.email}}</td>
 
         <td>
           <div id="btns" class="botones row">

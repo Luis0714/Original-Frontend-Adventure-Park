@@ -1,5 +1,3 @@
-
-
 <form [formGroup]="fGroup">
     <div id="container" class="card-panel z-depth-5">
         <div class="row margin">
@@ -7,14 +5,14 @@
                 <img src="../../../../../assets/rol.png" alt="" class="responsive-img " style="width:100px;">
                 <img *ngIf="uploadedImage != ''" src="{{ urlServer }}/ObtenerArchivo/2/{{ uploadedImage }}"
                     class="imgInput" />
-                <p>Agregar un Parque</p>
+                <p>Agregar una atracción</p>
             </div>
         </div>
 
         <div class="input-field">
             <i class="material-icons prefix">create</i>
             <input formControlName="nombre" type="text" name="nombre" id="nombre">
-            <label class="active" for="nombre">Nombre de la Atraccion</label>
+            <label class="active" for="nombre">Nombre de la atracción</label>
         </div>
         <div class="input-error" *ngIf="fg['nombre'].errors && (fg['nombre'].dirty || fg['nombre'].touched)">
             <ul>
@@ -22,9 +20,10 @@
             </ul>
         </div>
 
+
         <div class="file-field input-field">
             <div class="btn">
-                <span>Cargar Imagen de la Atraccion</span>
+                <span>Cargar Logo</span>
                 <input type="file" (change)="onFileSelect($event)" />
             </div>
             <div class="file-path-wrapper">
@@ -47,41 +46,35 @@
         </div>
 
         <div class="input-field">
-            <i class="material-icons prefix">comment</i>
-            <input formControlName="minimo_altura" type="text" name="minimo_altura" id="minimo_altura">
-            <label class="active" for="minimo_altura">Minimo de Altura</label>
+            <i class="material-icons prefix">edit_location</i>
+            <input formControlName="min_altura" type="text" name="min_altura" id="min_altura">
+            <label class="active" for="min_altura">Minimo de altura</label>
         </div>
-        <div class="input-error" *ngIf="fg['minimo_altura'].errors && (fg['minimo_altura'].dirty || fg['minimo_altura'].touched)">
+        <div class="input-error" *ngIf="fg['min_altura'].errors && (fg['min_altura'].dirty || fg['min_altura'].touched)">
             <ul>
-                <li><strong *ngIf="fg['minimo_altura'].errors['minimo_altura']">Este campo es requerido.</strong><br /></li>
+                <li><strong *ngIf="fg['min_altura'].errors['min_altura']">Este campo es requerido.</strong><br /></li>
+            </ul>
+        </div>
+        <div class="input-field">
+            <i class="material-icons prefix">comment</i>
+            <input formControlName="video" type="text" name="video" id="video">
+            <label class="active" for="video">Video</label>
+        </div>
+        <div class="input-error" *ngIf="fg['video'].errors && (fg['video'].dirty || fg['video'].touched)">
+            <ul>
+                <li><strong *ngIf="fg['video'].errors['video']">Este campo es requerido.</strong><br /></li>
             </ul>
         </div>
         <div class="row" id="conta">
             <div id="lista" class="row">
                 <i class="material-icons prefix col">add_location</i>
-                <label id="zona" class="col" for="zonas">Zona a la que pertenece la Atracción</label>
+                <label id="zona" class="col" for="zonas">Zonas</label>
             </div>
-            <select id="zonas" name="miselect" formControlName="zona1" class="browser-default ">
-                <option value="" disabled selected>Seleccione la zona</option>
-                <option value={{zonaId.id}} *ngFor="let zonaId of zonas">{{zonaId.nombre}}</option>
+            <select id="zonas" name="miselect" formControlName="zonaId" class="browser-default ">
+                <option value="" disabled selected>Seleccione una zona</option>
+                <option value={{zona.id}} *ngFor="let zonaId of zonas">{{zona.nombre}}</option>
             </select>
         </div>
-
-        <div class="input-field">
-            <i class="material-icons prefix col">video_library</i>
-            <input formControlName="video" type="text" name="video" id="video">
-            <label class="active" for="video">Video de la Atracción</label>
-            <div class="input-error"
-                *ngIf="fg['video'].errors && (fg['video'].dirty || fg['video'].touched)">
-                <ul>
-                    <li><strong *ngIf="fg['video'].errors['video']">Este campo es
-                            requerido.</strong><br /></li>
-                </ul>
-            </div>
-            
-          
-
-            
 
 
             <div class="input-field">
@@ -95,7 +88,6 @@
                                 requerido.</strong><br /></li>
                     </ul>
                 </div>
-
             </div>
         </div>
 
@@ -107,11 +99,10 @@
                     <i class="material-icons left">save</i>Guardar
                 </button>
                 &nbsp;
-                <a routerLink="/parameters/list-attraction" class="waves-effect waves-light btn red"><i
+                <a routerLink="/parameters/list-park" class="waves-effect waves-light btn red"><i
                         class="material-icons left">cancel</i>Cancelar</a>
             </div>
 
             <br>
         </div>
-    </div>
 </form>
