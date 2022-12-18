@@ -72,7 +72,7 @@
             </div>
             <select id="zonas" name="miselect" formControlName="zonaId" class="browser-default ">
                 <option value="" disabled selected>Seleccione una zona</option>
-                <option value={{zona.id}} *ngFor="let zonaId of zonas">{{zona.nombre}}</option>
+                <option value={{zona.id}} *ngFor="let zona of zonas">{{zona.nombre}}</option>
             </select>
         </div>
 
