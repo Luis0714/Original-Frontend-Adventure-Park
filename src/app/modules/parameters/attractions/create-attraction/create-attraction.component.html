@@ -1,1 +1,108 @@
-<p>create-attraction works!</p>
+<form [formGroup]="fGroup">
+    <div id="container" class="card-panel z-depth-5">
+        <div class="row margin">
+            <div class="col s12 m12 l12 center">
+                <img src="../../../../../assets/rol.png" alt="" class="responsive-img " style="width:100px;">
+                <img *ngIf="uploadedImage != ''" src="{{ urlServer }}/ObtenerArchivo/2/{{ uploadedImage }}"
+                    class="imgInput" />
+                <p>Agregar una atracción</p>
+            </div>
+        </div>
+
+        <div class="input-field">
+            <i class="material-icons prefix">create</i>
+            <input formControlName="nombre" type="text" name="nombre" id="nombre">
+            <label class="active" for="nombre">Nombre de la atracción</label>
+        </div>
+        <div class="input-error" *ngIf="fg['nombre'].errors && (fg['nombre'].dirty || fg['nombre'].touched)">
+            <ul>
+                <li><strong *ngIf="fg['nombre'].errors['nombre']">Este campo es requerido.</strong><br /></li>
+            </ul>
+        </div>
+
+
+        <div class="file-field input-field">
+            <div class="btn">
+                <span>Cargar Logo</span>
+                <input type="file" (change)="onFileSelect($event)" />
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+            <div class="row margin">
+                <div class="col s12 m12 l12 center">
+                    <img *ngIf="uploadedImage == ''" src="/assets/images/not_img.png " class="imgInput" />
+                    <img *ngIf="uploadedImage != ''"
+                        src="{{ urlServer }}/ObtenerArchivo/1/{{ uploadedImage }}" class="imgInput" />
+                </div>
+
+            </div>
+        </div>
+        <div class="row margin">
+            <div class="col sm-4">
+                <button (click)="UploadImage()" [disabled]="!isFileSelected"
+                    class="btn orange">Cargar</button>
+            </div>
+        </div>
+
+        <div class="input-field">
+            <i class="material-icons prefix">edit_location</i>
+            <input formControlName="min_altura" type="text" name="min_altura" id="min_altura">
+            <label class="active" for="min_altura">Minimo de altura</label>
+        </div>
+        <div class="input-error" *ngIf="fg['min_altura'].errors && (fg['min_altura'].dirty || fg['min_altura'].touched)">
+            <ul>
+                <li><strong *ngIf="fg['min_altura'].errors['min_altura']">Este campo es requerido.</strong><br /></li>
+            </ul>
+        </div>
+        <div class="input-field">
+            <i class="material-icons prefix">comment</i>
+            <input formControlName="video" type="text" name="video" id="video">
+            <label class="active" for="video">Video</label>
+        </div>
+        <div class="input-error" *ngIf="fg['video'].errors && (fg['video'].dirty || fg['video'].touched)">
+            <ul>
+                <li><strong *ngIf="fg['video'].errors['video']">Este campo es requerido.</strong><br /></li>
+            </ul>
+        </div>
+        <div class="row" id="conta">
+            <div id="lista" class="row">
+                <i class="material-icons prefix col">add_location</i>
+                <label id="zona" class="col" for="zonas">Zonas</label>
+            </div>
+            <select id="zonas" name="miselect" formControlName="zonaId" class="browser-default ">
+                <option value="" disabled selected>Seleccione una zona</option>
+                <option value={{zona.id}} *ngFor="let zonaId of zonas">{{zona.nombre}}</option>
+            </select>
+        </div>
+
+
+            <div class="input-field">
+                <i class="material-icons prefix col">comment</i>
+                <input formControlName="descripcion" type="text" name="descripcion" id="descripcion">
+                <label class="active" for="descripcion">Descripcion</label>
+                <div class="input-error"
+                    *ngIf="fg['descripcion'].errors && (fg['descripcion'].dirty || fg['descripcion'].touched)">
+                    <ul>
+                        <li><strong *ngIf="fg['descripcion'].errors['descripcion']">Este campo es
+                                requerido.</strong><br /></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Chekbox (Remember Me) Input Section -->
+
+        <div class="row">
+            <div class="input-field col s12">
+                <button class="btn btn-success" (click)="SaveRecord()">
+                    <i class="material-icons left">save</i>Guardar
+                </button>
+                &nbsp;
+                <a routerLink="/parameters/list-park" class="waves-effect waves-light btn red"><i
+                        class="material-icons left">cancel</i>Cancelar</a>
+            </div>
+
+            <br>
+        </div>
+</form>
