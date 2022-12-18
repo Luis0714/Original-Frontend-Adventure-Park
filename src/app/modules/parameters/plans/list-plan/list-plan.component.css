@@ -17,3 +17,10 @@
 #cancelar{
     margin-left:20px;
 }
+.my-pagination ::ng-deep .ngx-pagination .current {
+    background: #0865d8;
+  }
+
+.ngx-pagination{
+    background-color: #0865d8;
+}

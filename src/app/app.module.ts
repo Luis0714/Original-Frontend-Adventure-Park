@@ -9,6 +9,7 @@ import { ErrorsComponent } from './public/errors/errors.component';
 import { HomeComponent } from './public/master-page/home/home.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthorizacionInterceptor } from './interceptor/authorizacion.interceptor';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 

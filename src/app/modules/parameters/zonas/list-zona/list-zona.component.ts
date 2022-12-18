@@ -14,6 +14,7 @@ declare const OpenConfirmModal: any;
   styleUrls: ['./list-zona.component.css']
 })
 export class ListZonaComponent implements OnInit {
+  page: number =1;
 
   constructor(
     private CityService: CityService,

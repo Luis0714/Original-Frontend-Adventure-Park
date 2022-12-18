@@ -18,6 +18,7 @@ declare const OpenConfirmModal: any;
 })
 export class ListParkComponent implements OnInit {
   isLogged: boolean = false;
+  page: number =1;
   
   rolId:string = '';
   rolIdAdmin:string = DefaultValues.RolIdSuperAdmin;

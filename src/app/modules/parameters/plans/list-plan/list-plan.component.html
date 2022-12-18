@@ -11,7 +11,7 @@
     </thead>
 
     <tbody>
-      <tr *ngFor="let r of recordList">
+      <tr *ngFor="let r of recordList | paginate: { itemsPerPage: 5, currentPage: page }">
         <td>{{r.nombre}}</td>
         <td>{{r.color}}</td>
         <td>{{r.valor}}</td>
@@ -24,8 +24,17 @@
           </div>
         </td>
       </tr>
+      <tr>
+        <td colspan="4">
+        <pagination-controls class= "my-pagination" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente" ></pagination-controls>
+      </td>
+      </tr>
     </tbody>
   </table>
+  
+
+
+
 </div>
 <div id="modalConfirmation" class="modal">
   <div class="modal-content">

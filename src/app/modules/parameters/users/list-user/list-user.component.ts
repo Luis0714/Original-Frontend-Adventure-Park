@@ -12,7 +12,7 @@ declare const OpenConfirmModal: any;
   styleUrls: ['./list-user.component.css']
 })
 export class ListUserComponent implements OnInit {
-
+page: number =0
   constructor(
     private UserService: UserService,
     private RolService:RolServiceService

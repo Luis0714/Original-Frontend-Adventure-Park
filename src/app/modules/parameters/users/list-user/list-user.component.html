@@ -13,7 +13,7 @@
         </thead>
     
         <tbody>
-          <tr *ngFor="let r of recordList">
+          <tr *ngFor="let r of recordList| paginate: { itemsPerPage: 5, currentPage: page }">
                 <td>{{r.Nombres}}</td>
                 <td>{{r.Apellidos}}</td>
                 <td>{{r.email}}</td>
@@ -26,6 +26,11 @@
                   </div>
                 </td>
                    
+          </tr>
+          <tr>
+            <td colspan="6">
+            <pagination-controls class= "my-pagination" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente" ></pagination-controls>
+          </td>
           </tr>
         </tbody>
       </table>

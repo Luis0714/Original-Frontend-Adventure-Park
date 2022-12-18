@@ -23,6 +23,7 @@ export class ListVentaPlanComponent implements OnInit {
   name:string = '';
   nombre: string = '';
   venta:VentaPlanModel = new VentaPlanModel()
+  page: number =1
 
 
   constructor(
@@ -63,7 +64,7 @@ export class ListVentaPlanComponent implements OnInit {
       });
   }
   ShowRemoveWindow(id: string) {
-    OpenConfirmModal("¿Está seguro que dea elimminar el departamento?")
+    OpenConfirmModal("¿Está seguro que dea eliminar la venta?")
     this.idToRemove = id;
   }
 

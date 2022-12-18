@@ -47,6 +47,7 @@ import { EditFoodStandComponent } from './food-stand/edit-food-stand/edit-food-s
 import { ListFoodStandComponent } from './food-stand/list-food-stand/list-food-stand.component';
 import { RemoveFoodStandComponent } from './food-stand/remove-food-stand/remove-food-stand.component';
 import { TarejetaValidateComponent } from './tarejeta/tarejeta-validate/tarejeta-validate.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -101,7 +102,8 @@ import { TarejetaValidateComponent } from './tarejeta/tarejeta-validate/tarejeta
     CommonModule,
     ParametersRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ]
 })
 export class ParametersModule { }

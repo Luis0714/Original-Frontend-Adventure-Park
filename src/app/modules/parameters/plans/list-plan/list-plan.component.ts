@@ -13,6 +13,7 @@ declare const OpenConfirmModal: any;
   styleUrls: ['./list-plan.component.css']
 })
 export class ListPlanComponent implements OnInit {
+  page: number = 1;
   isLogged: boolean = false;
   rolId:string = '';
   rolIdAdmin:string = DefaultValues.RolIdSuperAdmin;
@@ -54,7 +55,7 @@ export class ListPlanComponent implements OnInit {
     });
   }
   ShowRemoveWindow(id: string) {
-    OpenConfirmModal("¿Está seguro que dea elimminar el departamento?")
+    OpenConfirmModal("¿Está seguro que desea eliminar el Plan?")
     this.idToRemove = id;
   }
 

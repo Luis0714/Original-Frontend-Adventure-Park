@@ -10,13 +10,18 @@
         </thead>
     
         <tbody>
-          <tr *ngFor="let r of recordList">
+          <tr *ngFor="let r of recordList | paginate: { itemsPerPage: 5, currentPage: page }">
                 <td>{{r.nombre}}</td>
                 <td>{{r.detalles}}</td>
                 <td>
                     <a routerLink="/parameters/edit-rol/{{r._id}}" class="waves-effect waves-light btn-large orange"><i class="material-icons left">edit</i>Editar</a>
                     &nbsp;<button  data-target="modal1" class="btn modal-trigger"(click)="ShowRemoveWindow(r._id)" type="button" class="waves-effect waves-light btn-large red "><i class="material-icons left">delete</i>Eliminar</button>
                 </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+            <pagination-controls class= "my-pagination" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente" ></pagination-controls>
+          </td>
           </tr>
         </tbody>
       </table>

@@ -10,6 +10,7 @@ declare const OpenConfirmModal: any;
   styleUrls: ['./list-department.component.css']
 })
 export class ListDepartmentComponent implements OnInit {
+  page: number =0;
 
   constructor(
     private DepartmentService: DepartmentService

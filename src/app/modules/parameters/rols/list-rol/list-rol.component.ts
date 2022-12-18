@@ -10,6 +10,7 @@ declare const OpenConfirmModal: any;
   styleUrls: ['./list-rol.component.css']
 })
 export class ListRolComponent implements OnInit {
+  page: number =1;
  
 
   constructor(
