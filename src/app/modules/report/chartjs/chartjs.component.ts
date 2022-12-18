@@ -2,6 +2,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import {Chart} from 'chart.js/auto'
+import { concat } from 'rxjs';
 import { ApisInfo } from 'src/app/config/apisInfo';
 
 declare const FirstReport: any;
@@ -17,10 +18,18 @@ export class ChartjsComponent implements OnInit {
   reportPlan: number =1;
   url = `${this.Baseurl}/${this.actionName}/${this.reportPlan}`;
   month: string =''
+  json:any 
+  
   constructor() { }
 
   ngOnInit(): void {
     this.report()
+  }
+
+  jsonAplanado(){
+    this.json = this.url+'?$count=filter={"include":["ventasPlanes"]}'
+    return []concat.apply([],this.json).length
+    
   }
 
   report(){
