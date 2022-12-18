@@ -5,29 +5,29 @@ import { HomeComponent } from './public/master-page/home/home.component';
 
 const routes: Routes = [
   {
-    path:"home",
-    component:HomeComponent
+    path: "home",
+    component: HomeComponent
   },
   {
-    path:"",
-    pathMatch:"full",
-    redirectTo:"/home"
+    path: "",
+    pathMatch: "full",
+    redirectTo: "/home"
   },
   {
-    path:"security",
-    loadChildren: ()=> import("./modules/security/security.module").then(m => m.SecurityModule)
+    path: "security",
+    loadChildren: () => import("./modules/security/security.module").then(m => m.SecurityModule)
   },
   {
-      path:"parameters",
-      loadChildren: ()=> import("./modules/parameters/parameters.module").then(m => m.ParametersModule)
+    path: "parameters",
+    loadChildren: () => import("./modules/parameters/parameters.module").then(m => m.ParametersModule)
   },
   {
-    path:"reports",
-    loadChildren: ()=> import("./modules/report/report.module").then(m => m.ReportModule)
-},
+    path: "reports",
+    loadChildren: () => import("./modules/report/report.module").then(x => x.ReportModule)
+  },
   {
-    path:"**",
-    component:NotFoundComponent
+    path: "**",
+    component: NotFoundComponent
   }
 ];
 

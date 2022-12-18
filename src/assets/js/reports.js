@@ -1,4 +1,4 @@
-import {Chart} from 'chart.js/auto';
+
 
 
 
@@ -6,10 +6,10 @@ function FirstReport(data){
     new Chart(document.getElementById('acquisitions'),{
           type: 'bar',
           data: {
-            labels: data.map(row => row.year),
+            labels: data.map(row => row.month),
             datasets: [
               {
-                label: 'Acquisitions by year',
+                label: 'Venta por Mes',
                 data: data.map((row) => row.count),
               },
             ],
