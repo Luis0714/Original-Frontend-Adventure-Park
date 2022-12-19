@@ -22,6 +22,7 @@ export class ChartjsComponent implements OnInit {
   month: string = '';
   json: any;
   jsonNombre: any;
+  jsonPlanes: any;
 
   constructor(
     private http: HttpClient
@@ -73,17 +74,27 @@ export class ChartjsComponent implements OnInit {
     })
   }
 
+  async obtenerPlanes():Promise<Array<string>>{
+    return new Promise<Array<string>>((resolve,reject) =>{
+      fetch(this.url)
+      .then(res => res.json())
+      .then(out =>
+      resolve(out))
+      .catch(err => { reject(err) });
+    })
+  }
+
   async report() {
-    const data = [
-      {
-        plan: await this.obtenerNombre(1),
-        count: await this.obtenerCantidad(1),
-      },
-      { plan: await this.obtenerNombre(2), 
-        count: await this.obtenerCantidad(2) },
-      { plan: await this.obtenerNombre(4), 
-        count: await this.obtenerCantidad(4) }
-    ];
+    let data = [];
+    this.jsonPlanes = await this.obtenerPlanes()
+    for(let i = 0; i < this.jsonPlanes.length; i++){
+      console.log(this.jsonPlanes[i].id)
+      let datos = {
+        plan: await this.obtenerNombre(this.jsonPlanes[i].id),
+        count: await this.obtenerCantidad(this.jsonPlanes[i].id),
+      }
+      data.push(datos) 
+    }
     FirstReport(data);
   }
 }
